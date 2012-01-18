@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvDatosUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:text="@string/Userdata"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dip"
+            android:text="@string/iduser"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:width="110dip" />
+
+        <TextView
+            android:id="@+id/tvIdData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Supuesta ID"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dip"
+            android:text="@string/name"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:width="110dip" />
+
+        <TextView
+            android:id="@+id/tvNameData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Supuesto Nombre"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tvSurname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dip"
+            android:text="@string/surname"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:width="110dip" />
+
+        <TextView
+            android:id="@+id/tvSurnameData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Supuesto Apellido"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvChooseWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dip"
+        android:paddingTop="25dip"
+        android:text="@string/choosework"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Spinner
+            android:id="@+id/spinnerWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/start" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvConfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dip"
+        android:paddingTop="25dip"
+        android:text="@string/config"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnConfigTools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:drawableTop="@drawable/apero"
+            android:height="80sp"
+            android:padding="5sp"
+            android:paddingLeft="15dip"
+            android:text="@string/Tools"
+            android:width="80sp" />
+
+        <Button
+            android:id="@+id/btnConfigProducts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:drawableTop="@drawable/producto"
+            android:height="80sp"
+            android:padding="5sp"
+            android:text="@string/Products"
+            android:width="80sp" />
+
+        <Button
+            android:id="@+id/btnConfigUserData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:drawableTop="@drawable/usuario"
+            android:height="80sp"
+            android:padding="5dip"
+            android:text="Mis Datos"
+            android:width="80sp" />
+    </LinearLayout>
+
+</LinearLayout>

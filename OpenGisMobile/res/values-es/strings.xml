@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OpenGis</string>
+    <string name="user">Usuario:</string>
+    <string name="passwd">Contraseña:</string>
+    <string name="send">Enviar</string>
+    <string name="delete">Borrar</string>
+    <string name="Tools">Aperos:</string>
+    <string name="Products">Productos:</string>
+    <string name="Userdata">Datos del Usuario:</string>
+    <string name="iduser">ID Usuario:</string>
+    <string name="name">Nombre:</string>
+    <string name="surname">Apellidos:</string>
+    <string name="choosework">Selecciona una tarea:</string>
+    <string name="start">Comenzar</string>
+    <string name="config">Configuración</string>
+    
+</resources>
