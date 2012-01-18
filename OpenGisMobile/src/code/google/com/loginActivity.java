@@ -15,14 +15,14 @@ public class loginActivity extends Activity {
         
         
         Button cmdBorrar = (Button) findViewById(R.id.cmdBorrar);
-        Button cmdEnviar = (Button) findViewById(R.id.cmdEnviar);
+        Button cmdEnviar = (Button) findViewById(R.id.cmdEnviar);    
         final EditText txtUser = (EditText) findViewById(R.id.txtUser);
         final EditText txtPass = (EditText) findViewById(R.id.txtPass);
 
         cmdBorrar.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-				
+
 				txtUser.setText("");
 				txtPass.setText("");
 				

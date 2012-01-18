@@ -25,10 +25,13 @@
             android:layout_gravity="center"
             android:text="Usuario"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
+ <!-- MaxLength para máximo de caracteres -->
+ 
         <EditText
             android:id="@+id/txtUser"
             android:layout_width="259dp"
+            android:singleLine="true"
+            android:maxLength="9"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
@@ -45,6 +48,7 @@
             android:layout_width="256dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:singleLine="true"
             android:inputType="textPassword" />
 
         <RelativeLayout
