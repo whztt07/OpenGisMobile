@@ -19,7 +19,7 @@ public class principalActivity extends Activity {
         
         // Recogemos los parametros que hemos guardado en extras desde el login.
         
-        final Bundle extras = getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
         
         // Recogemos e instanciamos los TextView que van a rellenarse con los parametros pasados. Adem‡s recogemos en esta secci—n los
         // botones que vamos a necesitar.
@@ -36,9 +36,17 @@ public class principalActivity extends Activity {
         txtNombre.setText(extras.getString("nombre"));
         txtApellidos.setText(extras.getString("apellidos"));
         
+        // Recogemos los parametros restantes
         
+        final String email = extras.getString("email");
+        final String telefono = extras.getString("telefono");
+        final String direccion = extras.getString("direccion");
+        final String poblacion = extras.getString("poblacion");
+        final String provincia = extras.getString("provincia");
+        final String cp= extras.getString("cp");
+        final String fec_nac = extras.getString("fec_nac");
         
-        // Acciones de bot—n
+        // Acciones de boton
         
         
         
@@ -54,13 +62,13 @@ public class principalActivity extends Activity {
 				vMisDatos.putExtra("dni",txtDNI.getText());
 				vMisDatos.putExtra("nombre",txtNombre.getText());
 				vMisDatos.putExtra("apellidos",txtApellidos.getText());
-				vMisDatos.putExtra("email",extras.getString("email"));
-				vMisDatos.putExtra("telefono",extras.getString("telefono"));
-				vMisDatos.putExtra("direccion",extras.getString("direccion"));
-				vMisDatos.putExtra("poblacion",extras.getString("poblacion"));
-				vMisDatos.putExtra("provincia",extras.getString("provincia"));
-				vMisDatos.putExtra("cp",extras.getString("cp"));
-				vMisDatos.putExtra("fec_nac",extras.getString("fec_nac"));
+				vMisDatos.putExtra("email",email);
+				vMisDatos.putExtra("telefono",telefono);
+				vMisDatos.putExtra("direccion",direccion);
+				vMisDatos.putExtra("poblacion",poblacion);
+				vMisDatos.putExtra("provincia",provincia);
+				vMisDatos.putExtra("cp",cp);
+				vMisDatos.putExtra("fec_nac",fec_nac);
 				
 				startActivity(vMisDatos);
 				
