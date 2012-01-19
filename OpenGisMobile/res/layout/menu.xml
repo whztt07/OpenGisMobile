@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/fondo"
+    >
 
     <TextView
         android:id="@+id/tvDatosUser"
@@ -88,11 +90,12 @@
         android:paddingTop="25dip"
         android:text="@string/choosework"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:baselineAligned="false" >
 
         <Spinner
             android:id="@+id/spinnerWork"
@@ -116,11 +119,13 @@
         android:paddingTop="25dip"
         android:text="@string/config"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:baselineAligned="false" >
 
         <Button
             android:id="@+id/btnConfigTools"

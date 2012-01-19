@@ -70,14 +70,28 @@ public class loginActivity extends Activity {
 				// En este momento cogemos dichos datos en formato JSON y los pasamos a string, el cual almacenamos en un array.
 					
 				
-				String[] resultado = parseJSONdata(data);
+				 Object[] resultado = parseJSONdata(data);
+				
+
+				
+				 UserDatos user = (UserDatos) resultado[0];
+				 
+				 String dni = user.getDNI();
+				 String nombre = user.getNombre();
+				 String apellidos = user.getApellidos();
+				
+				 
+				
 				
 				// En caso de que el resultado no sea null, significa que hemos encontrado el usuario y que la pass es correcta. Con lo cual
 				// accederemos a la ventana principal. (Todav’a hay que mirar como guardar los datos de una Actividad a otra, pero poco a poco).
 				
-				if(resultado[0] != null){
+				if(dni != null){
 					
 					Intent vPrincipal = new Intent(loginActivity.this, principalActivity.class);
+					vPrincipal.putExtra("dni",dni);
+					vPrincipal.putExtra("nombre",nombre);
+					vPrincipal.putExtra("apellidos",apellidos);
 					startActivity(vPrincipal);
 					
 					
@@ -157,9 +171,9 @@ public class loginActivity extends Activity {
 }
 
 
-	private String[] parseJSONdata(String data) throws JSONException {
+	private Object[] parseJSONdata(String data) throws JSONException {
 		
-		String[] usersList = new String[1];
+		Object[] usersList = new Object[1];
  
 		JSONObject jsonObj = new JSONObject(data);
 		String strData = jsonObj.getString("users");
@@ -169,8 +183,11 @@ public class loginActivity extends Activity {
 			JSONObject userObj = jsonArray.getJSONObject(i);
 			String userStr = userObj.getString("user");
 			JSONObject item = new JSONObject(userStr);
+			
+			UserDatos usuario = new UserDatos(item.getString("dni"),item.getString("nombre"),item.getString("apellidos"));
 		
-			usersList[i] = item.getString("dni");
+			
+			usersList[i] = usuario;
 			
 		}
  
