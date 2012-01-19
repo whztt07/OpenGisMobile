@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,14 +53,19 @@ public class loginActivity extends Activity {
 
 			public void onClick(View arg0) {
 				
-				try{
 				
-				
+
 				String data = getJSONdata("http://79.108.245.167/OpenGisMobile/webService.php");
 				
-				String resultado = parseJSONdata(data);
 				
-				alertaMensaje(resultado,resultado);
+				try{
+					
+				
+				String[] resultado = parseJSONdata(data);
+				
+				
+				
+				alertaMensaje(resultado[0],resultado[0]);
 				
 				}catch(Exception e2){
 					
@@ -126,17 +134,24 @@ public class loginActivity extends Activity {
 }
 
 
-	private String parseJSONdata(String data) throws JSONException {
+	private String[] parseJSONdata(String data) throws JSONException {
 		
-		
+		String[] usersList = new String[1];
+ 
 		JSONObject jsonObj = new JSONObject(data);
-		String userData = jsonObj.getString("user");
-		JSONObject item = new JSONObject(userData);
+		String strData = jsonObj.getString("users");
+		JSONArray jsonArray = new JSONArray(strData);
  
-		String user = item.getString("user");
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject userObj = jsonArray.getJSONObject(i);
+			String userStr = userObj.getString("user");
+			JSONObject item = new JSONObject(userStr);
 		
+			usersList[i] = item.getString("dni");
+			
+		}
  
-		return user;
+		return usersList;
 	}
     
     
