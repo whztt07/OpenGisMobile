@@ -15,5 +15,6 @@
     <string name="choosework">Selecciona una tarea:</string>
     <string name="start">Comenzar</string>
     <string name="config">Configuración</string>
+    <string name="tituloMisDatos">Configuración - Mis Datos</string>
     
 </resources>
