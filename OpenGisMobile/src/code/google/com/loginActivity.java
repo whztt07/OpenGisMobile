@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -53,23 +54,45 @@ public class loginActivity extends Activity {
 
 			public void onClick(View arg0) {
 				
+				// Al hacer clic en enviar le pasamos la URL con los parametros necesarios (user y pass) para realizar el web service
 				
+				String direccionWebService = "http://79.108.245.167/OpenGisMobile/webService.php?dni="+txtUser.getText()+"&pass="+txtPass.getText()+"";
 
-				String data = getJSONdata("http://79.108.245.167/OpenGisMobile/webService.php");
 				
+				// Gracias al metodo getJSONdata recogemos en un string los datos del servicio web realizado en formato JSON
+				
+				String data = getJSONdata(direccionWebService);
+			
 				
 				try{
+					
+			
+				// En este momento cogemos dichos datos en formato JSON y los pasamos a string, el cual almacenamos en un array.
 					
 				
 				String[] resultado = parseJSONdata(data);
 				
+				// En caso de que el resultado no sea null, significa que hemos encontrado el usuario y que la pass es correcta. Con lo cual
+				// accederemos a la ventana principal. (Todav’a hay que mirar como guardar los datos de una Actividad a otra, pero poco a poco).
+				
+				if(resultado[0] != null){
+					
+					Intent vPrincipal = new Intent(loginActivity.this, principalActivity.class);
+					startActivity(vPrincipal);
+					
+					
+				}else{ // En caso de que no se encuentre el usuario se mostrar‡ un mensaje informativo
+					
+					alertaMensaje("Usuario o contrase–a incorrecto","Login erroneo");
+					
+					
+				}
 				
 				
-				alertaMensaje(resultado[0],resultado[0]);
 				
 				}catch(Exception e2){
 					
-					alertaMensaje("Esto peta","VAYA");
+					alertaMensaje("Error al realizar la consulta al servidor","Error");
 					
 				}
 				
