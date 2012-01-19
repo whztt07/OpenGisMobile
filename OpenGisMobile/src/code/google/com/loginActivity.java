@@ -79,7 +79,13 @@ public class loginActivity extends Activity {
 				 String dni = user.getDNI();
 				 String nombre = user.getNombre();
 				 String apellidos = user.getApellidos();
-				
+				 String email = user.getEmail();
+				 String telefono = user.getTelefono();
+				 String direccion = user.getPoblacion();
+				 String provincia = user.getProvincia();
+				 String poblacion = user.getPoblacion();
+				 String cp = user.getCP();
+				 String fec_nac = user.getFecNac();
 				 
 				
 				
@@ -92,6 +98,13 @@ public class loginActivity extends Activity {
 					vPrincipal.putExtra("dni",dni);
 					vPrincipal.putExtra("nombre",nombre);
 					vPrincipal.putExtra("apellidos",apellidos);
+					vPrincipal.putExtra("email",email);
+					vPrincipal.putExtra("telefono",telefono);
+					vPrincipal.putExtra("direccion",direccion);
+					vPrincipal.putExtra("poblacion",poblacion);
+					vPrincipal.putExtra("provincia",provincia);
+					vPrincipal.putExtra("cp",cp);
+					vPrincipal.putExtra("fec_nac",fec_nac);
 					startActivity(vPrincipal);
 					
 					
@@ -184,7 +197,11 @@ public class loginActivity extends Activity {
 			String userStr = userObj.getString("user");
 			JSONObject item = new JSONObject(userStr);
 			
-			UserDatos usuario = new UserDatos(item.getString("dni"),item.getString("nombre"),item.getString("apellidos"));
+			UserDatos usuario = new UserDatos(item.getString("dni"),item.getString("nombre"),item.getString("apellidos"),
+					
+					item.getString("email"),item.getString("telefono"),item.getString("direccion"), item.getString("poblacion"),
+					
+					item.getString("provincia"), item.getString("cp"), item.getString("fecha_nacimiento"));
 		
 			
 			usersList[i] = usuario;
