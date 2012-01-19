@@ -12,6 +12,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 public class AccesoWebService {
 	
 	
+	// Este método recoge los datos según la URL donde está alojado el WebService
+	// Devuelve un String en formato JSON.
+	
 	static String recogerDatosWebService(String url) {
 		String response = "";
 		try {
