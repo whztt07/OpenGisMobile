@@ -59,18 +59,17 @@ public class loginActivity extends Activity {
 				String direccionWebService = "http://79.108.245.167/OpenGisMobile/webService.php?dni="+txtUser.getText()+"&pass="+txtPass.getText()+"";
 
 				
-				// Gracias al metodo getJSONdata recogemos en un string los datos del servicio web realizado en formato JSON
+				// Gracias al metodo recogerDatosWebService recogemos en un string los datos del servicio web realizado en formato JSON
 				
-				String data = getJSONdata(direccionWebService);
+				String data = AccesoWebService.recogerDatosWebService(direccionWebService);
 			
-				
 				try{
 					
 			
 				// En este momento cogemos dichos datos en formato JSON y los pasamos a string, el cual almacenamos en un array.
 					
 				
-				 Object[] resultado = parseJSONdata(data);
+				 Object[] resultado = convertirJSON(data);
 				
 
 				
@@ -145,46 +144,9 @@ public class loginActivity extends Activity {
         dialogBuilder.create().show();
         }
     
-    
-	private String getJSONdata(String url) {
-		String response = "";
-		try {
-			DefaultHttpClient httpClient = new DefaultHttpClient();
-			HttpGet method = new HttpGet(url);
-			HttpResponse httpResponse = httpClient.execute(method);
-			InputStream is = httpResponse.getEntity().getContent();
-			response = convertStreamToString(is);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return response;
-	}
-	
-	
-	private static String convertStreamToString(InputStream is) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        StringBuilder sb = new StringBuilder();
-
-        String line = null;
-        try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
-}
 
 
-	private Object[] parseJSONdata(String data) throws JSONException {
+	private Object[] convertirJSON(String data) throws JSONException {
 		
 		Object[] usersList = new Object[1];
  
