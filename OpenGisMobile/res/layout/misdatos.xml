@@ -51,11 +51,11 @@
                     android:id="@+id/txtDNI"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dp"
+                    android:layout_marginLeft="65dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:enabled="false" 
-                    android:editable="false">
+                    android:editable="false"
+                    android:enabled="false" >
 
                     <requestFocus />
                 </EditText>
@@ -78,7 +78,7 @@
                     android:id="@+id/txtNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="17dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:enabled="false" />
@@ -101,7 +101,7 @@
                     android:id="@+id/txtApellidos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:enabled="false" />
@@ -124,11 +124,10 @@
                     android:id="@+id/txtEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="45dp"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="1"                    
-                    android:enabled="false"
-                    />
+                    android:layout_weight="1"
+                    android:enabled="false" />
 
             </LinearLayout>
             
