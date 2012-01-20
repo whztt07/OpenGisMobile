@@ -17,6 +17,7 @@ public class AccesoWebService {
 	
 	static String recogerDatosWebService(String url) {
 		String response = "";
+		
 		try {
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			HttpGet method = new HttpGet(url);

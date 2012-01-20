@@ -6,8 +6,9 @@
     <string name="passwd">Contraseña:</string>
     <string name="send">Enviar</string>
     <string name="delete">Borrar</string>
-    <string name="Tools">Aperos:</string>
-    <string name="Products">Productos:</string>
+    <string name="Tools">Aperos</string>
+    <string name="Products">Productos</string>
+    <string name="MisDatos">Mis Datos</string>
     <string name="Userdata">Datos del Usuario:</string>
     <string name="iduser">Dni:</string>
     <string name="name">Nombre:</string>
@@ -15,6 +16,10 @@
     <string name="choosework">Selecciona una tarea:</string>
     <string name="start">Comenzar</string>
     <string name="config">Configuración</string>
+    <string name="email">eMail:</string>
     <string name="tituloMisDatos">Configuración - Mis Datos</string>
-    
+    <string name="telefono">Teléfono:</string>
+    <string name="guardar">Guardar</string>
+    <string name="modificar">Modificar</string>
+     
 </resources>

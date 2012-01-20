@@ -2,24 +2,24 @@
 <resources>
 
     <string name="app_name">OpenGis</string>
-    <string name="user">Usuario:</string>
-    <string name="passwd">Contraseña:</string>
-    <string name="send">Enviar</string>
-    <string name="delete">Borrar</string>
-    <string name="Tools">Aperos</string>
-    <string name="Products">Productos</string>
-    <string name="MisDatos">Mis Datos</string>
-    <string name="Userdata">Datos del Usuario:</string>
-    <string name="iduser">Dni:</string>
-    <string name="name">Nombre:</string>
-    <string name="surname">Apellidos:</string>
-    <string name="choosework">Selecciona una tarea:</string>
-    <string name="start">Comenzar</string>
-    <string name="config">Configuración</string>
+    <string name="user">User:</string>
+    <string name="passwd">Pass:</string>
+    <string name="send">Send</string>
+    <string name="delete">Delete</string>
+    <string name="Tools">Tools</string>
+    <string name="Products">Products</string>
+    <string name="MisDatos">My Details</string>
+    <string name="Userdata">Detail User:</string>
+    <string name="iduser">DNI:</string>
+    <string name="name">Name:</string>
+    <string name="surname">Surname:</string>
+    <string name="choosework">Select a task:</string>
+    <string name="start">Start</string>
+    <string name="config">Configuration</string>
     <string name="email">eMail:</string>
-    <string name="tituloMisDatos">Configuración - Mis Datos</string>
-    <string name="telefono">Teléfono:</string>
-    <string name="guardar">Guardar</string>
-    <string name="modificar">Modificar</string>
+    <string name="tituloMisDatos">Configuration - My Details</string>
+    <string name="telefono">Phone:</string>
+    <string name="guardar">Save</string>
+    <string name="modificar">Modify</string>
      
 </resources>
