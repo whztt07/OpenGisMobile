@@ -6,162 +6,180 @@
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/tvDatosUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dip"
-        android:paddingTop="10dip"
-        android:text="@string/Userdata"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/tvId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="10dip"
-            android:text="@string/iduser"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold"
-            android:width="110dip" />
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/tvIdData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Supuesta ID"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvDatosUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="10dip"
+                android:paddingTop="10dip"
+                android:text="@string/Userdata"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="10dip"
-            android:text="@string/name"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold"
-            android:width="110dip" />
+                <TextView
+                    android:id="@+id/tvId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dip"
+                    android:text="@string/iduser"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"
+                    android:width="110dip" />
 
-        <TextView
-            android:id="@+id/tvNameData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Supuesto Nombre"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tvIdData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Supuesta ID"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/tvSurname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="10dip"
-            android:text="@string/surname"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold"
-            android:width="110dip" />
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dip"
+                    android:text="@string/name"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"
+                    android:width="110dip" />
 
-        <TextView
-            android:id="@+id/tvSurnameData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Supuesto Apellido"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tvNameData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Supuesto Nombre"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvChooseWork"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dip"
-        android:paddingTop="20dip"
-        android:text="@string/choosework"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-    <Spinner
-        android:id="@+id/spinnerWork"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip" />
+                <TextView
+                    android:id="@+id/tvSurname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dip"
+                    android:text="@string/surname"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold"
+                    android:width="110dip" />
 
-    <Button
-        android:id="@+id/btnStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dip"
-        android:text="@string/start"
-        android:textStyle="bold"
-        android:width="180sp"/>
+                <TextView
+                    android:id="@+id/tvSurnameData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Supuesto Apellido"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvConfig"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dip"
-        android:paddingTop="20dip"
-        android:text="@string/config"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvChooseWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="10dip"
+                android:paddingTop="20dip"
+                android:text="@string/choosework"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+            <Spinner
+                android:id="@+id/spinnerWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip" />
 
-        <Button
-            android:id="@+id/btnConfigTools"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
-            android:drawableTop="@drawable/apero"
-            android:height="80sp"
-            android:text="@string/Tools"
-            android:textStyle="bold"
-            android:width="95sp" />
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dip"
+                android:text="@string/start"
+                android:textStyle="bold"
+                android:width="180sp" />
 
-        <Button
-            android:id="@+id/btnConfigProducts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center_vertical"
-            android:drawableTop="@drawable/producto"
-            android:height="80sp"
-            android:text="@string/Products"
-            android:textStyle="bold"
-            android:width="95sp" />
+            <TextView
+                android:id="@+id/tvConfig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="10dip"
+                android:paddingTop="20dip"
+                android:text="@string/config"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnConfigUserData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|fill_horizontal"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
-            android:drawableTop="@drawable/usuario"
-            android:height="80sp"
-            android:text="Mis Datos"
-            android:textStyle="bold"
-            android:width="95sp" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <Button
+                    android:id="@+id/btnConfigTools"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginRight="10sp"
+                    android:drawableTop="@drawable/apero"
+                    android:height="80sp"
+                    android:text="@string/Tools"
+                    android:textStyle="bold"
+                    android:width="95sp" />
+
+                <Button
+                    android:id="@+id/btnConfigProducts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_vertical"
+                    android:drawableTop="@drawable/producto"
+                    android:height="80sp"
+                    android:text="@string/Products"
+                    android:textStyle="bold"
+                    android:width="95sp" />
+
+                <Button
+                    android:id="@+id/btnConfigUserData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|fill_horizontal"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginRight="10sp"
+                    android:drawableTop="@drawable/usuario"
+                    android:height="80sp"
+                    android:text="@string/MisDatos"
+                    android:textStyle="bold"
+                    android:width="95sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
