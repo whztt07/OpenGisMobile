@@ -56,6 +56,28 @@ public class misDatosActivity extends Activity {
         	
         });
         
+        
+        cmdGuardar.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View arg0) {
+				
+				
+				
+				// Para finalizar dejamos los botones al igual que antes
+			
+				cmdModificar.setEnabled(true);
+				cmdGuardar.setEnabled(false);
+				
+				txtNombre.setEnabled(false);
+				txtApellidos.setEnabled(false);
+				txtEmail.setEnabled(false);
+				txtTelefono.setEnabled(false);
+				
+			}
+        	
+        	
+        });
+        
 	}
 
 }
