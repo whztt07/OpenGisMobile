@@ -71,14 +71,14 @@
             android:layout_width="126dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Entrar" />
+            android:text="@string/login" />
 
         <Button
             android:id="@+id/cmdBorrar"
             android:layout_width="126dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Borrar" />
+            android:text="@string/delete" />
 
     </LinearLayout>
 

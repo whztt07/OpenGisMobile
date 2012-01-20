@@ -2,9 +2,9 @@
 <resources>
 
     <string name="app_name">OpenGis</string>
-    <string name="user">User:</string>
-    <string name="passwd">Pass:</string>
-    <string name="send">Send</string>
+    <string name="user">User</string>
+    <string name="passwd">Pass</string>
+    <string name="login">Login</string>
     <string name="delete">Delete</string>
     <string name="Tools">Tools</string>
     <string name="Products">Products</string>
@@ -21,5 +21,8 @@
     <string name="telefono">Phone:</string>
     <string name="guardar">Save</string>
     <string name="modificar">Modify</string>
+     <string name="incorrectuser">User or Password incorrect</string>
+     <string name="msgError">Error</string>
+     <string name="errorInQuery">Fail in query</string>
      
 </resources>

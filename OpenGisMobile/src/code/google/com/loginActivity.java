@@ -105,7 +105,7 @@ public class loginActivity extends Activity {
 					
 				}else{ // En caso de que no se encuentre el usuario se mostrar‡ un mensaje informativo
 					
-					alertaMensaje("Usuario o contrase–a incorrecto","Login erroneo");
+					alertaMensaje(getString(R.string.incorrectuser),getString(R.string.msgError));
 					
 					
 				}
@@ -114,7 +114,7 @@ public class loginActivity extends Activity {
 				
 				}catch(Exception e2){
 					
-					alertaMensaje("Error al realizar la consulta al servidor","Error");
+					alertaMensaje(getString(R.string.errorInQuery),getString(R.string.msgError));
 					
 				}
 				
