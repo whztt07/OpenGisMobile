@@ -51,5 +51,25 @@ public class AccesoWebService {
         }
         return sb.toString();
 }
+	
+	
+	
+	// Este método devuelve true en caso de realizar la inserción correctamente.
+	
+	
+	static boolean InsertarEnWebService(String url) {
+		
+		try {
+			DefaultHttpClient httpClient = new DefaultHttpClient();
+			HttpGet method = new HttpGet(url);
+			httpClient.execute(method);
+			return true;
+
+		} catch (Exception e) {
+			
+			return false;
+		}
+
+	}
 
 }
