@@ -24,4 +24,7 @@
     <string name="incorrectuser">Usuario o Contraseña incorrectos</string>
      <string name="msgError">Error</string>
      <string name="errorInQuery">Error en la consulta</string>
+     <string name="invalidName">El nombre introducido no és correcto</string>
+     <string name="msgModifyOK">Se han modificado sus datos personales</string>
+     <string name="updateError">No se ha podido realizar la modificación de forma correcta</string>
 </resources>

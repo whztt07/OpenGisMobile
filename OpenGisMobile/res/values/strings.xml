@@ -24,5 +24,7 @@
      <string name="incorrectuser">User or Password incorrect</string>
      <string name="msgError">Error</string>
      <string name="errorInQuery">Fail in query</string>
-     
+     <string name="nameInvalid">Invalid Name</string>
+      <string name="msgModifyOK">Your personal details have been changed</string>
+       <string name="updateError">Unable to make the change correctly</string>
 </resources>

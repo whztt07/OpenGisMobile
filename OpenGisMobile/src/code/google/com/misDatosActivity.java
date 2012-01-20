@@ -69,7 +69,7 @@ public class misDatosActivity extends Activity {
 				if(ValidacionDatos.validarTexto(txtNombre.getText()+"")==false){
 					
 					
-					alertaMensaje("El Nombre introducido no és valido","Error");
+					alertaMensaje(getString(R.string.nameInvalid),getString(R.string.msgError));
 					
 					
 				}else{
@@ -91,7 +91,7 @@ public class misDatosActivity extends Activity {
 						//Mostramos un mensaje indicando que se actualizar‡n los datos y que debe volver a loguearse.
 						
 				        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(misDatosActivity.this);
-				        dialogBuilder.setMessage("Se han modificado sus datos personales.\nEl programa le devolverá a la pantalla de Login.");
+				        dialogBuilder.setMessage(getString(R.string.msgModifyOK));
 				        dialogBuilder.setCancelable(false).setTitle("OK");
 				        dialogBuilder.setPositiveButton("Ok",new DialogInterface.OnClickListener() { 
 				            public void onClick(DialogInterface dialog, int arg1) { 
@@ -113,7 +113,7 @@ public class misDatosActivity extends Activity {
 						
 					}else{
 						
-						alertaMensaje("No se ha podido realizar la insercion de forma correcta","Error");
+						alertaMensaje(getString(R.string.updateError),getString(R.string.msgError));
 						
 					}
 					
