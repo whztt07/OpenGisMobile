@@ -71,28 +71,24 @@ public class loginActivity extends Activity {
 				
 				 Object[] resultado = convertirJSON(data);
 				
+				 //En caso de que el resultado sea null no ser‡ un usuario valido.
 
-				
-				 UserDatos user = (UserDatos) resultado[0];
-				 
-				 String dni = user.getDNI();
-				 String nombre = user.getNombre();
-				 String apellidos = user.getApellidos();
-				 String email = user.getEmail();
-				 String telefono = user.getTelefono();
-				 String direccion = user.getPoblacion();
-				 String provincia = user.getProvincia();
-				 String poblacion = user.getPoblacion();
-				 String cp = user.getCP();
-				 String fec_nac = user.getFecNac();
+				 if(resultado[0]!=null){
 				 
 				
+					 UserDatos user = (UserDatos) resultado[0];
+
+					 String dni = user.getDNI();
+					 String nombre = user.getNombre();
+					 String apellidos = user.getApellidos();
+					 String email = user.getEmail();
+					 String telefono = user.getTelefono();
+					 String direccion = user.getPoblacion();
+					 String provincia = user.getProvincia();
+					 String poblacion = user.getPoblacion();
+					 String cp = user.getCP();
+					 String fec_nac = user.getFecNac();
 				
-				// En caso de que el resultado no sea null, significa que hemos encontrado el usuario y que la pass es correcta. Con lo cual
-				// accederemos a la ventana principal. (Todav’a hay que mirar como guardar los datos de una Actividad a otra, pero poco a poco).
-				
-				if(dni != null){
-					
 					Intent vPrincipal = new Intent(loginActivity.this, principalActivity.class);
 					vPrincipal.putExtra("dni",dni);
 					vPrincipal.putExtra("nombre",nombre);

@@ -2,16 +2,16 @@ package code.google.com;
 
 public class UserDatos {
 	
-	private String dni;
-	private String nombre;
-	private String apellidos;
-	private String email;
-	private String telefono;
-	private String direccion;
-	private String poblacion;
-	private String provincia;
-	private String cp;
-	private String fec_nac;
+	private String dni = "";
+	private String nombre = "";
+	private String apellidos = "";
+	private String email = "";
+	private String telefono = "";
+	private String direccion = "";
+	private String poblacion = "";
+	private String provincia = "";
+	private String cp = "";
+	private String fec_nac = "";
 	
 	
 	public UserDatos(String dni,String nombre,String apellidos, String email, String telefono, String direccion, String poblacion, String provincia, String cp, String fec_nac){
