@@ -61,6 +61,13 @@ public class misDatosActivity extends Activity {
 
 			public void onClick(View arg0) {
 				
+				//Aqu’ validaremos los datos!
+				
+				
+				
+				//Llamamos al web service que guarda los datos
+				
+				
 				
 				
 				// Para finalizar dejamos los botones al igual que antes
