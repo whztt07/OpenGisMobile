@@ -1,6 +1,8 @@
 package code.google.com;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +31,7 @@ public class principalActivity extends Activity {
         final TextView txtApellidos = (TextView) findViewById(R.id.tvSurnameData);
         
         Button cmdMisDatos = (Button) findViewById(R.id.btnConfigUserData);
+        Button cmdMisAperos = (Button) findViewById(R.id.btnConfigTools);
         
         // Rellenamos los TextView con los parametros guardados en extras
         
@@ -75,6 +78,38 @@ public class principalActivity extends Activity {
 			}
         
         
+        });
+        
+        
+        cmdMisAperos.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View arg0) {
+				
+				
+		        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(principalActivity.this);
+		        dialogBuilder.setMessage("Gesti—n de Aperos");
+		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Tools));
+		        dialogBuilder.setPositiveButton("Ver mis aperos",new DialogInterface.OnClickListener() { 
+		            public void onClick(DialogInterface dialog, int arg1) {
+						
+						Intent vMisAperos = new Intent(principalActivity.this,misAperosListActivity.class);
+						startActivity(vMisAperos);
+		            	
+		            } 
+		        }); 
+		        
+		        dialogBuilder.setNegativeButton("Crear Apero",new DialogInterface.OnClickListener() { 
+		            public void onClick(DialogInterface dialog, int arg1) { 
+		                
+		            	//Aqu’ la ventana del nuevo Apero
+		            	
+		            } 
+		        }); 
+		        dialogBuilder.create().show();
+
+			}
+        	
+        	
         });
         
         
