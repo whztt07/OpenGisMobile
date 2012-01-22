@@ -75,7 +75,6 @@ public class loginActivity extends Activity {
 
 				 if(resultado[0]!=null){
 				 
-				
 					 UserDatos user = (UserDatos) resultado[0];
 
 					 String dni = user.getDNI();
@@ -88,6 +87,7 @@ public class loginActivity extends Activity {
 					 String poblacion = user.getPoblacion();
 					 String cp = user.getCP();
 					 String fec_nac = user.getFecNac();
+
 				
 					Intent vPrincipal = new Intent(loginActivity.this, principalActivity.class);
 					vPrincipal.putExtra("dni",dni);
@@ -99,7 +99,7 @@ public class loginActivity extends Activity {
 					vPrincipal.putExtra("poblacion",poblacion);
 					vPrincipal.putExtra("provincia",provincia);
 					vPrincipal.putExtra("cp",cp);
-					vPrincipal.putExtra("fec_nac",fec_nac);
+					vPrincipal.putExtra("fec_nac",fec_nac);			
 					startActivity(vPrincipal);
 					
 					

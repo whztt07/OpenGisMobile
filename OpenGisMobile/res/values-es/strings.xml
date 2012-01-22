@@ -32,5 +32,9 @@
     <string name="createTools">Nuevo Apero</string>
     <string name="infoTools">Información de Apero</string>
     <string name="descripcion">Descripción:</string>
-     <string name="tamanyo">Tamaño:</string>
+    <string name="tamanyo">Tamaño:</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="msgDeleteTool">¿Desea borrar este apero?</string>
+    <string name="deletedTool">Apero suprimido correctamente</string>
 </resources>

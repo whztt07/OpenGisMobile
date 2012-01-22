@@ -37,6 +37,7 @@ public class misAperosListActivity extends ListActivity {
 			final Object[] listaAperos = AccesoWebService.convertirDatosJSONAperos(data);
 			
 			ArrayList items = new ArrayList();
+			final ArrayList objetosCompletos = new ArrayList();
 			
 			for(int i=0;i<listaAperos.length;i++){
 				
@@ -48,7 +49,7 @@ public class misAperosListActivity extends ListActivity {
 				if(apero.getEstadoApero().equals("1")){
 
 					String aperoMostrar = apero.getNombreApero();
-					
+					objetosCompletos.add(apero);
 					items.add(aperoMostrar);
 				}
 				
@@ -71,14 +72,16 @@ public class misAperosListActivity extends ListActivity {
 
 			    	// Recogemos la posici—n para ver los datos segœn la lista anterior. (listaAperos)
 			    	
-			    	AperosDatos aperoSeleccionado = (AperosDatos) listaAperos[position];
+			    	AperosDatos aperoSeleccionado = (AperosDatos) objetosCompletos.get(position);
 			    	
 			    	Intent vInfoApero = new Intent(misAperosListActivity.this,infoAperosActivity.class);
-			    	vInfoApero.putExtra("idApero",aperoSeleccionado.getIdApero());
+			    	vInfoApero.putExtra("idApero",aperoSeleccionado.getIdApero() );
 			    	vInfoApero.putExtra("nombreApero",aperoSeleccionado.getNombreApero());
 			    	vInfoApero.putExtra("tama–oApero",aperoSeleccionado.getTamanyoApero());
 			    	vInfoApero.putExtra("descripcionApero",aperoSeleccionado.getDescripcionApero());
 			    	startActivity(vInfoApero);
+			    	
+			    	
 			    	
 			    }
 
