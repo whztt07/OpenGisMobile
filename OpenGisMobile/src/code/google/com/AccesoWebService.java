@@ -179,23 +179,21 @@ public class AccesoWebService {
 		String strData = jsonObj.getString("productos");
 		JSONArray jsonArray = new JSONArray(strData);
  
-		Object[] aperosList = new Object[jsonArray.length()];
+		Object[] productosList = new Object[jsonArray.length()];
 		
 		for (int i = 0; i < jsonArray.length(); i++) {
 			JSONObject userObj = jsonArray.getJSONObject(i);
 			String userStr = userObj.getString("producto");
 			JSONObject item = new JSONObject(userStr);
 			
-			ProductosDatos apero = new ProductosDatos(item.getString("idapero"),item.getString("nombre"),item.getString("tamanyo"),item.getString("idtarea"),
-					
-					item.getString("activo"));
+			ProductosDatos producto = new ProductosDatos(item.getString("idprod"),item.getString("nombre"),item.getString("descripcion"),item.getString("nomtarea"),item.getString("dosis"),item.getString("activo"));
 		
 			
-			aperosList[i] = apero;
+			productosList[i] = producto;
 			
 		}
  
-		return aperosList;
+		return productosList;
 	}
 
 }

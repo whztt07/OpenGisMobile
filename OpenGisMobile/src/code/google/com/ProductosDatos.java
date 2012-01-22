@@ -1,0 +1,68 @@
+package code.google.com;
+
+public class ProductosDatos {
+
+	private String idprod = "";
+	private String nombre = "";
+	private String descripcion = "";
+	private String nomtarea = "";
+	private String dosis = "";
+	private String activo = "";
+
+	public ProductosDatos(String idprod, String nombre, String descripcion,
+			String nomtarea, String dosis, String activo) {
+		
+		
+		
+		this.setIdprod(idprod);
+		this.setNombre(nombre);
+		this.setDescripcion(descripcion);
+		this.setNomtarea(nomtarea);
+		this.setDosis(dosis);
+		this.activo = activo;
+		
+	
+	}
+
+	public String getIdprod() {
+		return idprod;
+	}
+
+	public void setIdprod(String idprod) {
+		this.idprod = idprod;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getNomtarea() {
+		return nomtarea;
+	}
+
+	public void setNomtarea(String nomtarea) {
+		this.nomtarea = nomtarea;
+	}
+
+	public String getDosis() {
+		return dosis;
+	}
+
+	public void setDosis(String dosis) {
+		this.dosis = dosis;
+	}
+
+
+}
