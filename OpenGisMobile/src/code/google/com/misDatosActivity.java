@@ -10,6 +10,7 @@ import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class misDatosActivity extends Activity {
 	
@@ -88,29 +89,15 @@ public class misDatosActivity extends Activity {
 					
 					if(correcto==true){
 						
-						//Mostramos un mensaje indicando que se actualizar‡n los datos y que debe volver a loguearse.
 						
-				        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(misDatosActivity.this);
-				        dialogBuilder.setMessage(getString(R.string.msgModifyOK));
-				        dialogBuilder.setCancelable(false).setTitle("OK");
-				        dialogBuilder.setPositiveButton("Ok",new DialogInterface.OnClickListener() { 
-				            public void onClick(DialogInterface dialog, int arg1) { 
-				                
-								//Al insertarlo volvemos a la ventana Login, haciendo que el usuario vuelva a loguearse para actualizar sus datos.
+						
+	            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgModifyOK), Toast.LENGTH_SHORT);
+	            		toast.show();
 								
-								
-								Intent vLogin = new Intent(misDatosActivity.this, loginActivity.class);
-								startActivity(vLogin);
-				            	
-				            } 
-				        }); 
-				        dialogBuilder.create().show();
-				        
-						
-						
-	
-						
-						
+	            		Intent vLogin = new Intent(misDatosActivity.this, loginActivity.class);
+	            		startActivity(vLogin);
+	            		
+
 					}else{
 						
 						alertaMensaje(getString(R.string.updateError),getString(R.string.msgError));
