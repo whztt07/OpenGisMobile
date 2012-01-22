@@ -8,17 +8,31 @@ public class misAperosListActivity extends ListActivity {
 	
 	ArrayAdapter adaptador;
 	
-	Bundle extra = getIntent().getExtras();
-	
-	String dni = extra.getString("dni");
-	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		String url = "http://79.108.245.167/OpenGisMobile/MisAperosWebService.php?dni="+dni+"";
+		Bundle extra = getIntent().getExtras();
 		
-		String data = AccesoWebService.recogerDatosWebService(url);
+		String dni = extra.getString("dni");
+		
+		try{
+			
+			String url = "http://79.108.245.167/OpenGisMobile/MisAperosWebService.php?dni="+dni+"";
+			
+			String data = AccesoWebService.recogerDatosWebService(url);
+
+			Object[] listaAperos = AccesoWebService.convertirDatosJSONAperos(data);
+			
+		
+		}catch(Exception e2){
+			
+			
+			
+			
+		}
+		
+		
 	
 		final String[] items = new String[] {"Hola","Adi—s"};
 		

@@ -133,7 +133,7 @@ public class AccesoWebService {
 	 */
 	
 
-	private static Object[] convertirDatosJSONAperos(String data) throws JSONException {
+	static Object[] convertirDatosJSONAperos(String data) throws JSONException {
 		
 		
  
@@ -148,7 +148,7 @@ public class AccesoWebService {
 			String userStr = userObj.getString("apero");
 			JSONObject item = new JSONObject(userStr);
 			
-			AperosDatos usuario = new AperosDatos(item.getString("idapero"),item.getString("tamayo"),item.getString("idtarea"),
+			AperosDatos usuario = new AperosDatos(item.getString("idapero"),item.getString("nombre"),item.getString("tamayo"),item.getString("idtarea"),
 					
 					item.getString("activo"));
 		
