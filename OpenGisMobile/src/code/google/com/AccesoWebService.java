@@ -8,6 +8,9 @@ import java.io.InputStreamReader;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class AccesoWebService {
 	
@@ -72,5 +75,90 @@ public class AccesoWebService {
 		}
 
 	}
+	
+	
+	
+	
+	
+	/**
+	 * Este método devuelve un Array de Objetos con todos los objetos encontrados. Después deberemos crear los objetos a partir
+	 * de la clase para poder mostrar los datos al usuario.
+	 * 
+	 * @param data String que se recoge al utilizar el método recogerDatosWebService
+	 * @return
+	 * @throws JSONException
+	 */
+	
+
+	static Object[] convertirDatosJSONUser(String data) throws JSONException {
+		
+		
+ 
+		JSONObject jsonObj = new JSONObject(data);
+		String strData = jsonObj.getString("users");
+		JSONArray jsonArray = new JSONArray(strData);
+ 
+		Object[] usersList = new Object[jsonArray.length()];
+		
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject userObj = jsonArray.getJSONObject(i);
+			String userStr = userObj.getString("user");
+			JSONObject item = new JSONObject(userStr);
+			
+			UserDatos usuario = new UserDatos(item.getString("dni"),item.getString("nombre"),item.getString("apellidos"),
+					
+					item.getString("email"),item.getString("telefono"),item.getString("direccion"), item.getString("poblacion"),
+					
+					item.getString("provincia"), item.getString("cp"), item.getString("fecha_nacimiento"));
+		
+			
+			usersList[i] = usuario;
+			
+		}
+ 
+		return usersList;
+	}
+	
+	
+	
+	
+	
+	/**
+	 * Este método devuelve un Array de Objetos con todos los objetos encontrados. Después deberemos crear los objetos a partir
+	 * de la clase para poder mostrar los datos al usuario.
+	 * 
+	 * @param data String que se recoge al utilizar el método recogerDatosWebService
+	 * @return
+	 * @throws JSONException
+	 */
+	
+
+	private static Object[] convertirDatosJSONAperos(String data) throws JSONException {
+		
+		
+ 
+		JSONObject jsonObj = new JSONObject(data);
+		String strData = jsonObj.getString("aperos");
+		JSONArray jsonArray = new JSONArray(strData);
+ 
+		Object[] aperosList = new Object[jsonArray.length()];
+		
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject userObj = jsonArray.getJSONObject(i);
+			String userStr = userObj.getString("apero");
+			JSONObject item = new JSONObject(userStr);
+			
+			AperosDatos usuario = new AperosDatos(item.getString("idapero"),item.getString("tamayo"),item.getString("idtarea"),
+					
+					item.getString("activo"));
+		
+			
+			aperosList[i] = usuario;
+			
+		}
+ 
+		return aperosList;
+	}
+	
 
 }

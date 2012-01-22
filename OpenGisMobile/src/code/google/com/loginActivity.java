@@ -69,7 +69,7 @@ public class loginActivity extends Activity {
 				// En este momento cogemos dichos datos en formato JSON y los pasamos a string, el cual almacenamos en un array.
 					
 				
-				 Object[] resultado = convertirJSON(data);
+				 Object[] resultado = AccesoWebService.convertirDatosJSONUser(data);
 				
 				 //En caso de que el resultado sea null no ser‡ un usuario valido.
 
@@ -143,32 +143,6 @@ public class loginActivity extends Activity {
 
     
 
-	private Object[] convertirJSON(String data) throws JSONException {
-		
-		Object[] usersList = new Object[1];
- 
-		JSONObject jsonObj = new JSONObject(data);
-		String strData = jsonObj.getString("users");
-		JSONArray jsonArray = new JSONArray(strData);
- 
-		for (int i = 0; i < jsonArray.length(); i++) {
-			JSONObject userObj = jsonArray.getJSONObject(i);
-			String userStr = userObj.getString("user");
-			JSONObject item = new JSONObject(userStr);
-			
-			UserDatos usuario = new UserDatos(item.getString("dni"),item.getString("nombre"),item.getString("apellidos"),
-					
-					item.getString("email"),item.getString("telefono"),item.getString("direccion"), item.getString("poblacion"),
-					
-					item.getString("provincia"), item.getString("cp"), item.getString("fecha_nacimiento"));
-		
-			
-			usersList[i] = usuario;
-			
-		}
- 
-		return usersList;
-	}
     
     
     
