@@ -94,7 +94,7 @@ public class principalActivity extends Activity {
 		            	
 		            	
 						
-						Intent vMisAperos = new Intent(principalActivity.this,misAperosListActivity.class);
+						Intent vMisAperos = new Intent(principalActivity.this,IconListView.class);
 						vMisAperos.putExtra("dni",txtDNI.getText());
 						startActivity(vMisAperos);
 		            	

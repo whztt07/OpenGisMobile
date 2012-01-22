@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,19 +19,24 @@ import android.widget.Toast;
 public class IconListView extends ListActivity {
 	   private ArrayList<Local> m_locals = null;
 	    private IconListViewAdapter m_adapter;
+	    private String dni;
+	    private ArrayList objetosCompletos;
 		
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.main);        
+	        setContentView(R.layout.main);
+	        
+	        Bundle extra = getIntent().getExtras();
+			dni = extra.getString("dni");
 	        
 	        /*
-	         * Al crear la clase se inicializa el ListView que muestra los menï¿½s
+	         * Al crear la clase se inicializa el ListView que muestra los aperos
 	         */          
 	        
 	        m_locals = new ArrayList<Local>();
 	        this.m_adapter = new IconListViewAdapter(this, R.layout.iconrow, m_locals);
-	        setListAdapter(this.m_adapter);  
+	        setListAdapter(this.m_adapter);
 	        
 	        inicializarLocales();
 
@@ -38,10 +44,20 @@ public class IconListView extends ListActivity {
 	    
 	    @Override
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
-	        Local local = (Local) l.getItemAtPosition(position);        
+	        /*Local local = (Local) l.getItemAtPosition(position);        
 	       
 	        Toast.makeText(this, local.getLocalName(), 
-	          		Toast.LENGTH_LONG).show();      
+	          		Toast.LENGTH_LONG).show();     */
+	    	
+	    	AperosDatos aperoSeleccionado = (AperosDatos) objetosCompletos.get(position);
+	    	
+	    	Intent vInfoApero = new Intent(IconListView.this,infoAperosActivity.class);
+	    	vInfoApero.putExtra("idApero",aperoSeleccionado.getIdApero() );
+	    	vInfoApero.putExtra("nombreApero",aperoSeleccionado.getNombreApero());
+	    	vInfoApero.putExtra("tama–oApero",aperoSeleccionado.getTamanyoApero());
+	    	vInfoApero.putExtra("descripcionApero",aperoSeleccionado.getDescripcionApero());
+	    	vInfoApero.putExtra("dniUser",aperoSeleccionado.getDNIUser());
+	    	startActivity(vInfoApero);
 	    }
 	    
 	    /*
@@ -51,38 +67,60 @@ public class IconListView extends ListActivity {
 	    private void inicializarLocales(){
 	    	
 	    	try {
-	            m_locals = new ArrayList<Local>();
-	            Local o5 = new Local();
-	            o5.setLocalName("Apero1");
-	            o5.setLocalMedida("4,8m");
-	            o5.setLocalImage(R.drawable.ic_launcher);
+	    	
+	    	///////////DE AQUI//////////////
+	    	m_locals = new ArrayList<Local>();
+	    		
+			String url = "http://79.108.245.167/OpenGisMobile/MisAperosWebService.php?dni="+dni+"";
+			
+			String data = AccesoWebService.recogerDatosWebService(url);
+			
+			final Object[] listaAperos = AccesoWebService.convertirDatosJSONAperos(data);
+			
+			objetosCompletos = new ArrayList();
+			
+			for(int i=0;i<listaAperos.length;i++){
+				
+				
+				AperosDatos apero = (AperosDatos) listaAperos[i];
+				
+				// En caso de que ese apero del usuario estŽ activo, lo a–adiremos
+				
+				if(apero.getEstadoApero().equals("1")){
+
+					String aperoMostrar = apero.getNombreApero();
+					objetosCompletos.add(apero);
+					
+					Local loc = new Local();
+					loc.setLocalName(apero.getNombreApero());
+					loc.setLocalMedida(apero.getTamanyoApero()+"cm");
+					loc.setLocalImage(R.drawable.ic_launcher);
+					
+					m_locals.add(loc);
+				}
+				
+			}
+	    	
+	    	//////////A AQUI///////////////
+	    	
+	            /*m_locals = new ArrayList<Local>();
+
 	            Local o1 = new Local();
 	            o1.setLocalName("Apero2");
 	            o1.setLocalMedida("5,7m");
 	            o1.setLocalImage(R.drawable.ic_launcher);
-	            Local o2 = new Local();
-	            o2.setLocalName("Apero3");
-	            o2.setLocalMedida("5,0m");
-	            o2.setLocalImage(R.drawable.ic_launcher);
-	            Local o3 = new Local();
-	            o3.setLocalName("Apero4");
-	            o3.setLocalMedida("3,30m");
-	            o3.setLocalImage(R.drawable.ic_launcher);
-	            Local o4 = new Local();
-	            o4.setLocalName("Apero5");
-	            o4.setLocalMedida("4,2m");
-	            o4.setLocalImage(R.drawable.ic_launcher);
+	           
 
-	            m_locals.add(o1);
-	            m_locals.add(o2);
-	            m_locals.add(o3);
-	            m_locals.add(o4);
-	            m_locals.add(o5);        
-	            Log.i("Locales aÃ±adidos ", ""+ m_locals.size());
+	            m_locals.add(o1);*/
+       
+	            Log.i("Aperos aÃ±adidos ", ""+ m_locals.size());
+	            
 	          } catch (Exception e) {
 	            Log.e("BACKGROUND_PROC", e.getMessage());
 	          }
 	          
+	    	
+	    	
 	          if(m_locals != null && m_locals.size() > 0){
 	              for(int i=0;i<m_locals.size();i++)
 	              m_adapter.add(m_locals.get(i));
