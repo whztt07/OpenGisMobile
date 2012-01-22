@@ -33,9 +33,15 @@
             
         </activity>
         
-                                <activity
+         <activity
             
             android:name=".misAperosListActivity" >
+            
+        </activity>
+        
+        <activity
+            
+            android:name=".infoAperosActivity" >
             
         </activity>
         

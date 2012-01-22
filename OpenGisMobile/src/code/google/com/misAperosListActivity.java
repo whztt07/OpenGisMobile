@@ -5,8 +5,15 @@ import java.util.Iterator;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class misAperosListActivity extends ListActivity {
 	
@@ -27,7 +34,7 @@ public class misAperosListActivity extends ListActivity {
 			
 			String data = AccesoWebService.recogerDatosWebService(url);
 			
-			Object[] listaAperos = AccesoWebService.convertirDatosJSONAperos(data);
+			final Object[] listaAperos = AccesoWebService.convertirDatosJSONAperos(data);
 			
 			ArrayList items = new ArrayList();
 			
@@ -35,10 +42,15 @@ public class misAperosListActivity extends ListActivity {
 				
 				
 				AperosDatos apero = (AperosDatos) listaAperos[i];
-
-				String aperoMostrar = apero.getIdApero() + " - " + apero.getNombreApero();
 				
-				items.add(aperoMostrar);
+				// En caso de que ese apero del usuario esté activo, lo añadiremos
+				
+				if(apero.getEstadoApero().equals("1")){
+
+					String aperoMostrar = apero.getNombreApero();
+					
+					items.add(aperoMostrar);
+				}
 				
 			}
 			
@@ -47,11 +59,39 @@ public class misAperosListActivity extends ListActivity {
 			
 			setListAdapter(adaptador);
 			
+			ListView lv = getListView();
+			lv.setTextFilterEnabled(true);
+
+			// Cuando seleccionemos un objeto de la lista accederemos a la información de dicho objeto.
+			
+			  lv.setOnItemClickListener(new OnItemClickListener() {
+			    public void onItemClick(AdapterView<?> parent, View view,
+			        int position, long id) {
+			      
+
+			    	// Recogemos la posición para ver los datos según la lista anterior. (listaAperos)
+			    	
+			    	AperosDatos aperoSeleccionado = (AperosDatos) listaAperos[position];
+			    	
+			    	Intent vInfoApero = new Intent(misAperosListActivity.this,infoAperosActivity.class);
+			    	vInfoApero.putExtra("idApero",aperoSeleccionado.getIdApero());
+			    	vInfoApero.putExtra("nombreApero",aperoSeleccionado.getNombreApero());
+			    	vInfoApero.putExtra("tamañoApero",aperoSeleccionado.getTamanyoApero());
+			    	vInfoApero.putExtra("descripcionApero",aperoSeleccionado.getDescripcionApero());
+			    	startActivity(vInfoApero);
+			    	
+			    }
+
+			  });
+			
+			
+			
+			
+			
 		
 		}catch(Exception e2){
 			
-			
-			
+			alertaMensaje(getString(R.string.errorInQuery),getString(R.string.msgError));
 			
 		}
 		
