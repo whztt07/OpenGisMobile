@@ -150,7 +150,7 @@ public class AccesoWebService {
 			
 			AperosDatos apero = new AperosDatos(item.getString("idapero"),item.getString("nombre"),item.getString("tamanyo"),item.getString("descripcion"),item.getString("idtarea"),
 					
-					item.getString("activo"));
+					item.getString("dni_usuario"),item.getString("activo"));
 		
 			
 			aperosList[i] = apero;

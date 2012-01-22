@@ -79,6 +79,7 @@ public class misAperosListActivity extends ListActivity {
 			    	vInfoApero.putExtra("nombreApero",aperoSeleccionado.getNombreApero());
 			    	vInfoApero.putExtra("tama–oApero",aperoSeleccionado.getTamanyoApero());
 			    	vInfoApero.putExtra("descripcionApero",aperoSeleccionado.getDescripcionApero());
+			    	vInfoApero.putExtra("dniUser",aperoSeleccionado.getDNIUser());
 			    	startActivity(vInfoApero);
 			    	
 			    	

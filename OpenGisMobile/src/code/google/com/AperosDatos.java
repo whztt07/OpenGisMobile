@@ -9,9 +9,10 @@ public class AperosDatos {
 	private String descripcion = "";
 	private String activo = "";
 	private String idTarea = "";
+	private String dniUser = "";
 	
 	
-	public AperosDatos(String idapero, String nombre, String tamanyo, String descripcion,String idTarea, String activo) {
+	public AperosDatos(String idapero, String nombre, String tamanyo, String descripcion,String idTarea,String dniUser, String activo) {
 		
 		this.idApero = idapero;
 		this.nombre = nombre;
@@ -19,6 +20,7 @@ public class AperosDatos {
 		this.descripcion = descripcion;
 		this.activo = activo;
 		this.idTarea  = idTarea;
+		this.dniUser = dniUser;
 		
 		
 	}
@@ -59,6 +61,12 @@ public class AperosDatos {
 
 	public String getIdTarea() {
 		return idTarea;
+	}
+
+
+	public String getDNIUser() {
+		
+		return dniUser;
 	}
 
 	

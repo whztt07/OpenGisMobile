@@ -33,6 +33,7 @@ public class infoAperosActivity extends Activity {
         txtNombreApero.setText(extras.getString("nombreApero"));
         txtTamanyo.setText(extras.getString("tama–oApero"));
         txtDescripcion.setText(extras.getString("descripcionApero"));
+        final String dniUser = extras.getString("dniUser");
         
         
         // Acciones de bot—n!
@@ -80,7 +81,10 @@ public class infoAperosActivity extends Activity {
 		            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.deletedTool), Toast.LENGTH_SHORT);
 		            		toast.show();
 		            		
+		            	
+		            		
 		            		Intent vMisAperos = new Intent(infoAperosActivity.this, misAperosListActivity.class);
+		            		vMisAperos.putExtra("dni",dniUser);
 		            		startActivity(vMisAperos);
 		            		
 		            	}else{
