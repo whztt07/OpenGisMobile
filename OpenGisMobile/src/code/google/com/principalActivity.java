@@ -87,9 +87,9 @@ public class principalActivity extends Activity {
 				
 				
 		        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(principalActivity.this);
-		        dialogBuilder.setMessage("Gesti—n de Aperos");
+		        dialogBuilder.setMessage(getString(R.string.ToolsConfig));
 		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Tools));
-		        dialogBuilder.setPositiveButton("Ver mis aperos",new DialogInterface.OnClickListener() { 
+		        dialogBuilder.setPositiveButton(getString(R.string.showTools),new DialogInterface.OnClickListener() { 
 		            public void onClick(DialogInterface dialog, int arg1) {
 		            	
 		            	
@@ -101,7 +101,7 @@ public class principalActivity extends Activity {
 		            } 
 		        }); 
 		        
-		        dialogBuilder.setNegativeButton("Crear Apero",new DialogInterface.OnClickListener() { 
+		        dialogBuilder.setNegativeButton(getString(R.string.createTools),new DialogInterface.OnClickListener() { 
 		            public void onClick(DialogInterface dialog, int arg1) { 
 		                
 		            	//Aqu’ la ventana del nuevo Apero

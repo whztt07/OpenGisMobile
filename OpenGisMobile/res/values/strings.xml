@@ -21,10 +21,13 @@
     <string name="telefono">Phone:</string>
     <string name="guardar">Save</string>
     <string name="modificar">Modify</string>
-     <string name="incorrectuser">User or Password incorrect</string>
-     <string name="msgError">Error</string>
-     <string name="errorInQuery">Fail in query</string>
-     <string name="nameInvalid">Invalid Name</string>
-      <string name="msgModifyOK">Your personal details have been changed</string>
-       <string name="updateError">Unable to make the change correctly</string>
+    <string name="incorrectuser">User or Password incorrect</string>
+    <string name="msgError">Error</string>
+    <string name="errorInQuery">Fail in query</string>
+    <string name="nameInvalid">Invalid Name</string>
+    <string name="msgModifyOK">Your personal details have been changed</string>
+    <string name="updateError">Unable to make the change correctly</string>
+    <string name="ToolsConfig">Tools Management</string>
+    <string name="showTools">Show Tools</string>
+    <string name="createTools">New Tool</string>
 </resources>

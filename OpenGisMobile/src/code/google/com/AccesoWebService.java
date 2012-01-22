@@ -160,5 +160,42 @@ public class AccesoWebService {
 		return aperosList;
 	}
 	
+	
+	/**
+	 * Este método devuelve un Array de Objetos con todos los objetos encontrados. Después deberemos crear los objetos a partir
+	 * de la clase para poder mostrar los datos al usuario.
+	 * 
+	 * @param data String que se recoge al utilizar el método recogerDatosWebService
+	 * @return
+	 * @throws JSONException
+	 */
+	
+
+	static Object[] convertirDatosJSONProductos(String data) throws JSONException {
+		
+		
+ 
+		JSONObject jsonObj = new JSONObject(data);
+		String strData = jsonObj.getString("productos");
+		JSONArray jsonArray = new JSONArray(strData);
+ 
+		Object[] aperosList = new Object[jsonArray.length()];
+		
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject userObj = jsonArray.getJSONObject(i);
+			String userStr = userObj.getString("producto");
+			JSONObject item = new JSONObject(userStr);
+			
+			ProductosDatos apero = new ProductosDatos(item.getString("idapero"),item.getString("nombre"),item.getString("tamanyo"),item.getString("idtarea"),
+					
+					item.getString("activo"));
+		
+			
+			aperosList[i] = apero;
+			
+		}
+ 
+		return aperosList;
+	}
 
 }
