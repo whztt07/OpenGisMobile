@@ -91,8 +91,11 @@ public class principalActivity extends Activity {
 		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Tools));
 		        dialogBuilder.setPositiveButton("Ver mis aperos",new DialogInterface.OnClickListener() { 
 		            public void onClick(DialogInterface dialog, int arg1) {
+		            	
+		            	
 						
 						Intent vMisAperos = new Intent(principalActivity.this,misAperosListActivity.class);
+						vMisAperos.putExtra("dni",txtDNI.getText());
 						startActivity(vMisAperos);
 		            	
 		            } 
