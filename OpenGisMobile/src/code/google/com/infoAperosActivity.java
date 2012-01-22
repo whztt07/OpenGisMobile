@@ -116,6 +116,45 @@ public class infoAperosActivity extends Activity {
         
         
         
+        cmdGuardar.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View v) {
+				
+				
+				String direccionWebService = "http://79.108.245.167/OpenGisMobile/ModificarAperoWebService.php?nombre="+ txtNombreApero.getText() +"&tamanyo="+txtTamanyo.getText()+"&descripcion="+txtDescripcion.getText()+"&idapero="+txtID.getText()+"";
+				
+				direccionWebService = direccionWebService.replaceAll(" ","%20"); // Con esto solucionamos los espacios en blanco de la direccion de consulta
+				
+				boolean finalizado = AccesoWebService.InsertarEnWebService(direccionWebService);
+				
+				if(finalizado){
+					
+            		
+            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.modifyToolOK), Toast.LENGTH_SHORT);
+            		toast.show();
+            		
+            	
+            		
+            		Intent vMisAperos = new Intent(infoAperosActivity.this, misAperosListActivity.class);
+            		vMisAperos.putExtra("dni",dniUser);
+            		startActivity(vMisAperos);
+					
+					
+				}else{
+					
+					
+					// No se ha podido modificar
+					
+				}
+				
+				
+			}
+        	
+        	
+        	
+        	
+        });
+        
         
         
         

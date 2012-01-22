@@ -37,4 +37,5 @@
     <string name="no">No</string>
     <string name="msgDeleteTool">¿Desea borrar este apero?</string>
     <string name="deletedTool">Apero suprimido correctamente</string>
+    <string name="modifyToolOK">Apero modificado correctamente</string>
 </resources>
