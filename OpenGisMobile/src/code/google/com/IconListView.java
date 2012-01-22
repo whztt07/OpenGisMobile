@@ -53,19 +53,24 @@ public class IconListView extends ListActivity {
 	    	try {
 	            m_locals = new ArrayList<Local>();
 	            Local o5 = new Local();
-	            o5.setLocalName("Apero 1");
+	            o5.setLocalName("Apero1");
+	            o5.setLocalMedida("4,8m");
 	            o5.setLocalImage(R.drawable.ic_launcher);
 	            Local o1 = new Local();
-	            o1.setLocalName("Apero 2");
+	            o1.setLocalName("Apero2");
+	            o1.setLocalMedida("5,7m");
 	            o1.setLocalImage(R.drawable.ic_launcher);
 	            Local o2 = new Local();
-	            o2.setLocalName("Apero 2");
+	            o2.setLocalName("Apero3");
+	            o2.setLocalMedida("5,0m");
 	            o2.setLocalImage(R.drawable.ic_launcher);
 	            Local o3 = new Local();
-	            o3.setLocalName("Apero 3");
+	            o3.setLocalName("Apero4");
+	            o3.setLocalMedida("3,30m");
 	            o3.setLocalImage(R.drawable.ic_launcher);
 	            Local o4 = new Local();
-	            o4.setLocalName("Apero 4");
+	            o4.setLocalName("Apero5");
+	            o4.setLocalMedida("4,2m");
 	            o4.setLocalImage(R.drawable.ic_launcher);
 
 	            m_locals.add(o1);
@@ -109,11 +114,15 @@ public class IconListView extends ListActivity {
     	                	//poblamos la lista de elementos
     	                	
     	                        TextView tt = (TextView) v.findViewById(R.id.row_toptext);
+    	                        TextView tta = (TextView) v.findViewById(R.id.row_bottomtext);
     	                        ImageView im = (ImageView) v.findViewById(R.id.icon);
     	                        
     	                        if (im!= null) {
     	                        	im.setImageResource(o.getLocalImage());
-    	                        }                        
+    	                        }
+    	                        if (tta!= null) {
+    	                        	tta.setText(o.getLocalMedida());
+    	                        }    
     	                        if (tt != null) {             
     	                            tt.setText(o.getLocalName());                             
     	                        }    	                    	                        
