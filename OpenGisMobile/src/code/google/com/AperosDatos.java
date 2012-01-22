@@ -8,15 +8,17 @@ public class AperosDatos {
 	private String tamanyo = "";
 	private String descripcion = "";
 	private String activo = "";
+	private String idTarea = "";
 	
 	
-	public AperosDatos(String idapero, String nombre, String tamanyo, String descripcion,String activo) {
+	public AperosDatos(String idapero, String nombre, String tamanyo, String descripcion,String idTarea, String activo) {
 		
 		this.idApero = idapero;
 		this.nombre = nombre;
 		this.tamanyo = tamanyo;
 		this.descripcion = descripcion;
 		this.activo = activo;
+		this.idTarea  = idTarea;
 		
 		
 	}
@@ -53,5 +55,11 @@ public class AperosDatos {
 		return this.activo;
 		
 	}
+
+
+	public String getIdTarea() {
+		return idTarea;
+	}
+
 	
 }

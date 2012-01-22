@@ -148,7 +148,7 @@ public class AccesoWebService {
 			String userStr = userObj.getString("apero");
 			JSONObject item = new JSONObject(userStr);
 			
-			AperosDatos apero = new AperosDatos(item.getString("idapero"),item.getString("nombre"),item.getString("tamanyo"),item.getString("idtarea"),
+			AperosDatos apero = new AperosDatos(item.getString("idapero"),item.getString("nombre"),item.getString("tamanyo"),item.getString("descripcion"),item.getString("idtarea"),
 					
 					item.getString("activo"));
 		
