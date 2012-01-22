@@ -30,4 +30,7 @@
     <string name="ToolsConfig">Gestión de Aperos</string>
     <string name="showTools">Ver Aperos</string>
     <string name="createTools">Nuevo Apero</string>
+    <string name="infoTools">Información de Apero</string>
+    <string name="descripcion">Descripción:</string>
+     <string name="tamanyo">Tamaño:</string>
 </resources>

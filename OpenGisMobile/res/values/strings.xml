@@ -30,4 +30,7 @@
     <string name="ToolsConfig">Tools Management</string>
     <string name="showTools">Show Tools</string>
     <string name="createTools">New Tool</string>
+    <string name="infoTools">Tool Information</string>
+    <string name="descripcion">Description:</string>
+    <string name="tamanyo">Size:</string>
 </resources>
