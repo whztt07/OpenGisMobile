@@ -46,5 +46,12 @@
     <string name="deletedProduct">Producto suprimido correctamente</string>
     <string name="msgDeleteProduct">¿Desea borrar este producto?</string>
     <string name="modifyProductOK">Producto modificado correctamente</string>
-       <string name="MisParcelas">Mis Parcelas</string>
+    <string name="MisParcelas">Mis Parcelas</string>
+       
+         
+    <string name="LotsConfig">Gestión de parcelas</string>
+    <string name="Lots">Parcelas</string>
+    <string name="showLots">Ve parcelas</string>
+    <string name="createLots">Añadir parcela</string>   
+       
 </resources>

@@ -161,7 +161,7 @@
                     android:width="95sp" />
 
                 <Button
-                    android:id="@+id/btnConfigLotes"
+                    android:id="@+id/btnConfigLots"
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_marginLeft="10dp"

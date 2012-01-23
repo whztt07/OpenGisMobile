@@ -33,6 +33,7 @@ public class principalActivity extends Activity {
         Button cmdMisDatos = (Button) findViewById(R.id.btnConfigUserData);
         Button cmdMisAperos = (Button) findViewById(R.id.btnConfigTools);
         Button cmdMisProductos = (Button) findViewById(R.id.btnConfigProducts);
+        Button cmdMisParcelas = (Button) findViewById(R.id.btnConfigLots);
         
         // Rellenamos los TextView con los parametros guardados en extras
         
@@ -153,6 +154,46 @@ public class principalActivity extends Activity {
         	
         });
 				
+        
+        
+        cmdMisParcelas.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View v) {
+				
+				
+				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(principalActivity.this);
+		        dialogBuilder.setMessage(getString(R.string.LotsConfig));
+		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Lots));
+		        dialogBuilder.setPositiveButton(getString(R.string.showLots),new DialogInterface.OnClickListener() { 
+		            public void onClick(DialogInterface dialog, int arg1) {
+		            	
+		            	
+						
+						Intent vMisProductos = new Intent(principalActivity.this,ProductosIconListView.class);
+						vMisProductos.putExtra("dni",txtDNI.getText());
+						startActivity(vMisProductos);
+		            	
+		            } 
+		        }); 
+		        
+		        dialogBuilder.setNegativeButton(getString(R.string.createLots),new DialogInterface.OnClickListener() { 
+		            public void onClick(DialogInterface dialog, int arg1) { 
+		                
+		            	//Aqu’ la ventana de a–adir Parcela
+		            	
+		            } 
+		        }); 
+		        dialogBuilder.create().show();
+
+			}
+				
+			
+        	
+        	
+        	
+        });
+        
+        
 				
 			}
         	
