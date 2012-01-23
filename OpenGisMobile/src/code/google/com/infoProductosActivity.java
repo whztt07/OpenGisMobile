@@ -84,9 +84,9 @@ public class infoProductosActivity extends Activity {
 		            		
 		            	
 		            		
-		            		Intent vMisAperos = new Intent(infoProductosActivity.this, ProductosIconListView.class);
-		            		vMisAperos.putExtra("dni",dniUser);
-		            		startActivity(vMisAperos);
+		            		Intent vMisProductos = new Intent(infoProductosActivity.this, ProductosIconListView.class);
+		            		vMisProductos.putExtra("dni",dniUser);
+		            		startActivity(vMisProductos);
 							
 							
 						}else{
@@ -116,9 +116,66 @@ public class infoProductosActivity extends Activity {
         });
         
         
+        cmdGuardarProducto.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View v) {
+			
+				
+				String idProducto = txtIDProducto.getText().toString();
+				String nombre = txtNombreProducto.getText().toString();
+				String dosis = txtDosisProducto.getText().toString();
+				String descripcion = txtDescripcionProducto.getText().toString();
+				
+				String direccionWebService = "http://79.108.245.167/OpenGisMobile/ModificarProductoWebService.php?idproducto="+idProducto+"&nombre="+nombre+"&dosis="+dosis+"&descripcion="+descripcion+"";
+				
+				direccionWebService = direccionWebService.replace(" ","%20");
+				
+				
+				boolean acceso = AccesoWebService.InsertarEnWebService(direccionWebService);
+				
+				if(acceso){
+					
+            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.modifyProductOK), Toast.LENGTH_SHORT);
+            		toast.show();
+            		
+            		Intent vMisProductos = new Intent(infoProductosActivity.this, ProductosIconListView.class);
+            		vMisProductos.putExtra("dni",dniUser);
+            		startActivity(vMisProductos);
+					
+					
+				}else{
+					
+            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgError), Toast.LENGTH_SHORT);
+            		toast.show();
+            		
+            		Intent vMisProductos = new Intent(infoProductosActivity.this, ProductosIconListView.class);
+            		vMisProductos.putExtra("dni",dniUser);
+            		startActivity(vMisProductos);
+					
+				}
+				
+				
+			}
+        	
+        	
+        	
+        	
+        });
         
         
         
 	}
+	
+    public void alertaMensaje(String cadena,String titulo) {
+        
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setMessage(cadena);
+        dialogBuilder.setCancelable(true).setTitle(titulo);
+        dialogBuilder.create().show();
+        }
+    
+
+    
+
 	
 }

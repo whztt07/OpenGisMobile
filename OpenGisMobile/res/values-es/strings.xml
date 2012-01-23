@@ -45,4 +45,5 @@
     <string name="dosis">Dosis:</string>
     <string name="deletedProduct">Producto suprimido correctamente</string>
     <string name="msgDeleteProduct">¿Desea borrar este producto?</string>
+    <string name="modifyProductOK">Product modified correctly</string>
 </resources>

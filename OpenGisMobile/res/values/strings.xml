@@ -44,5 +44,6 @@
     <string name="deletedTool">Tool deleted correctly</string>
     <string name="deletedProduct">Product deleted correctly</string>
     <string name="modifyToolOK">Tool modified correctly</string>
+    <string name="modifyProductOK">Product modified correctly</string>
      <string name="dosis">Dose:</string>
 </resources>
