@@ -52,8 +52,15 @@ public class ParcelasIconListView extends ListActivity {
 	    	
 	    	
 	    	ParcelasDatos parcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
+
 	    	
-	    	if(parcelaSeleccionada.getDNIPropietario().equals(dni)){
+	    	
+	    	if(parcelaSeleccionada.getDNIPropietario().toLowerCase().equals(dni.toLowerCase())){
+	    		
+	    		
+	    		
+	    		// Si eres el propietario podr‡s acceder a la informaci—n de la parcela y editarla 
+	    		
 	    		
 	    		
 	    		
