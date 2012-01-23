@@ -169,9 +169,9 @@ public class principalActivity extends Activity {
 		            	
 		            	
 						
-						Intent vMisProductos = new Intent(principalActivity.this,ProductosIconListView.class);
-						vMisProductos.putExtra("dni",txtDNI.getText());
-						startActivity(vMisProductos);
+						Intent vMisParcelas = new Intent(principalActivity.this,ParcelasIconListView.class);
+						vMisParcelas.putExtra("dni",txtDNI.getText());
+						startActivity(vMisParcelas);
 		            	
 		            } 
 		        }); 
