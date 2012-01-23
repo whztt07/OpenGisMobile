@@ -52,6 +52,6 @@
     <string name="Lots">Lots</string>
     <string name="showLots">Show Lots</string>
     <string name="createLots">Add Lot</string>
-    <string name="msgAviso">Warning</string>
-    <string name="notEditableLot">You can not edit this lot.You are not the owner of this lot</string>
+    <string name="msgAviso">You can not edit this lot</string>
+    <string name="notEditableLot">You are not the owner of this lot</string>
 </resources>

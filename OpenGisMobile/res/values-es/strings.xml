@@ -54,7 +54,7 @@
     <string name="showLots">Ve parcelas</string>
     <string name="createLots">Añadir parcela</string>   
     
-    <string name="msgAviso">Aviso</string>
-    <string name="notEditableLot">No puedes editar esta parcela. No eres el propietario de esta parcela</string>
+    <string name="msgAviso">No se puede editar</string>
+    <string name="notEditableLot">No eres el propietario de esta parcela</string>
        
 </resources>
