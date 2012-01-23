@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="@string/infoTools"
+        android:text="@string/infoProducts"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -46,7 +46,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <EditText
-                    android:id="@+id/txtIDApero"
+                    android:id="@+id/txtIDProducto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="60dp"
@@ -74,7 +74,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <EditText
-                    android:id="@+id/txtNombreApero"
+                    android:id="@+id/txtNombreProducto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="23dp"
@@ -94,14 +94,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="@string/tamanyo"
+                    android:text="@string/dosis"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <EditText
-                    android:id="@+id/txtTamanyoApero"
+                    android:id="@+id/txtDosisProducto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="45dp"
+                    android:layout_marginLeft="35dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:enabled="false" />
@@ -123,7 +123,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <EditText
-                    android:id="@+id/txtDescripcionApero"
+                    android:id="@+id/txtDescripcionProducto"
                     android:layout_width="match_parent"
                     android:layout_height="104dp"
                     android:layout_marginLeft="10dp"
@@ -153,21 +153,21 @@
                     android:baselineAligned="true" >
 
                     <Button
-                        android:id="@+id/cmdModificarApero"
+                        android:id="@+id/cmdModificarProducto"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/modificar" />
 
                     <Button
-                        android:id="@+id/cmdBorrarApero"
+                        android:id="@+id/cmdBorrarProducto"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/delete" />
 
                     <Button
-                        android:id="@+id/cmdGuardarApero"
+                        android:id="@+id/cmdGuardarProducto"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

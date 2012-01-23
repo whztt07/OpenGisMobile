@@ -19,81 +19,83 @@ public class infoProductosActivity extends Activity {
         
         Bundle extras = getIntent().getExtras();
         
-        final EditText txtID = (EditText) findViewById(R.id.txtIDApero);
-        final EditText txtNombreApero = (EditText) findViewById(R.id.txtNombreApero);
-        final EditText txtTamanyo = (EditText) findViewById(R.id.txtTamanyoApero);
-        final EditText txtDescripcion = (EditText) findViewById(R.id.txtDescripcionApero);
+        
+        final EditText txtIDProducto = (EditText) findViewById(R.id.txtIDProducto);
+        final EditText txtNombreProducto = (EditText) findViewById(R.id.txtNombreProducto);
+        final EditText txtDosisProducto = (EditText) findViewById(R.id.txtDosisProducto);
+        final EditText txtDescripcionProducto = (EditText) findViewById(R.id.txtDescripcionProducto);
+        
+        final Button cmdModificarProducto = (Button) findViewById(R.id.cmdModificarProducto);
+        final Button cmdEliminarProducto = (Button) findViewById(R.id.cmdBorrarProducto);
+        final Button cmdGuardarProducto = (Button) findViewById(R.id.cmdGuardarProducto);
         
         
-        final Button cmdModificar = (Button) findViewById(R.id.cmdModificarApero);
-        final Button cmdBorrar = (Button) findViewById(R.id.cmdBorrarApero);
-        final Button cmdGuardar = (Button) findViewById(R.id.cmdGuardarApero);
-        
-        txtID.setText(extras.getString("idApero"));
-        txtNombreApero.setText(extras.getString("nombreApero"));
-        txtTamanyo.setText(extras.getString("tama–oApero"));
-        txtDescripcion.setText(extras.getString("descripcionApero"));
-        final String dniUser = extras.getString("dniUser");
+        txtIDProducto.setText(extras.getString("idProducto"));
+        txtNombreProducto.setText(extras.getString("nombreProducto"));
+        txtDosisProducto.setText(extras.getString("dosisProducto"));
+        txtDescripcionProducto.setText(extras.getString("descripcionProducto"));
+        final String dniUser = extras.getString("dniUsuario");
         
         
-        // Acciones de bot—n!
+        //Acciones de bot—n
         
-        
-        cmdModificar.setOnClickListener(new View.OnClickListener(){
-
-			public void onClick(View arg0) {
-			
-				cmdBorrar.setEnabled(false);
-				cmdModificar.setEnabled(false);
-				cmdGuardar.setEnabled(true);
-				
-				txtNombreApero.setEnabled(true);
-				txtTamanyo.setEnabled(true);
-				txtDescripcion.setEnabled(true);
-				
-				
-			}
-        	
-        });
-        
-        
-        cmdBorrar.setOnClickListener(new View.OnClickListener(){
+        cmdModificarProducto.setOnClickListener(new View.OnClickListener(){
 
 			public void onClick(View v) {
 				
 				
+				cmdModificarProducto.setEnabled(false);
+				cmdEliminarProducto.setEnabled(false);
+				cmdGuardarProducto.setEnabled(true);
+				
+				txtNombreProducto.setEnabled(true);
+				txtDosisProducto.setEnabled(true);
+				txtDescripcionProducto.setEnabled(true);
+				
+			}
+        	
+        	
+        	
+        	
+        });
+        
+        
+        cmdEliminarProducto.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View v) {
+			
 				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(infoProductosActivity.this);
-		        dialogBuilder.setMessage(getString(R.string.msgDeleteTool));
-		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Tools));
+		        dialogBuilder.setMessage(getString(R.string.msgDeleteProduct));
+		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Products));
 		        dialogBuilder.setPositiveButton(getString(R.string.yes),new DialogInterface.OnClickListener() { 
 		            public void onClick(DialogInterface dialog, int arg1) {
 		            	
 		            	
-		            	//En caso afirmativo borramos el Apero con ese ID.
-		            	
-		            	String direccionWebService = "http://79.108.245.167/OpenGisMobile/BorrarAperoWebService.php?idapero="+txtID.getText();
-		            	
-		            	
-		            	boolean estado = AccesoWebService.InsertarEnWebService(direccionWebService);
-		            	
-		            	if(estado){
-		            		
-		            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.deletedTool), Toast.LENGTH_SHORT);
+						String idProducto = txtIDProducto.getText().toString();
+						
+						String direccionWebService = "http://79.108.245.167/OpenGisMobile/BorrarProductoWebService.php?idproducto="+idProducto+"";
+						
+						boolean finalizado = AccesoWebService.InsertarEnWebService(direccionWebService);
+						
+						if(finalizado){
+							
+		            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.deletedProduct), Toast.LENGTH_SHORT);
 		            		toast.show();
 		            		
 		            	
 		            		
-		            		Intent vMisAperos = new Intent(infoProductosActivity.this, misAperosListActivity.class);
+		            		Intent vMisAperos = new Intent(infoProductosActivity.this, ProductosIconListView.class);
 		            		vMisAperos.putExtra("dni",dniUser);
 		            		startActivity(vMisAperos);
-		            		
-		            	}else{
-		            		
-		            		// No se ha podido eliminar
-		            		
-		            		
-		            	}
-		            	
+							
+							
+						}else{
+							
+							
+							// No se ha podido eliminar el producto seleccionado
+							
+							
+						}
 		            	
 		            } 
 		        }); 
@@ -109,51 +111,10 @@ public class infoProductosActivity extends Activity {
 				
 				
 			}
-        	
-        	
-        	
+				
+	
         });
         
-        
-        
-        cmdGuardar.setOnClickListener(new View.OnClickListener(){
-
-			public void onClick(View v) {
-				
-				
-				String direccionWebService = "http://79.108.245.167/OpenGisMobile/ModificarAperoWebService.php?nombre="+ txtNombreApero.getText() +"&tamanyo="+txtTamanyo.getText()+"&descripcion="+txtDescripcion.getText()+"&idapero="+txtID.getText()+"";
-				
-				direccionWebService = direccionWebService.replaceAll(" ","%20"); // Con esto solucionamos los espacios en blanco de la direccion de consulta
-				
-				boolean finalizado = AccesoWebService.InsertarEnWebService(direccionWebService);
-				
-				if(finalizado){
-					
-            		
-            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.modifyToolOK), Toast.LENGTH_SHORT);
-            		toast.show();
-            		
-            	
-            		
-            		Intent vMisAperos = new Intent(infoProductosActivity.this, AperosIconListView.class);
-            		vMisAperos.putExtra("dni",dniUser);
-            		startActivity(vMisAperos);
-					
-					
-				}else{
-					
-					
-					// No se ha podido modificar
-					
-				}
-				
-				
-			}
-        	
-        	
-        	
-        	
-        });
         
         
         

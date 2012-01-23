@@ -34,6 +34,7 @@
     <string name="createTools">Nuevo Apero</string>
     <string name="createProducts">Nuevo Producto</string>
     <string name="infoTools">Información de Apero</string>
+    <string name="infoProducts">Información de Producto</string>
     <string name="descripcion">Descripción:</string>
     <string name="tamanyo">Tamaño:</string>
     <string name="yes">Si</string>
@@ -41,4 +42,7 @@
     <string name="msgDeleteTool">¿Desea borrar este apero?</string>
     <string name="deletedTool">Apero suprimido correctamente</string>
     <string name="modifyToolOK">Apero modificado correctamente</string>
+    <string name="dosis">Dosis:</string>
+    <string name="deletedProduct">Producto suprimido correctamente</string>
+    <string name="msgDeleteProduct">¿Desea borrar este producto?</string>
 </resources>
