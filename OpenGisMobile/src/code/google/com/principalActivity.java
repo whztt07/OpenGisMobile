@@ -32,6 +32,7 @@ public class principalActivity extends Activity {
         
         Button cmdMisDatos = (Button) findViewById(R.id.btnConfigUserData);
         Button cmdMisAperos = (Button) findViewById(R.id.btnConfigTools);
+        Button cmdMisProductos = (Button) findViewById(R.id.btnConfigProducts);
         
         // Rellenamos los TextView con los parametros guardados en extras
         
@@ -116,6 +117,48 @@ public class principalActivity extends Activity {
         });
         
         
-	}
+        
+        
+        cmdMisProductos.setOnClickListener(new View.OnClickListener(){
 
-}
+			public void onClick(View arg0) {
+				
+				
+				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(principalActivity.this);
+		        dialogBuilder.setMessage(getString(R.string.ProductsConfig));
+		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Products));
+		        dialogBuilder.setPositiveButton(getString(R.string.showProducts),new DialogInterface.OnClickListener() { 
+		            public void onClick(DialogInterface dialog, int arg1) {
+		            	
+		            	
+						
+						Intent vMisProductos = new Intent(principalActivity.this,ProductosIconListView.class);
+						vMisProductos.putExtra("dni",txtDNI.getText());
+						startActivity(vMisProductos);
+		            	
+		            } 
+		        }); 
+		        
+		        dialogBuilder.setNegativeButton(getString(R.string.createProducts),new DialogInterface.OnClickListener() { 
+		            public void onClick(DialogInterface dialog, int arg1) { 
+		                
+		            	//Aqu’ la ventana del nuevo Producto
+		            	
+		            } 
+		        }); 
+		        dialogBuilder.create().show();
+
+			}
+        	
+        	
+        });
+				
+				
+			}
+        	
+
+        
+        
+	}
+	
+

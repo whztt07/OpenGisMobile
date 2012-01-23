@@ -8,9 +8,10 @@ public class ProductosDatos {
 	private String nomtarea = "";
 	private String dosis = "";
 	private String activo = "";
+	private String dni = "";
 
 	public ProductosDatos(String idprod, String nombre, String descripcion,
-			String nomtarea, String dosis, String activo) {
+			String nomtarea, String dosis, String dni, String activo) {
 		
 		
 		
@@ -19,7 +20,8 @@ public class ProductosDatos {
 		this.setDescripcion(descripcion);
 		this.setNomtarea(nomtarea);
 		this.setDosis(dosis);
-		this.activo = activo;
+		this.setActivo(activo);
+		this.setDNI(dni);
 		
 	
 	}
@@ -62,6 +64,22 @@ public class ProductosDatos {
 
 	public void setDosis(String dosis) {
 		this.dosis = dosis;
+	}
+
+	public String getActivo() {
+		return activo;
+	}
+
+	public void setActivo(String activo) {
+		this.activo = activo;
+	}
+
+	public String getDNI() {
+		return dni;
+	}
+
+	public void setDNI(String dni) {
+		this.dni = dni;
 	}
 
 

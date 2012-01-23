@@ -46,6 +46,18 @@
         </activity>
         <activity android:name=".AperosIconListView"></activity>
         
+         <activity
+            
+            android:name=".ProductosIconListView" >
+            
+        </activity>
+        
+                  <activity
+            
+            android:name=".infoProductosActivity" >
+            
+        </activity>
+        
     </application>
     
     <uses-permission android:name="android.permission.INTERNET"/>

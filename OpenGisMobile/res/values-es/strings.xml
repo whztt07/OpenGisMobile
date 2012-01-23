@@ -28,8 +28,11 @@
     <string name="msgModifyOK">Se han modificado sus datos personales</string>
     <string name="updateError">No se ha podido realizar la modificación de forma correcta</string>
     <string name="ToolsConfig">Gestión de Aperos</string>
+    <string name="ProductsConfig">Gestión de Productos</string>
     <string name="showTools">Ver Aperos</string>
+    <string name="showProducts">Ver Productos</string>
     <string name="createTools">Nuevo Apero</string>
+    <string name="createProducts">Nuevo Producto</string>
     <string name="infoTools">Información de Apero</string>
     <string name="descripcion">Descripción:</string>
     <string name="tamanyo">Tamaño:</string>

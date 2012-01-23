@@ -186,7 +186,7 @@ public class AccesoWebService {
 			String userStr = userObj.getString("producto");
 			JSONObject item = new JSONObject(userStr);
 			
-			ProductosDatos producto = new ProductosDatos(item.getString("idprod"),item.getString("nombre"),item.getString("descripcion"),item.getString("nomtarea"),item.getString("dosis"),item.getString("activo"));
+			ProductosDatos producto = new ProductosDatos(item.getString("idprod"),item.getString("nombre"),item.getString("descripcion"),item.getString("nomtarea"),item.getString("dosis"),item.getString("dni"),item.getString("activo"));
 		
 			
 			productosList[i] = producto;

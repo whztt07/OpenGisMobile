@@ -28,8 +28,11 @@
     <string name="msgModifyOK">Your personal details have been changed</string>
     <string name="updateError">Unable to make the change correctly</string>
     <string name="ToolsConfig">Tools Management</string>
+    <string name="ProductsConfig">Products Management</string>
     <string name="showTools">Show Tools</string>
+    <string name="showProducts">Show Products</string>
     <string name="createTools">New Tool</string>
+    <string name="createProducts">New Product</string>
     <string name="infoTools">Tool Information</string>
     <string name="descripcion">Description:</string>
     <string name="tamanyo">Size:</string>
