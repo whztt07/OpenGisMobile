@@ -195,5 +195,42 @@ public class AccesoWebService {
  
 		return productosList;
 	}
+	
+	
+	
+	/**
+	 * Este método devuelve un Array de Objetos con todos los objetos encontrados. Después deberemos crear los objetos a partir
+	 * de la clase para poder mostrar los datos al usuario.
+	 * 
+	 * @param data String que se recoge al utilizar el método recogerDatosWebService
+	 * @return
+	 * @throws JSONException
+	 */
+	
+
+	static Object[] convertirDatosJSONParcelas(String data) throws JSONException {
+		
+		
+ 
+		JSONObject jsonObj = new JSONObject(data);
+		String strData = jsonObj.getString("parcelas");
+		JSONArray jsonArray = new JSONArray(strData);
+ 
+		Object[] parcelasList = new Object[jsonArray.length()];
+		
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject userObj = jsonArray.getJSONObject(i);
+			String userStr = userObj.getString("parcela");
+			JSONObject item = new JSONObject(userStr);
+			
+			ParcelasDatos parcela = new ParcelasDatos(item.getString("idparcela"),item.getString("alias"),item.getString("provincia"),item.getString("poblacion"),item.getString("poligono"),item.getString("numero"),item.getString("activo"),item.getString("partida"));
+		
+			
+			parcelasList[i] = parcela;
+			
+		}
+ 
+		return parcelasList;
+	}
 
 }
