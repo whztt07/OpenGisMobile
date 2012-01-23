@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
     android:gravity="center_horizontal"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -97,30 +97,12 @@
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvChooseWork"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:paddingBottom="10dip"
-                android:paddingTop="20dip"
-                android:text="@string/choosework"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/spinnerWork"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip" />
-
             <Button
                 android:id="@+id/btnStart"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dip"
+                android:layout_marginTop="50dp"
                 android:text="@string/start"
                 android:textStyle="bold"
                 android:width="180sp" />
@@ -139,15 +121,23 @@
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="wrap_content"
+                android:baselineAligned="true" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
                 <Button
                     android:id="@+id/btnConfigTools"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginLeft="10sp"
-                    android:layout_marginRight="10sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
                     android:drawableTop="@drawable/apero"
                     android:height="80sp"
                     android:text="@string/Tools"
@@ -156,9 +146,12 @@
 
                 <Button
                     android:id="@+id/btnConfigProducts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
                     android:drawableTop="@drawable/producto"
                     android:height="80sp"
                     android:text="@string/Products"
@@ -166,18 +159,34 @@
                     android:width="95sp" />
 
                 <Button
+                    android:id="@+id/btnConfigLotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/lots"
+                    android:height="80sp"
+                    android:text="@string/MisParcelas"
+                    android:textStyle="bold"
+                    android:width="95sp" />
+
+                <Button
                     android:id="@+id/btnConfigUserData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|fill_horizontal"
-                    android:layout_marginLeft="10sp"
-                    android:layout_marginRight="10sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
                     android:drawableTop="@drawable/usuario"
                     android:height="80sp"
                     android:text="@string/MisDatos"
                     android:textStyle="bold"
                     android:width="95sp" />
+
             </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
