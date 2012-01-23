@@ -44,7 +44,7 @@
             android:name=".infoAperosActivity" >
             
         </activity>
-        <activity android:name="IconListView"></activity>
+        <activity android:name=".AperosIconListView"></activity>
         
     </application>
     

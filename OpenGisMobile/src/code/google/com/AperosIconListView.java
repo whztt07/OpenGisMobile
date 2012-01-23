@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class IconListView extends ListActivity {
+public class AperosIconListView extends ListActivity {
 	   private ArrayList<Local> m_locals = null;
 	    private IconListViewAdapter m_adapter;
 	    private String dni;
@@ -51,7 +51,7 @@ public class IconListView extends ListActivity {
 	    	
 	    	AperosDatos aperoSeleccionado = (AperosDatos) objetosCompletos.get(position);
 	    	
-	    	Intent vInfoApero = new Intent(IconListView.this,infoAperosActivity.class);
+	    	Intent vInfoApero = new Intent(AperosIconListView.this,infoAperosActivity.class);
 	    	vInfoApero.putExtra("idApero",aperoSeleccionado.getIdApero() );
 	    	vInfoApero.putExtra("nombreApero",aperoSeleccionado.getNombreApero());
 	    	vInfoApero.putExtra("tama–oApero",aperoSeleccionado.getTamanyoApero());

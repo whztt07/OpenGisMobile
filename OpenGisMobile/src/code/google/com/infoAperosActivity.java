@@ -135,7 +135,7 @@ public class infoAperosActivity extends Activity {
             		
             	
             		
-            		Intent vMisAperos = new Intent(infoAperosActivity.this, misAperosListActivity.class);
+            		Intent vMisAperos = new Intent(infoAperosActivity.this, AperosIconListView.class);
             		vMisAperos.putExtra("dni",dniUser);
             		startActivity(vMisAperos);
 					
