@@ -223,7 +223,7 @@ public class AccesoWebService {
 			String userStr = userObj.getString("parcela");
 			JSONObject item = new JSONObject(userStr);
 			
-			ParcelasDatos parcela = new ParcelasDatos(item.getString("idparcela"),item.getString("alias"),item.getString("provincia"),item.getString("poblacion"),item.getString("poligono"),item.getString("numero"),item.getString("activo"),item.getString("partida"));
+			ParcelasDatos parcela = new ParcelasDatos(item.getString("idparcela"),item.getString("alias"),item.getString("provincia"),item.getString("poblacion"),item.getString("poligono"),item.getString("numero"),item.getString("activo"),item.getString("partida"),item.getString("dni_propietario"));
 		
 			
 			parcelasList[i] = parcela;

@@ -2,6 +2,7 @@ package code.google.com;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -49,16 +50,24 @@ public class ParcelasIconListView extends ListActivity {
 	        Toast.makeText(this, local.getLocalName(), 
 	          		Toast.LENGTH_LONG).show();     */
 	    	
-	    	/*ProductosDatos productoSeleccionado = (ProductosDatos) objetosCompletos.get(position);
 	    	
-	    	Intent vInfoProducto = new Intent(ParcelasIconListView.this,infoProductosActivity.class);
-	    	vInfoProducto.putExtra("idProducto",productoSeleccionado.getIdprod() );
-	    	vInfoProducto.putExtra("nombreProducto",productoSeleccionado.getNombre());
-	    	vInfoProducto.putExtra("descripcionProducto",productoSeleccionado.getDescripcion());
-	    	vInfoProducto.putExtra("dosisProducto",productoSeleccionado.getDosis());
-	    	vInfoProducto.putExtra("dniUsuario",productoSeleccionado.getDNI());
-	    	startActivity(vInfoProducto);*/
+	    	ParcelasDatos parcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
+	    	
+	    	if(parcelaSeleccionada.getDNIPropietario().equals(dni)){
+	    		
+	    		
+	    		
+	    		
+	    	}else{
+	    		
+	    		
+	    		alertaMensaje(getString(R.string.notEditableLot),getString(R.string.msgAviso));
+	    		
+	    	}
+	    	
+
 	    }
+	    
 	    
 	    /*
 	     * Inicializacion del mapa
@@ -170,6 +179,13 @@ public class ParcelasIconListView extends ListActivity {
     	}
     	
 
-
+    public void alertaMensaje(String cadena,String titulo) {
+        
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setMessage(cadena);
+        dialogBuilder.setCancelable(true).setTitle(titulo);
+        dialogBuilder.create().show();
+        }
+    
     
 }

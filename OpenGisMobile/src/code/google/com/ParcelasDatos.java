@@ -12,8 +12,9 @@ public class ParcelasDatos {
 	private String numero;
 	private String activo;
 	private String partida;
+	private String DNIPropietario;
 
-	public ParcelasDatos(String idparcela,String alias,String provincia,String poblacion,String poligono,String numero,String activo,String partida){
+	public ParcelasDatos(String idparcela,String alias,String provincia,String poblacion,String poligono,String numero,String activo,String partida, String dniPropietario){
 		
 		this.setIdparcela(idparcela);
 		this.setAlias(alias);
@@ -23,6 +24,7 @@ public class ParcelasDatos {
 		this.setNumero(numero);
 		this.setActivo(activo);
 		this.setPartida(partida);
+		this.setDNIPropietario(dniPropietario);
 		
 		
 	}
@@ -89,6 +91,14 @@ public class ParcelasDatos {
 
 	public void setPartida(String partida) {
 		this.partida = partida;
+	}
+
+	public String getDNIPropietario() {
+		return DNIPropietario;
+	}
+
+	public void setDNIPropietario(String dNIPropietario) {
+		DNIPropietario = dNIPropietario;
 	}
 
 }
