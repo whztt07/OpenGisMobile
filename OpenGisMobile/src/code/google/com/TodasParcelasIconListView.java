@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,9 @@ public class TodasParcelasIconListView extends ListActivity {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.main);
 	        
+	       
+	      
+	        
 	        
 	        /*
 	         * Al crear la clase se inicializa el ListView que muestra los aperos
@@ -46,14 +50,59 @@ public class TodasParcelasIconListView extends ListActivity {
 
 	    	
 	    	
-	    	ParcelasDatos parcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
+	    	final ParcelasDatos parcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
 
 	    	
-	    	// AQUI MOSTRAMOS UN MENSAJE PIDIENDO SI QUIERE A„ADIR ESA PARCELA A SUS PARCELAS HABITUALES.
+	    
+	        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(TodasParcelasIconListView.this);
+	        dialogBuilder.setMessage(getString(R.string.msgAddLots));
+	        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Tools));
+	        dialogBuilder.setPositiveButton(getString(R.string.yes),new DialogInterface.OnClickListener() { 
+	            public void onClick(DialogInterface dialog, int arg1) {
+	            	
+	            	Bundle extras = getIntent().getExtras();
+	            	String idParcela = parcelaSeleccionada.getIdparcela();
+	            	String dniUsuario = extras.getString("dni");
+	            	
+	            	String url = "http://79.108.245.167/OpenGisMobile/NuevaParcelaEnListaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
+	            	
+	            	boolean acceso = AccesoWebService.InsertarEnWebService(url);
+	            	
+	            	if(acceso){
+	            		
+	            		
+	            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgAddLotOK), Toast.LENGTH_SHORT);
+	            		toast.show();
+	            		
+	            		
+	            	}else{
+	            		
+	            		
+	            		//No se ha podido realizar la inserci—n correctamente
+	            		
+	            		
+	            	}
+	            	
+
+	            	
+	            } 
+	        }); 
+	        
+	        dialogBuilder.setNegativeButton(getString(R.string.no),new DialogInterface.OnClickListener() { 
+	            public void onClick(DialogInterface dialog, int arg1) { 
+	                
+	            	
+	            	
+	            } 
+	        }); 
+	        dialogBuilder.create().show();
+
+		}
+	    	
+	    	
 	    
 
-	    }
-	    
+	   
 	    
 	    /*
 	     * Inicializacion del mapa

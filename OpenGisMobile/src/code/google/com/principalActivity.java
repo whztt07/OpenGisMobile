@@ -21,7 +21,7 @@ public class principalActivity extends Activity {
         
         // Recogemos los parametros que hemos guardado en extras desde el login.
         
-        Bundle extras = getIntent().getExtras();
+        final Bundle extras = getIntent().getExtras();
         
         // Recogemos e instanciamos los TextView que van a rellenarse con los parametros pasados. Adem‡s recogemos en esta secci—n los
         // botones que vamos a necesitar.
@@ -134,7 +134,7 @@ public class principalActivity extends Activity {
 		            	
 						
 						Intent vMisProductos = new Intent(principalActivity.this,ProductosIconListView.class);
-						vMisProductos.putExtra("dni",txtDNI.getText());
+						vMisProductos.putExtra("dni",extras.getString("dni"));
 						startActivity(vMisProductos);
 		            	
 		            } 
@@ -181,6 +181,7 @@ public class principalActivity extends Activity {
 		                
 		            	
 		            	Intent vTodasLasParcelas = new Intent(principalActivity.this,TodasParcelasIconListView.class);
+		            	vTodasLasParcelas.putExtra("dni",txtDNI.getText());
 		            	startActivity(vTodasLasParcelas);
 		            	
 		            } 

@@ -54,4 +54,6 @@
     <string name="createLots">Add Lot</string>
     <string name="msgAviso">You can not edit this lot</string>
     <string name="notEditableLot">You are not the owner of this lot</string>
+    <string name="msgAddLots">Do you want to add this lot in your lots list?</string>
+    <string name="msgAddLotOK">Lot added correctly</string>
 </resources>

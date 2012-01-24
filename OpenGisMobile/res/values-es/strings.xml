@@ -56,5 +56,7 @@
     
     <string name="msgAviso">No se puede editar</string>
     <string name="notEditableLot">No eres el propietario de esta parcela</string>
+    <string name="msgAddLots">¿Desea añadir esta parcela a su lista de parcelas?</string>
+    <string name="msgAddLotOK">Parcela añadida correctamente</string>
        
 </resources>
