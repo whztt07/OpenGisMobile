@@ -56,4 +56,8 @@
     <string name="notEditableLot">You are not the owner of this lot</string>
     <string name="msgAddLots">Do you want to add this lot in your lots list?</string>
     <string name="msgAddLotOK">Lot added correctly</string>
+    
+    <string name="add">Add</string>
+    <string name="view">Show Information</string>
+    
 </resources>

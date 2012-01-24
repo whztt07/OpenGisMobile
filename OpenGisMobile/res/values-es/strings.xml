@@ -58,5 +58,8 @@
     <string name="notEditableLot">No eres el propietario de esta parcela</string>
     <string name="msgAddLots">¿Desea añadir esta parcela a su lista de parcelas?</string>
     <string name="msgAddLotOK">Parcela añadida correctamente</string>
+    
+    <string name="add">Añadir</string>
+    <string name="view">Mostrar Información</string>
        
 </resources>

@@ -68,6 +68,7 @@ public class ParcelasIconListView extends ListActivity {
 	    	}else{
 	    		
 	    		
+	    		
 	    		alertaMensaje(getString(R.string.notEditableLot),getString(R.string.msgAviso));
 	    		
 	    	}

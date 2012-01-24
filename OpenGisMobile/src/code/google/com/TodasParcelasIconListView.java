@@ -7,6 +7,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -57,7 +58,7 @@ public class TodasParcelasIconListView extends ListActivity {
 	        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(TodasParcelasIconListView.this);
 	        dialogBuilder.setMessage(getString(R.string.msgAddLots));
 	        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Tools));
-	        dialogBuilder.setPositiveButton(getString(R.string.yes),new DialogInterface.OnClickListener() { 
+	        dialogBuilder.setPositiveButton(getString(R.string.add),new DialogInterface.OnClickListener() { 
 	            public void onClick(DialogInterface dialog, int arg1) {
 	            	
 	            	Bundle extras = getIntent().getExtras();
@@ -88,9 +89,18 @@ public class TodasParcelasIconListView extends ListActivity {
 	            } 
 	        }); 
 	        
-	        dialogBuilder.setNegativeButton(getString(R.string.no),new DialogInterface.OnClickListener() { 
+	        dialogBuilder.setNegativeButton(getString(R.string.view),new DialogInterface.OnClickListener() { 
 	            public void onClick(DialogInterface dialog, int arg1) { 
 	                
+	            	
+	            	String url = "http://sigpac.mapa.es/fega/salidasgraficas/AspPrintLotProvider.aspx?layer=PARCELA&RCat=" //$NON-NLS-1$
+                                  +parcelaSeleccionada.getProvincia()+","+parcelaSeleccionada.getPoblacion()+
+                                  ",0,0,"+parcelaSeleccionada.getPoligono()+ //$NON-NLS-1$
+                                  ","+parcelaSeleccionada.getNumero()+"&visibleLayers=PARCELA;RECINTO;ARBOLES&etiquetas=true";
+	            	
+	            	
+	            	 Intent i = new Intent("android.intent.action.VIEW", Uri.parse(url));
+	                 startActivity(i);
 	            	
 	            	
 	            } 
