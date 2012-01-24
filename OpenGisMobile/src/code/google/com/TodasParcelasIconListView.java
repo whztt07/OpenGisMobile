@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ParcelasIconListView extends ListActivity {
+public class TodasParcelasIconListView extends ListActivity {
 	   private ArrayList<Local> m_locals = null;
 	    private IconListViewAdapter m_adapter;
 	    private String dni;
@@ -28,8 +28,6 @@ public class ParcelasIconListView extends ListActivity {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.main);
 	        
-	        Bundle extra = getIntent().getExtras();
-			dni = extra.getString("dni");
 	        
 	        /*
 	         * Al crear la clase se inicializa el ListView que muestra los aperos
@@ -45,33 +43,14 @@ public class ParcelasIconListView extends ListActivity {
 	    
 	    @Override
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
-	        /*Local local = (Local) l.getItemAtPosition(position);        
-	       
-	        Toast.makeText(this, local.getLocalName(), 
-	          		Toast.LENGTH_LONG).show();     */
+
 	    	
 	    	
 	    	ParcelasDatos parcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
 
 	    	
-	    	
-	    	if(parcelaSeleccionada.getDNIPropietario().toLowerCase().equals(dni.toLowerCase())){
-	    		
-	    		
-	    		
-	    		// Si eres el propietario podr‡s acceder a la informaci—n de la parcela y editarla 
-	    		
-	    		
-	    		
-	    		
-	    		
-	    	}else{
-	    		
-	    		
-	    		alertaMensaje(getString(R.string.notEditableLot),getString(R.string.msgAviso));
-	    		
-	    	}
-	    	
+	    	// AQUI MOSTRAMOS UN MENSAJE PIDIENDO SI QUIERE A„ADIR ESA PARCELA A SUS PARCELAS HABITUALES.
+	    
 
 	    }
 	    
@@ -87,7 +66,7 @@ public class ParcelasIconListView extends ListActivity {
 	    	///////////DE AQUI//////////////
 	    	m_locals = new ArrayList<Local>();
 	    		
-			String url = "http://79.108.245.167/OpenGisMobile/MisParcelasWebService.php?dni="+dni+"";
+			String url = "http://79.108.245.167/OpenGisMobile/MostrarParcelasWebService.php";
 			
 			String data = AccesoWebService.recogerDatosWebService(url);
 			
@@ -109,7 +88,7 @@ public class ParcelasIconListView extends ListActivity {
 					
 					Local loc = new Local();
 					loc.setLocalName(parcela.getAlias());
-					loc.setLocalMedida("ID de parcela: " + parcela.getIdparcela());
+					loc.setLocalMedida("ID: " + parcela.getIdparcela() + " - DNI: " + parcela.getDNIPropietario());
 					loc.setLocalImage(R.drawable.ic_launcher);
 					
 					m_locals.add(loc);

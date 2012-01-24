@@ -179,7 +179,9 @@ public class principalActivity extends Activity {
 		        dialogBuilder.setNegativeButton(getString(R.string.createLots),new DialogInterface.OnClickListener() { 
 		            public void onClick(DialogInterface dialog, int arg1) { 
 		                
-		            	//Aqu’ la ventana de a–adir Parcela
+		            	
+		            	Intent vTodasLasParcelas = new Intent(principalActivity.this,TodasParcelasIconListView.class);
+		            	startActivity(vTodasLasParcelas);
 		            	
 		            } 
 		        }); 

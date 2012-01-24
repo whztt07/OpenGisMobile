@@ -58,9 +58,15 @@
             
         </activity>
         
-                        <activity
+       <activity
             
             android:name=".ParcelasIconListView" >
+            
+        </activity>
+        
+        <activity
+            
+            android:name=".TodasParcelasIconListView" >
             
         </activity>
         

@@ -51,7 +51,7 @@
          
     <string name="LotsConfig">Gestión de parcelas</string>
     <string name="Lots">Parcelas</string>
-    <string name="showLots">Ve parcelas</string>
+    <string name="showLots">Ver parcelas</string>
     <string name="createLots">Añadir parcela</string>   
     
     <string name="msgAviso">No se puede editar</string>
