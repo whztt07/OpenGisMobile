@@ -60,52 +60,100 @@ public class TodasParcelasIconListView extends ListActivity {
 	        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Tools));
 	        dialogBuilder.setPositiveButton(getString(R.string.add),new DialogInterface.OnClickListener() { 
 	            public void onClick(DialogInterface dialog, int arg1) {
-	            	
-	            	Bundle extras = getIntent().getExtras();
-	            	String idParcela = parcelaSeleccionada.getIdparcela();
-	            	String dniUsuario = extras.getString("dni");
-	            	
-	            	String url = "http://79.108.245.167/OpenGisMobile/NuevaParcelaEnListaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
-	            	
-	            	boolean acceso = AccesoWebService.InsertarEnWebService(url);
-	            	
-	            	if(acceso){
-	            		
-	            		
-	            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgAddLotOK), Toast.LENGTH_SHORT);
-	            		toast.show();
-	            		
-	            		
-	            	}else{
-	            		
-	            		
-	            		//No se ha podido realizar la inserci—n correctamente
-	            		
-	            		
-	            	}
-	            	
 
+	            	try{
+	            		
 	            	
-	            } 
-	        }); 
-	        
-	        dialogBuilder.setNegativeButton(getString(R.string.view),new DialogInterface.OnClickListener() { 
-	            public void onClick(DialogInterface dialog, int arg1) { 
-	                
+		            	Bundle extras = getIntent().getExtras();
+		            	String idParcela = parcelaSeleccionada.getIdparcela();
+		            	String dniUsuario = extras.getString("dni");
+		            	
+		            	String consulta = "http://79.108.245.167/OpenGisMobile/VerParcelasUsuariosWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
+		            	
+		            	Object[] parcelasUsuario = AccesoWebService.convertirDatosJSONParcelasUsuarios(AccesoWebService.recogerDatosWebService(consulta));
+		            	
+		            	ParcelasUsuariosDatos parcelaFinal = (ParcelasUsuariosDatos) parcelasUsuario[0];
+		            	
+		            	if(parcelaFinal.getIdparcela()==null){
+		            		
+		            		
+			            	
+			            	String url = "http://79.108.245.167/OpenGisMobile/NuevaParcelaEnListaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
+			            	
+			            	boolean acceso = AccesoWebService.InsertarEnWebService(url);
+			            	
+			            	if(acceso){
+			            		
+			            		
+			            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgAddLotOK), Toast.LENGTH_SHORT);
+			            		toast.show();
+			            		
+			            		
+			            	}else{
+			            		
+			            		
+			            		//No se ha podido realizar la inserci—n correctamente
+			            		
+			            		
+			            	}
+		            		
+		            		
+		            	}else{
+		            		
+		            		
+			            	
+			            	String url = "http://79.108.245.167/OpenGisMobile/ActivarParcelaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
+			            	
+			            	boolean acceso = AccesoWebService.InsertarEnWebService(url);
+			            	
+			            	if(acceso){
+			            		
+			            		
+			            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgAddLotOK), Toast.LENGTH_SHORT);
+			            		toast.show();
+			            		
+			            		
+			            	}else{
+			            		
+			            		
+			            		//No se ha podido realizar la inserci—n correctamente
+			            		
+			            		
+			            	}
+		            		
+		            		
+		            		
+		            	}
+
+		            	
+	
+		            	
+		            }catch(Exception e2){
 	            	
-	            	String url = "http://sigpac.mapa.es/fega/salidasgraficas/AspPrintLotProvider.aspx?layer=PARCELA&RCat=" //$NON-NLS-1$
-                                  +parcelaSeleccionada.getProvincia()+","+parcelaSeleccionada.getPoblacion()+
-                                  ",0,0,"+parcelaSeleccionada.getPoligono()+ //$NON-NLS-1$
-                                  ","+parcelaSeleccionada.getNumero()+"&visibleLayers=PARCELA;RECINTO;ARBOLES&etiquetas=true";
 	            	
+	            }
 	            	
-	            	 Intent i = new Intent("android.intent.action.VIEW", Uri.parse(url));
-	                 startActivity(i);
-	            	
-	            	
-	            } 
-	        }); 
-	        dialogBuilder.create().show();
+	            }
+		        }); 
+		        
+		        dialogBuilder.setNegativeButton(getString(R.string.view),new DialogInterface.OnClickListener() { 
+		            public void onClick(DialogInterface dialog, int arg1) { 
+		                
+		            	
+		            	String url = "http://sigpac.mapa.es/fega/salidasgraficas/AspPrintLotProvider.aspx?layer=PARCELA&RCat=" //$NON-NLS-1$
+	                                  +parcelaSeleccionada.getProvincia()+","+parcelaSeleccionada.getPoblacion()+
+	                                  ",0,0,"+parcelaSeleccionada.getPoligono()+ //$NON-NLS-1$
+	                                  ","+parcelaSeleccionada.getNumero()+"&visibleLayers=PARCELA;RECINTO;ARBOLES&etiquetas=true";
+		            	
+		            	
+		            	 Intent i = new Intent("android.intent.action.VIEW", Uri.parse(url));
+		                 startActivity(i);
+		            	
+		            	
+		            } 
+		        }); 
+		        dialogBuilder.create().show();
+		        
 
 		}
 	    	

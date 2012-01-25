@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,27 +52,103 @@ public class ParcelasIconListView extends ListActivity {
 	          		Toast.LENGTH_LONG).show();     */
 	    	
 	    	
-	    	ParcelasDatos parcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
+	    	final ParcelasDatos parcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
 
 	    	
+	        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ParcelasIconListView.this);
+	        dialogBuilder.setMessage(getString(R.string.LotsConfig));
+	        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Lots));
+	        dialogBuilder.setPositiveButton(getString(R.string.editLot),new DialogInterface.OnClickListener() { 
+	            public void onClick(DialogInterface dialog, int arg1) {
+	            	
+	            	
+	            	if(parcelaSeleccionada.getDNIPropietario().toLowerCase().equals(dni.toLowerCase())){
+	    	    		
+	    	    		
+	    	    		
+	    	    		Intent vEdicionParcela = new Intent(ParcelasIconListView.this,infoParcelasActivity.class);
+	    	    		vEdicionParcela.putExtra("idParcela",parcelaSeleccionada.getIdparcela());
+	    	    		vEdicionParcela.putExtra("aliasParcela",parcelaSeleccionada.getAlias());
+	    	    		vEdicionParcela.putExtra("provinciaParcela",parcelaSeleccionada.getProvincia());
+	    	    		vEdicionParcela.putExtra("poblacionParcela",parcelaSeleccionada.getPoblacion());
+	    	    		vEdicionParcela.putExtra("poligonoParcela",parcelaSeleccionada.getPoligono());
+	    	    		vEdicionParcela.putExtra("numeroParcela",parcelaSeleccionada.getNumero());
+	    	    		vEdicionParcela.putExtra("partidaParcela",parcelaSeleccionada.getPartida());
+	    	    		startActivity(vEdicionParcela);
+	    	    		
+	    	    		
+	    	    		
+	    	    		
+	    	    	}else{
+	    	    		
+	    	    		
+	    	    		
+	    	    		alertaMensaje(getString(R.string.notEditableLot),getString(R.string.msgAviso));
+	    	    		
+	    	    	}
+	            	
+	            	
+	            	
+	            } 
+	        }); 
+	        
+	        dialogBuilder.setNegativeButton(getString(R.string.deleteLot),new DialogInterface.OnClickListener() { 
+	            public void onClick(DialogInterface dialog, int arg1) { 
+	                
+	            	//Aqu’ preguntamos si desea eliminar la parcela
+	            	
+					AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ParcelasIconListView.this);
+			        dialogBuilder.setMessage(getString(R.string.msgDeleteLot));
+			        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Lots));
+			        dialogBuilder.setPositiveButton(getString(R.string.yes),new DialogInterface.OnClickListener() { 
+			            public void onClick(DialogInterface dialog, int arg1) {
+			            	
+			            	//Eliminamos la parcela de la tabla parcela_usuario
+			            	
+			            	
+			            	String url = "http://79.108.245.167/OpenGisMobile/BorrarParcelaWebService.php?dni="+dni+"&idparcela="+parcelaSeleccionada.getIdparcela()+"";
+			            
+			            	
+			            	boolean finalizado = AccesoWebService.InsertarEnWebService(url);
+			            	
+			            	
+			            	if(finalizado){
+			            		
+			            		
+			            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.deletedLot), Toast.LENGTH_SHORT);
+			            		toast.show();
+			            		
+			            		Intent vMisParcelas = new Intent(ParcelasIconListView.this,ParcelasIconListView.class);
+			            		vMisParcelas.putExtra("dni",dni);
+			            		startActivity(vMisParcelas);
+			            		
+			            	}else{
+			            		
+			            		
+			            		// No se ha podido insertar
+			            		
+			            	}
+			            	
+			            } 
+			        }); 
+			        
+			        dialogBuilder.setNegativeButton(getString(R.string.no),new DialogInterface.OnClickListener() { 
+			            public void onClick(DialogInterface dialog, int arg1) { 
+		
+			            	// No hacemos nada
+			            	
+			            } 
+			        }); 
+			        dialogBuilder.create().show();
+	            	
+	            	
+	            	
+	            } 
+	        }); 
+	        dialogBuilder.create().show();
 	    	
-	    	if(parcelaSeleccionada.getDNIPropietario().toLowerCase().equals(dni.toLowerCase())){
-	    		
-	    		
-	    		
-	    		// Si eres el propietario podr‡s acceder a la informaci—n de la parcela y editarla 
-	    		
-	    		
-	    		
-	    		
-	    		
-	    	}else{
-	    		
-	    		
-	    		
-	    		alertaMensaje(getString(R.string.notEditableLot),getString(R.string.msgAviso));
-	    		
-	    	}
+	    	
+	    	
 	    	
 
 	    }

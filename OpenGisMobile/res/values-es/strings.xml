@@ -61,5 +61,11 @@
     
     <string name="add">Añadir</string>
     <string name="view">Mostrar Información</string>
+    
+    <string name="editLot">Editar parcela</string>
+    <string name="deleteLot">Eliminar parcela</string>
        
+    <string name="msgDeleteLot">¿Desea eliminar esta parcela de su lista?</string>
+    
+     <string name="deletedLot">Parcela eliminada correctamente</string>
 </resources>
