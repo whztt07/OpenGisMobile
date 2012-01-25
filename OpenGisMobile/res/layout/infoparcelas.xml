@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="@string/infoProducts"
+        android:text="@string/infoLots"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -41,19 +41,14 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="ID:"
+                    android:text="Large Text"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <EditText
-                    android:id="@+id/txtIDProducto"
+                    android:id="@+id/editText1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:editable="false"
-                    android:enabled="false" >
+                    android:layout_weight="1" >
 
                     <requestFocus />
                 </EditText>
@@ -69,18 +64,14 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/name"
+                    android:text="Large Text"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <EditText
-                    android:id="@+id/txtNombreProducto"
+                    android:id="@+id/editText2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:enabled="false" />
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -93,91 +84,100 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/dosis"
+                    android:text="Large Text"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <EditText
-                    android:id="@+id/txtDosisProducto"
+                    android:id="@+id/editText3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:enabled="false" />
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout6"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_height="wrap_content" >
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/descripcion"
+                    android:text="Large Text"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <EditText
-                    android:id="@+id/txtDescripcionProducto"
-                    android:layout_width="match_parent"
-                    android:layout_height="104dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:enabled="false"
-                    android:inputType="textMultiLine" />
+                    android:id="@+id/editText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout7"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="vertical" >
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Large Text"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <EditText
+                    android:id="@+id/editText5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout8"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Large Text"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <EditText
+                    android:id="@+id/editText6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout10"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
 
                 <LinearLayout
-                    android:id="@+id/linearLayout9"
+                    android:id="@+id/linearLayout11"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:baselineAligned="true" >
-
-                    <Button
-                        android:id="@+id/cmdModificarProducto"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/modificar" />
-
-                    <Button
-                        android:id="@+id/cmdBorrarProducto"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/delete" />
-
-                    <Button
-                        android:id="@+id/cmdGuardarProducto"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/guardar" 
-                        android:enabled="false"/>
+                    android:layout_height="wrap_content" >
                 </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

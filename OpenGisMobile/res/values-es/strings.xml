@@ -68,4 +68,8 @@
     <string name="msgDeleteLot">¿Desea eliminar esta parcela de su lista?</string>
     
      <string name="deletedLot">Parcela eliminada correctamente</string>
+     
+     <string name="infoLots">Información de Parcela</string>
+     
+       <string name="provincia">Provincia:</string>
 </resources>

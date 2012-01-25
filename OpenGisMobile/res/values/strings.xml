@@ -67,4 +67,8 @@
     
     <string name="deletedLot">Lot deleted correctly</string>
     
+    <string name="infoLots">Lot Information</string>
+    
+    <string name="provincia">Province:</string>
+    
 </resources>
