@@ -46,7 +46,7 @@
     <string name="modifyToolOK">Tool modified correctly</string>
     <string name="modifyProductOK">Product modified correctly</string>
      <string name="dosis">Dose:</string>
-     <string name="MisParcelas">My Lotes</string>
+     <string name="MisParcelas">My Lots</string>
      
     <string name="LotsConfig">Lots Management</string>
     <string name="Lots">Lots</string>
@@ -70,5 +70,12 @@
     <string name="infoLots">Lot Information</string>
     
     <string name="provincia">Province:</string>
+    
+    <string name="id">ID:</string>
+    <string name="aliasparcela">Alias:</string>
+    <string name="poblacion">Town:</string>
+    <string name="poligono">Polygon:</string>
+    <string name="numero">Number:</string>
+    
     
 </resources>

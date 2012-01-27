@@ -72,4 +72,10 @@
      <string name="infoLots">Información de Parcela</string>
      
        <string name="provincia">Provincia:</string>
+       
+    <string name="id">ID:</string>
+    <string name="aliasparcela">Alias:</string>
+    <string name="poblacion">Población:</string>
+    <string name="poligono">Polígono:</string>
+    <string name="numero">Número:</string>
 </resources>
