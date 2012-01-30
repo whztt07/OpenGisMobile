@@ -81,4 +81,8 @@
     
     
     <string name="modifiedLotOK">Parcela modificada correctamente</string>
+    
+    <string name="msgMailPasswordRecovery">OpenGis - Recuperar Contraseña</string>
+    <string name="msgMailHello">Hola</string>
+    <string name="msgMailYourPassword">Tu contraseña para todas las aplicaciones OpenGis es: </string>
 </resources>

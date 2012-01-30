@@ -79,5 +79,9 @@
     
     <string name="modifiedLotOK">Lot modified correctly</string>
     
+    <string name="msgMailPasswordRecovery">OpenGis - Password Recovery</string>
+    <string name="msgMailHello">Hello</string>
+    <string name="msgMailYourPassword">Your password for all OpenGis applications is: </string>
+    
     
 </resources>
