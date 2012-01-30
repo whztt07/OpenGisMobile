@@ -12,9 +12,9 @@ public class UserDatos {
 	private String provincia = "";
 	private String cp = "";
 	private String fec_nac = "";
+	private String pass = "";
 	
-	
-	public UserDatos(String dni,String nombre,String apellidos, String email, String telefono, String direccion, String poblacion, String provincia, String cp, String fec_nac){
+	public UserDatos(String dni,String nombre,String apellidos, String email, String telefono, String direccion, String poblacion, String provincia, String cp, String fec_nac,String pass){
 		
 		this.dni = dni;
 		this.nombre = nombre;
@@ -26,6 +26,7 @@ public class UserDatos {
 		this.provincia = provincia;
 		this.cp = cp;
 		this.fec_nac = fec_nac;
+		this.pass = pass;
 		
 		
 	}
@@ -90,6 +91,12 @@ public class UserDatos {
 		
 		return this.fec_nac;
 		
+	}
+
+
+	public String getPass() {
+		// TODO Auto-generated method stub
+		return this.pass;
 	}
 
 }

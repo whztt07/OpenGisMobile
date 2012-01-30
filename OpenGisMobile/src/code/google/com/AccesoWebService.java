@@ -109,7 +109,7 @@ public class AccesoWebService {
 					
 					item.getString("email"),item.getString("telefono"),item.getString("direccion"), item.getString("poblacion"),
 					
-					item.getString("provincia"), item.getString("cp"), item.getString("fecha_nacimiento"));
+					item.getString("provincia"), item.getString("cp"), item.getString("fecha_nacimiento"),item.getString("password"));
 		
 			
 			usersList[i] = usuario;

@@ -1,18 +1,6 @@
 package code.google.com;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class loginActivity extends Activity {
     /** Called when the activity is first created. */
@@ -35,6 +24,8 @@ public class loginActivity extends Activity {
         
         final EditText txtUser = (EditText) findViewById(R.id.txtUser);
         final EditText txtPass = (EditText) findViewById(R.id.txtPass);
+        
+        final TextView txtRecoveryPass = (TextView) findViewById(R.id.txtRecoveryPass);
 
         cmdBorrar.setOnClickListener(new View.OnClickListener() {
 			
@@ -121,6 +112,72 @@ public class loginActivity extends Activity {
 			}
         	
         	
+        	
+        });
+        
+        
+        txtRecoveryPass.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View v) {
+			
+				
+				if(txtUser.getText() == null || txtUser.getText().equals("")){
+					
+					
+					//Meter mensaje de error, no hay usuario introducido
+					
+					
+					
+				}else{
+					
+					
+					String direccionWebService = "http://79.108.245.167/OpenGisMobile/RecuperarPassWebService.php?dni="+txtUser.getText()+"";
+
+					
+					// Gracias al metodo recogerDatosWebService recogemos en un string los datos del servicio web realizado en formato JSON
+					
+					String data = AccesoWebService.recogerDatosWebService(direccionWebService);
+				
+					try{
+						
+				
+					// En este momento cogemos dichos datos en formato JSON y los pasamos a string, el cual almacenamos en un array.
+						
+					
+					 Object[] resultado = AccesoWebService.convertirDatosJSONUser(data);
+					
+					 //En caso de que el resultado sea null no ser‡ un usuario valido.
+
+					 if(resultado[0]!=null){
+					 
+						 UserDatos user = (UserDatos) resultado[0];
+
+						 String dni = user.getDNI();
+						 String nombre = user.getNombre();
+						 String apellidos = user.getApellidos();
+						 String email = user.getEmail();
+						 String pass = user.getPass();
+	
+						 
+						 EnviarMail emailEnviar = new EnviarMail(dni,email,pass,nombre,apellidos);
+						
+					
+					
+					
+				}
+				
+				
+			}catch(Exception e2){
+				
+				
+				alertaMensaje("ERROR","ERROR");
+				
+				
+			}
+        	
+		}
+        	
+			}	
         	
         });
         
