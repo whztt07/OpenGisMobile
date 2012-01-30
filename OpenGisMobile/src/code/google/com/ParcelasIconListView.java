@@ -73,7 +73,7 @@ public class ParcelasIconListView extends ListActivity {
 	    	    		vEdicionParcela.putExtra("poblacionParcela",parcelaSeleccionada.getPoblacion());
 	    	    		vEdicionParcela.putExtra("poligonoParcela",parcelaSeleccionada.getPoligono());
 	    	    		vEdicionParcela.putExtra("numeroParcela",parcelaSeleccionada.getNumero());
-	    	    	
+	    	    		vEdicionParcela.putExtra("dni",dni);
 	    	    		startActivity(vEdicionParcela);
 	    	    		
 	    	    		

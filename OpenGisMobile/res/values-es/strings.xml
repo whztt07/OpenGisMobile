@@ -78,4 +78,7 @@
     <string name="poblacion">Población:</string>
     <string name="poligono">Polígono:</string>
     <string name="numero">Número:</string>
+    
+    
+    <string name="modifiedLotOK">Parcela modificada correctamente</string>
 </resources>
