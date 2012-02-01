@@ -75,7 +75,7 @@ public class SelectTrabajo extends ListActivity {
 			
 			String data = AccesoWebService.recogerDatosWebService(url);
 			
-			final Object[] listaTareas = AccesoWebService.convertirDatosJSONParcelas(data);
+			final Object[] listaTareas = AccesoWebService.convertirDatosJSONTareas(data);
 			
 			objetosCompletos = new ArrayList();
 			

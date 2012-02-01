@@ -77,6 +77,14 @@
             
         </activity>
         
+              
+        <activity
+            
+            android:name=".SelectTrabajo" >
+            
+        </activity>
+        
+        
     </application>
     
     <uses-permission android:name="android.permission.INTERNET"/>

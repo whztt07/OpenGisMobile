@@ -60,8 +60,11 @@ public class principalActivity extends Activity {
         cmdStart.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View arg0) {
-				Toast tt = Toast.makeText(getApplicationContext(), "Funciona", Toast.LENGTH_SHORT);
-				tt.show();
+
+				
+			Intent vTarea = new Intent(principalActivity.this,SelectTrabajo.class);	
+			startActivity(vTarea);
+			
 				
 			}
 		});
