@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class principalActivity extends Activity {
 	
@@ -34,6 +35,7 @@ public class principalActivity extends Activity {
         Button cmdMisAperos = (Button) findViewById(R.id.btnConfigTools);
         Button cmdMisProductos = (Button) findViewById(R.id.btnConfigProducts);
         Button cmdMisParcelas = (Button) findViewById(R.id.btnConfigLots);
+        Button cmdStart = (Button) findViewById(R.id.btnStart);
         
         // Rellenamos los TextView con los parametros guardados en extras
         
@@ -53,7 +55,16 @@ public class principalActivity extends Activity {
         
         // Acciones de boton
         
+        //Cuando presiona el boton comenzar
         
+        cmdStart.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View arg0) {
+				Toast tt = Toast.makeText(getApplicationContext(), "Funciona", Toast.LENGTH_SHORT);
+				tt.show();
+				
+			}
+		});
         
         // Acci—n al presionar el bot—n "Mis Datos".
         
