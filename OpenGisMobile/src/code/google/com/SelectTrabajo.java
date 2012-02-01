@@ -50,7 +50,7 @@ public class SelectTrabajo extends ListActivity {
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
 
 	    	Toast t = Toast.makeText(getApplicationContext(), "Clickea!!!", Toast.LENGTH_SHORT);
-	    	
+	    	t.show();
 	    	
 
 		}
