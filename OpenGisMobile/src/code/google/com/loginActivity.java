@@ -159,8 +159,7 @@ public class loginActivity extends Activity {
 						 String pass = user.getPass();
 	
 						 
-						 EnviarMail emailEnviar = new EnviarMail(dni,email,pass,nombre,apellidos);
-						
+					
 					
 					
 					
