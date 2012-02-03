@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,19 @@ public class ProductosIconListView extends ListActivity {
 	        
 	        inicializarLocales();
 
+	    }
+	    
+	    @Override
+	    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+	        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+	            
+	        	Intent vPrincipal = new Intent(ProductosIconListView.this,principalActivity.class);
+	        	startActivity(vPrincipal);
+	        	
+	            return true;
+	        }
+
+	        return super.onKeyDown(keyCode, event);
 	    }
 	    
 	    @Override
