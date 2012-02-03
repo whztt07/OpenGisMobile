@@ -171,6 +171,40 @@ public class AccesoWebService {
 	 */
 	
 
+	static Object[] convertirDatosJSONAperoMaximo(String data) throws JSONException {
+		
+		
+ 
+		JSONObject jsonObj = new JSONObject(data);
+		String strData = jsonObj.getString("aperos");
+		JSONArray jsonArray = new JSONArray(strData);
+ 
+		Object[] aperosList = new Object[jsonArray.length()];
+		
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject userObj = jsonArray.getJSONObject(i);
+			String userStr = userObj.getString("apero");
+			JSONObject item = new JSONObject(userStr);
+			
+			AperosDatos apero = new AperosDatos(item.getString("Max(idapero)"),"","","","","","");
+			aperosList[i] = apero;
+			
+		}
+ 
+		return aperosList;
+	}
+	
+	
+	/**
+	 * Este mŽtodo devuelve un Array de Objetos con todos los objetos encontrados. DespuŽs deberemos crear los objetos a partir
+	 * de la clase para poder mostrar los datos al usuario.
+	 * 
+	 * @param data String que se recoge al utilizar el mŽtodo recogerDatosWebService
+	 * @return
+	 * @throws JSONException
+	 */
+	
+
 	static Object[] convertirDatosJSONProductos(String data) throws JSONException {
 		
 		

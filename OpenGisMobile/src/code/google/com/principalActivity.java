@@ -123,6 +123,29 @@ public class principalActivity extends Activity {
 		                
 		            	//Aqu’ la ventana del nuevo Apero
 		            	
+		            	try{
+		            		
+			            	
+		            	String url = "http://79.108.245.167/OpenGisMobile/MaxIdAperoWebService.php";
+		            	
+		            	String data = AccesoWebService.recogerDatosWebService(url);
+		            	
+		            	Object[] obj = AccesoWebService.convertirDatosJSONAperoMaximo(data);
+		            	
+		            	AperosDatos apero = (AperosDatos) obj[0];
+		            	
+		            	String idNueva = Integer.parseInt(apero.getIdApero()) + 1 + "";	
+		            	
+		            	Intent vCrearApero = new Intent(principalActivity.this,AperoNuevo.class);
+		            	vCrearApero.putExtra("idNueva",idNueva);
+		            	vCrearApero.putExtra("dni",extras.getString("dni"));
+		            	startActivity(vCrearApero);
+		            	
+		            	}catch(Exception e2){
+		            		
+		            		
+		            	}
+		            	
 		            } 
 		        }); 
 		        dialogBuilder.create().show();

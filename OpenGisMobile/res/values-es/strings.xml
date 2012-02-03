@@ -90,4 +90,7 @@
     
     <string name="work">Trabajo:</string>
     <string name="addProductOK">Producto añadido correctamente</string>
+    
+    <string name="newTool">Nuevo Apero</string>
+    <string name="addToolOK">Apero añadido correctamente</string>
 </resources>

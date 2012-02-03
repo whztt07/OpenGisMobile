@@ -84,7 +84,8 @@
     <string name="msgMailYourPassword">Your password for all OpenGis applications is: </string>
     
     <string name="newProduct">New Product</string>
-    
+    <string name="newTool">New Tool</string>
     <string name="work">Work:</string>
     <string name="addProductOK">Product added correctly</string>
+    <string name="addToolOK">Tool added correctly</string>
 </resources>
