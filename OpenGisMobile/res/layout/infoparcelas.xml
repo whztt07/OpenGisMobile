@@ -198,44 +198,44 @@
                     android:layout_height="40dp" >
                 </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayout13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal" >
+
+                    <Button
+                        android:id="@+id/cmdModificarParcela"
+                        android:layout_width="103dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/modificar" />
+
+                    <Button
+                        android:id="@+id/cmdBorrarParcela"
+                        android:layout_width="103dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/delete" />
+
+                    <Button
+                        android:id="@+id/cmdGuardarParcela"
+                        android:layout_width="103dp"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="@string/guardar" />
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:id="@+id/linearLayout13"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal" >
-
-            <Button
-                android:id="@+id/cmdModificarParcela"
-                android:layout_width="103dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/modificar" />
-
-            <Button
-                android:id="@+id/cmdBorrarParcela"
-                android:layout_width="103dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/delete" />
-
-            <Button
-                android:id="@+id/cmdGuardarParcela"
-                android:layout_width="103dp"
-                android:layout_height="wrap_content"
-                android:text="@string/guardar"
-                android:enabled="false" />
-        </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

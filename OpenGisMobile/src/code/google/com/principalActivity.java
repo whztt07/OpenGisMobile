@@ -63,6 +63,7 @@ public class principalActivity extends Activity {
 
 				
 			Intent vTarea = new Intent(principalActivity.this,SelectTrabajo.class);	
+			vTarea.putExtra("dni",extras.getString("dni"));
 			startActivity(vTarea);
 			
 				
