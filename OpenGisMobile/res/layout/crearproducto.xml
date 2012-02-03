@@ -80,7 +80,7 @@
                     android:layout_marginLeft="23dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:enabled="false" />
+                    android:enabled="true" />
 
             </LinearLayout>
 
@@ -104,7 +104,39 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:enabled="false" />
+                    android:enabled="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayout11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/work"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <Spinner
+                        android:id="@+id/cbTareas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -128,7 +160,7 @@
                     android:layout_height="104dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:inputType="textMultiLine" />
 
             </LinearLayout>
@@ -153,26 +185,12 @@
                     android:baselineAligned="true" >
 
                     <Button
-                        android:id="@+id/cmdModificarProducto"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/modificar" />
-
-                    <Button
-                        android:id="@+id/cmdBorrarProducto"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/delete" />
-
-                    <Button
                         android:id="@+id/cmdGuardarProducto"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/guardar" 
-                        android:enabled="false"/>
+                        android:enabled="true"/>
                 </LinearLayout>
 
             </LinearLayout>

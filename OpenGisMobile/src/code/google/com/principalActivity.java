@@ -159,6 +159,9 @@ public class principalActivity extends Activity {
 		                
 		            	//Aqu’ la ventana del nuevo Producto
 		            	
+		            	Intent vCrearProducto = new Intent(principalActivity.this,ProductoNuevo.class);
+		            	startActivity(vCrearProducto);
+		            	
 		            } 
 		        }); 
 		        dialogBuilder.create().show();

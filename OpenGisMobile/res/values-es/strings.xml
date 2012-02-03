@@ -87,4 +87,6 @@
     <string name="msgMailYourPassword">Tu contraseña para todas las aplicaciones OpenGis es: </string>
 
     <string name="newProducto">Nuevo Producto</string>
+    
+    <string name="work">Trabajo:</string>
 </resources>
