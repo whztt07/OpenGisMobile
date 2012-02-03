@@ -57,7 +57,7 @@ public class AperoNuevo extends Activity {
 					Toast tt = Toast.makeText(getApplicationContext(),getString(R.string.addToolOK),Toast.LENGTH_SHORT);
 					tt.show();
 					
-					Intent vMisProductos = new Intent(AperoNuevo.this,ProductosIconListView.class);
+					Intent vMisProductos = new Intent(AperoNuevo.this,AperosIconListView.class);
 					vMisProductos.putExtra("dni",extras.getString("dni"));
 					startActivity(vMisProductos);
 					
