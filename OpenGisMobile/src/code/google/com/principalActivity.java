@@ -159,6 +159,8 @@ public class principalActivity extends Activity {
 		                
 		            	//Aqu’ la ventana del nuevo Producto
 		            	
+		            	//Buscamos la máxima id.
+		            	
 		            	Intent vCrearProducto = new Intent(principalActivity.this,ProductoNuevo.class);
 		            	startActivity(vCrearProducto);
 		            	

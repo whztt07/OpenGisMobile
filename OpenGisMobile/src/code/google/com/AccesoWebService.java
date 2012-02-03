@@ -197,6 +197,42 @@ public class AccesoWebService {
 	}
 	
 	
+	/**
+	 * Este método devuelve un Array de Objetos con todos los objetos encontrados. Después deberemos crear los objetos a partir
+	 * de la clase para poder mostrar los datos al usuario.
+	 * 
+	 * @param data String que se recoge al utilizar el método recogerDatosWebService
+	 * @return
+	 * @throws JSONException
+	 */
+	
+
+	static Object[] convertirDatosJSONProductoMaximo(String data) throws JSONException {
+		
+		
+ 
+		JSONObject jsonObj = new JSONObject(data);
+		String strData = jsonObj.getString("productos");
+		JSONArray jsonArray = new JSONArray(strData);
+ 
+		Object[] productosList = new Object[jsonArray.length()];
+		
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject userObj = jsonArray.getJSONObject(i);
+			String userStr = userObj.getString("producto");
+			JSONObject item = new JSONObject(userStr);
+			
+			ProductosDatos producto = new ProductosDatos(item.getString("Max(idprod)"),"","","","","","");
+		
+			
+			productosList[i] = producto;
+			
+		}
+ 
+		return productosList;
+	}
+	
+	
 	
 	/**
 	 * Este método devuelve un Array de Objetos con todos los objetos encontrados. Después deberemos crear los objetos a partir
