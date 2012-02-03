@@ -54,10 +54,7 @@ public class infoParcelasActivity extends Activity {
 				cmdGuardar.setEnabled(true);
 				
 				txtAliasparcela.setEnabled(true);
-				txtProvinciaparcela.setEnabled(true);
-				txtPoblacionparcela.setEnabled(true);
-				txtPoligonoparcela.setEnabled(true);
-				txtNumeroparcela.setEnabled(true);
+
 				
 			}
         	
