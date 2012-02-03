@@ -85,4 +85,6 @@
     <string name="msgMailPasswordRecovery">OpenGis - Recuperar Contraseña</string>
     <string name="msgMailHello">Hola</string>
     <string name="msgMailYourPassword">Tu contraseña para todas las aplicaciones OpenGis es: </string>
+
+    <string name="newProducto">Nuevo Producto</string>
 </resources>
