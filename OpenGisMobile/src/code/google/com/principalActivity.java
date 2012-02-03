@@ -134,7 +134,7 @@ public class principalActivity extends Activity {
 		            	
 		            	AperosDatos apero = (AperosDatos) obj[0];
 		            	
-		            	String idNueva = Integer.parseInt(apero.getIdApero()) + 1 + "";	
+		            	String idNueva = Integer.parseInt(apero.getIdApero()) + 1 + "";
 		            	
 		            	Intent vCrearApero = new Intent(principalActivity.this,AperoNuevo.class);
 		            	vCrearApero.putExtra("idNueva",idNueva);

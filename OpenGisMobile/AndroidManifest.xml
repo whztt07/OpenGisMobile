@@ -27,6 +27,12 @@
             
         </activity>
         
+        <activity
+            
+            android:name=".AperoNuevo" >
+            
+        </activity>
+        
                 <activity
             
             android:name=".misDatosActivity" >
