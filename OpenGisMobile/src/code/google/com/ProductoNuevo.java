@@ -2,11 +2,14 @@ package code.google.com;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.Toast;
 
 public class ProductoNuevo extends Activity {
 	
@@ -16,10 +19,15 @@ public class ProductoNuevo extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crearproducto);
         
-        Bundle extras = getIntent().getExtras();
+        final Bundle extras = getIntent().getExtras();
         
-        Spinner cbTareas = (Spinner) findViewById(R.id.cbTareas);
-        EditText txtId = (EditText) findViewById(R.id.txtIDProductoNuevo);
+        final Spinner cbTareas = (Spinner) findViewById(R.id.cbTareas);
+        final EditText txtId = (EditText) findViewById(R.id.txtIDProductoNuevo);
+        final EditText txtNombre = (EditText) findViewById(R.id.txtNombreProductoNuevo);
+        final EditText txtDosis = (EditText) findViewById(R.id.txtDosisProductoNuevo);
+        final EditText txtDescripcion = (EditText) findViewById(R.id.txtDescripcionProductoNuevo);
+        
+        Button bGuardar = (Button) findViewById(R.id.cmdGuardarProductoNuevo);
         
         ArrayAdapter adapter = ArrayAdapter.createFromResource(
                 this, R.array.arrayTareas, android.R.layout.simple_spinner_item);
@@ -30,7 +38,34 @@ public class ProductoNuevo extends Activity {
 
         txtId.setText(extras.getString("idNueva"));
         
-        
+        bGuardar.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View v) {
+				
+				
+				String url = "http://79.108.245.167/OpenGisMobile/CrearProductoWebService.php?id="+txtId.getText()+"&nom="+txtNombre.getText()+"&dosis="+txtDosis.getText()+"&tarea="+cbTareas.getSelectedItem()+"&desc="+txtDescripcion.getText()+"&dni="+extras.getString("dni")+"";
+
+				url = url.replaceAll(" ","%20");
+				
+				boolean finalizado = AccesoWebService.InsertarEnWebService(url);
+				
+				if(finalizado){
+					
+					Toast tt = Toast.makeText(getApplicationContext(),getString(R.string.addProductOK),Toast.LENGTH_SHORT);
+					tt.show();
+					
+				}else{
+					
+					// No se ha conseguido
+					
+				}
+				
+			}
+        	
+        	
+        	
+        	
+        });
         
 	}
 

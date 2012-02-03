@@ -164,6 +164,8 @@ public class principalActivity extends Activity {
 		            		
 		            	
 		            	String url = "http://79.108.245.167/OpenGisMobile/MaxIdProductoWebService.php";
+		            	
+		            	
 		            	String data = AccesoWebService.recogerDatosWebService(url);
 		            	
 		            	Object[] obj = AccesoWebService.convertirDatosJSONProductoMaximo(data);
@@ -173,6 +175,7 @@ public class principalActivity extends Activity {
 		            	String idNueva = Integer.parseInt(producto.getIdprod()) + 1 + "";	
 		            	Intent vCrearProducto = new Intent(principalActivity.this,ProductoNuevo.class);
 		            	vCrearProducto.putExtra("idNueva",idNueva);
+		            	vCrearProducto.putExtra("dni",extras.getString("dni"));
 		            	startActivity(vCrearProducto);
 		            	
 		            	}catch(Exception e2){

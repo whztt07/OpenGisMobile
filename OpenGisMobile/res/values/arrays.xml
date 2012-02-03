@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>  
     <resources>  
      <array name="arrayTareas">  
-    <item>1 - Enfangar</item>  
-    <item>2- Labrar</item>  
-    <item>3 - Rotovatar</item>  
-    <item>4 - Abonar</item>  
-    <item>5 - Pulverizar</item> 
-    <item>6 - Nivelar</item>  
+    <item>Enfangar</item>  
+    <item>Labrar</item>  
+    <item>Rotovatar</item>  
+    <item>Abonar</item>  
+    <item>Pulverizar</item> 
+    <item>Nivelar</item>  
      </array>
     </resources>

@@ -86,5 +86,5 @@
     <string name="newProduct">New Product</string>
     
     <string name="work">Work:</string>
-    
+    <string name="addProductOK">Product added correctly</string>
 </resources>
