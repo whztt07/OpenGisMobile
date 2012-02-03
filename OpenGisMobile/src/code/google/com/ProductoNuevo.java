@@ -1,6 +1,7 @@
 package code.google.com;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
@@ -53,6 +54,11 @@ public class ProductoNuevo extends Activity {
 					
 					Toast tt = Toast.makeText(getApplicationContext(),getString(R.string.addProductOK),Toast.LENGTH_SHORT);
 					tt.show();
+					
+					Intent vMisProductos = new Intent(ProductoNuevo.this,ProductosIconListView.class);
+					vMisProductos.putExtra("dni",extras.getString("dni"));
+					startActivity(vMisProductos);
+					
 					
 				}else{
 					
