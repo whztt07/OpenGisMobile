@@ -170,10 +170,9 @@ public class principalActivity extends Activity {
 		            	
 		            	ProductosDatos producto = (ProductosDatos) obj[0];
 		            	
-		            	int idNueva = Integer.parseInt(producto.getIdprod()) + 1;
-		            	
+		            	String idNueva = Integer.parseInt(producto.getIdprod()) + 1 + "";	
 		            	Intent vCrearProducto = new Intent(principalActivity.this,ProductoNuevo.class);
-		            	vCrearProducto.putExtra("idNueva", idNueva);
+		            	vCrearProducto.putExtra("idNueva",idNueva);
 		            	startActivity(vCrearProducto);
 		            	
 		            	}catch(Exception e2){
@@ -238,7 +237,15 @@ public class principalActivity extends Activity {
 			}
         	
 
+    public void alertaMensaje(String cadena,String titulo) {
         
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setMessage(cadena);
+        dialogBuilder.setCancelable(true).setTitle(titulo);
+        dialogBuilder.create().show();
+        }
+    
+
         
 	}
 	
