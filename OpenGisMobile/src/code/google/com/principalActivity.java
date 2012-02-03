@@ -274,12 +274,12 @@ public class principalActivity extends Activity {
         dialogBuilder.create().show();
         }
     
-   /* @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.config_menu, menu);
         return true;
-    }*/
+    }
     
 
         
