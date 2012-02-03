@@ -43,18 +43,6 @@ public class ProductosIconListView extends ListActivity {
 
 	    }
 	    
-	    @Override
-	    public boolean onKeyDown(int keyCode, KeyEvent event)  {
-	        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-	            
-	        	Intent vPrincipal = new Intent(ProductosIconListView.this,principalActivity.class);
-	        	startActivity(vPrincipal);
-	        	
-	            return true;
-	        }
-
-	        return super.onKeyDown(keyCode, event);
-	    }
 	    
 	    @Override
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
