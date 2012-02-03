@@ -44,7 +44,7 @@ public class AperoNuevo extends Activity {
 				
 				String tarea = cbTareas.getSelectedItem().toString();
 				
-				tarea = tarea.substring(1,1);
+				tarea = tarea.substring(0,1);
 
 				String url = "http://79.108.245.167/OpenGisMobile/CrearAperoWebService.php?id="+txtId.getText()+"&nom="+txtNombre.getText()+"&tam="+txtTamanyo.getText()+"&tarea="+tarea+"&desc="+txtDescripcion.getText()+"&dni="+extras.getString("dni")+"";
 
