@@ -2,12 +2,9 @@ package code.google.com;
 
 import java.util.ArrayList;
 
-import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,24 +16,25 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SelectTrabajo extends ListActivity {
+public class SelectApero extends ListActivity {
 	   private ArrayList<Local> m_locals = null;
 	    private IconListViewAdapter m_adapter;
 	    private String dni;
+	    private String selTarea;
 	    private ArrayList objetosCompletos;
 		
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.main2);
-	       
 	        TextView tit = (TextView) findViewById(R.id.tvTitulo);
-	        tit.setText(R.string.selectWork);
+	        tit.setText(R.string.selectTool);
 	        
-	       
-	      
-	        
-	        
+	        Bundle extra = getIntent().getExtras();
+			dni = extra.getString("dni");
+			selTarea = extra.getString("idTarea");
+			Toast to = Toast.makeText(getApplicationContext(), selTarea, Toast.LENGTH_LONG);
+	        to.show();
 	        /*
 	         * Al crear la clase se inicializa el ListView que muestra los aperos
 	         */          
@@ -51,25 +49,21 @@ public class SelectTrabajo extends ListActivity {
 	    
 	    @Override
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
-
-	    	//Toast t = Toast.makeText(getApplicationContext(), "Clickea!!!", Toast.LENGTH_SHORT);
-	    	//t.show();
-	    	TareasDatos tareaSeleccionada = (TareasDatos) objetosCompletos.get(position);
-	    	Bundle extras = getIntent().getExtras();
+	        /*Local local = (Local) l.getItemAtPosition(position);        
+	       
+	        Toast.makeText(this, local.getLocalName(), 
+	          		Toast.LENGTH_LONG).show();     */
 	    	
-	    	Intent seltrab = new Intent(SelectTrabajo.this,SelectApero.class);
-	    	seltrab.putExtra("idTarea",tareaSeleccionada.getIdtarea() );
-	    	seltrab.putExtra("nombreTarea",tareaSeleccionada.getNombre());
-	    	seltrab.putExtra("dni", extras.getString("dni"));
-	    	startActivity(seltrab);
+	    	AperosDatos aperoSeleccionado = (AperosDatos) objetosCompletos.get(position);
 	    	
-
-		}
-	    	
-	    	
-	    
-
-	   
+	    	Intent vInfoApero = new Intent(SelectApero.this,infoAperosActivity.class);
+	    	vInfoApero.putExtra("idApero",aperoSeleccionado.getIdApero() );
+	    	vInfoApero.putExtra("nombreApero",aperoSeleccionado.getNombreApero());
+	    	vInfoApero.putExtra("tama–oApero",aperoSeleccionado.getTamanyoApero());
+	    	vInfoApero.putExtra("descripcionApero",aperoSeleccionado.getDescripcionApero());
+	    	vInfoApero.putExtra("dniUser",aperoSeleccionado.getDNIUser());
+	    	startActivity(vInfoApero);
+	    }
 	    
 	    /*
 	     * Inicializacion del mapa
@@ -79,41 +73,42 @@ public class SelectTrabajo extends ListActivity {
 	    	
 	    	try {
 	    	
-
+	    	///////////DE AQUI//////////////
 	    	m_locals = new ArrayList<Local>();
 	    		
-			String url = "http://79.108.245.167/OpenGisMobile/MostrarTareasWebService.php";
+			String url = "http://79.108.245.167/OpenGisMobile/MisAperosWebService.php?dni="+dni+"";
 			
 			String data = AccesoWebService.recogerDatosWebService(url);
 			
-			final Object[] listaTareas = AccesoWebService.convertirDatosJSONTareas(data);
+			final Object[] listaAperos = AccesoWebService.convertirDatosJSONAperos(data);
 			
 			objetosCompletos = new ArrayList();
 			
-			for(int i=0;i<listaTareas.length;i++){
+			for(int i=0;i<listaAperos.length;i++){
 				
 				
-				TareasDatos tarea = (TareasDatos) listaTareas[i];
+				AperosDatos apero = (AperosDatos) listaAperos[i];
 				
-				// En caso de que ese apero del usuario estŽ activo, lo a–adiremos
+				// En caso de que ese apero del usuario estŽ activo
+				//y sea para la tarea seleccionada, lo añadiremos
 				
+				if(apero.getEstadoApero().equals("1")&&apero.getIdTarea().equals(selTarea)){
 
-					String productoMostrar = tarea.getNombre();
-					objetosCompletos.add(tarea);
+					String aperoMostrar = apero.getNombreApero();
+					objetosCompletos.add(apero);
 					
 					Local loc = new Local();
-					loc.setLocalName(tarea.getNombre());
-					loc.setLocalMedida("ID: " + tarea.getIdtarea());
+					loc.setLocalName(apero.getNombreApero());
+					loc.setLocalMedida(apero.getTamanyoApero()+"cm");
 					loc.setLocalImage(R.drawable.ic_launcher);
 					
 					m_locals.add(loc);
-				
+				}
 				
 			}
-	    	
 
        
-	            Log.i("Tareas anyadidas ", ""+ m_locals.size());
+	            Log.i("Aperos aÃ±adidos ", ""+ m_locals.size());
 	            
 	          } catch (Exception e) {
 	            Log.e("BACKGROUND_PROC", e.getMessage());
@@ -154,7 +149,6 @@ public class SelectTrabajo extends ListActivity {
     	                        TextView tt = (TextView) v.findViewById(R.id.row_toptext);
     	                        TextView tta = (TextView) v.findViewById(R.id.row_bottomtext);
     	                        ImageView im = (ImageView) v.findViewById(R.id.icon);
-    
     	                        
     	                        if (im!= null) {
     	                        	im.setImageResource(o.getLocalImage());
@@ -169,5 +163,8 @@ public class SelectTrabajo extends ListActivity {
     	                return v;
     	        }
     	}
+    	
+
+
     
 }

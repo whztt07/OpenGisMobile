@@ -29,6 +29,13 @@
         
         <activity
             
+            android:name=".SelectApero" >
+            
+        </activity>
+        
+        
+        <activity
+            
             android:name=".AperoNuevo" >
             
         </activity>

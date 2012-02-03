@@ -93,4 +93,7 @@
     
     <string name="newTool">Nuevo Apero</string>
     <string name="addToolOK">Apero añadido correctamente</string>
+    
+    <string name="selectTool">Selecciona un apero:</string>
+    <string name="selectWork">Selecciona una tarea:</string>
 </resources>

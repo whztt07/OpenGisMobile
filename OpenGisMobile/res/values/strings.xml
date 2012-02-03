@@ -88,4 +88,7 @@
     <string name="work">Work:</string>
     <string name="addProductOK">Product added correctly</string>
     <string name="addToolOK">Tool added correctly</string>
+    
+    <string name="selectTool">Select a Tool:</string>
+    <string name="selectWork">Select a Work:</string>
 </resources>
