@@ -263,6 +263,19 @@ public class ParcelasIconListView extends ListActivity {
     	                return v;
     	        }
     	}
+    
+    
+    @Override
+    public void onBackPressed() {
+    
+    	
+    	Intent vPrincipal = new Intent(ParcelasIconListView.this,principalActivity.class);
+    	vPrincipal.putExtra("dni",dni);
+    	startActivity(vPrincipal);
+    	
+    	
+    return;
+    }
     	
 
     public void alertaMensaje(String cadena,String titulo) {

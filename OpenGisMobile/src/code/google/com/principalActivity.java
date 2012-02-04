@@ -260,6 +260,18 @@ public class principalActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    
+    
+    @Override
+    public void onBackPressed() {
+    
+    	
+    	Intent vLogin = new Intent(principalActivity.this,loginActivity.class);
+    	startActivity(vLogin);
+    	
+    	
+    return;
+    }
 
     public void alertaMensaje(String cadena,String titulo) {
         

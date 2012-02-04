@@ -171,6 +171,18 @@ public class ProductosIconListView extends ListActivity {
     	        }
     	}
     	
+    
+    @Override
+    public void onBackPressed() {
+    
+    	
+    	Intent vPrincipal = new Intent(ProductosIconListView.this,principalActivity.class);
+    	vPrincipal.putExtra("dni",dni);
+    	startActivity(vPrincipal);
+    	
+    	
+    return;
+    }
 
 
     

@@ -170,6 +170,17 @@ public class AperosIconListView extends ListActivity {
     	}
     	
 
+    @Override
+    public void onBackPressed() {
+    
+    	
+    	Intent vPrincipal = new Intent(AperosIconListView.this,principalActivity.class);
+    	vPrincipal.putExtra("dni",dni);
+    	startActivity(vPrincipal);
+    	
+    	
+    return;
+    }
 
     
 }
