@@ -171,17 +171,17 @@ public class ProductosIconListView extends ListActivity {
     	        }
     	}
     	
-    
     @Override
-    public void onBackPressed() {
-    
-    	
-    	Intent vPrincipal = new Intent(ProductosIconListView.this,principalActivity.class);
-    	vPrincipal.putExtra("dni",dni);
-    	startActivity(vPrincipal);
-    	
-    	
-    return;
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+        	Intent vPrincipal = new Intent(ProductosIconListView.this,principalActivity.class);
+        	vPrincipal.putExtra("dni",dni);
+        	startActivity(vPrincipal);
+        	
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
 
