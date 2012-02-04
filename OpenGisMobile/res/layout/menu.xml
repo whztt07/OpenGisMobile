@@ -55,46 +55,12 @@
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/tvName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dip"
-                    android:text="@string/name"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textStyle="bold"
-                    android:width="110dip" />
-
-                <TextView
-                    android:id="@+id/tvNameData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Supuesto Nombre"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/tvSurname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dip"
-                    android:text="@string/surname"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textStyle="bold"
-                    android:width="110dip" />
-
-                <TextView
-                    android:id="@+id/tvSurnameData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Supuesto Apellido"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
 
             <Button
@@ -109,17 +75,6 @@
                 android:textStyle="bold"
                 android:width="180sp" />
 
-            <TextView
-                android:id="@+id/tvConfig"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:paddingBottom="10dip"
-                android:paddingTop="20dip"
-                android:text="@string/config"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="bold" />
-
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="fill_parent"
@@ -132,60 +87,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
-
-                <Button
-                    android:id="@+id/btnConfigTools"
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/apero"
-                    android:height="80sp"
-                    android:text="@string/Tools"
-                    android:textStyle="bold"
-                    android:width="95sp" />
-
-                <Button
-                    android:id="@+id/btnConfigProducts"
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/producto"
-                    android:height="80sp"
-                    android:text="@string/Products"
-                    android:textStyle="bold"
-                    android:width="95sp" />
-
-                <Button
-                    android:id="@+id/btnConfigLots"
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/lots"
-                    android:height="80sp"
-                    android:text="@string/MisParcelas"
-                    android:textStyle="bold"
-                    android:width="95sp" />
-
-                <Button
-                    android:id="@+id/btnConfigUserData"
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/usuario"
-                    android:height="80sp"
-                    android:text="@string/MisDatos"
-                    android:textStyle="bold"
-                    android:width="95sp" />
 
             </LinearLayout>
 

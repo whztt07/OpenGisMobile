@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 public class principalActivity extends Activity {
 	
 	
+	private String dni;
+
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,32 +33,15 @@ public class principalActivity extends Activity {
         // botones que vamos a necesitar.
         
         final TextView txtDNI = (TextView) findViewById(R.id.tvIdData);
-        final TextView txtNombre = (TextView) findViewById(R.id.tvNameData);
-        final TextView txtApellidos = (TextView) findViewById(R.id.tvSurnameData);
         
-        Button cmdMisDatos = (Button) findViewById(R.id.btnConfigUserData);
-        Button cmdMisAperos = (Button) findViewById(R.id.btnConfigTools);
-        Button cmdMisProductos = (Button) findViewById(R.id.btnConfigProducts);
-        Button cmdMisParcelas = (Button) findViewById(R.id.btnConfigLots);
+
         Button cmdStart = (Button) findViewById(R.id.btnStart);
         
         // Rellenamos los TextView con los parametros guardados en extras
         
-        txtDNI.setText(extras.getString("dni"));
-        txtNombre.setText(extras.getString("nombre"));
-        txtApellidos.setText(extras.getString("apellidos"));
-        
-        // Recogemos los parametros restantes
-        
-        final String email = extras.getString("email");
-        final String telefono = extras.getString("telefono");
-        final String direccion = extras.getString("direccion");
-        final String poblacion = extras.getString("poblacion");
-        final String provincia = extras.getString("provincia");
-        final String cp= extras.getString("cp");
-        final String fec_nac = extras.getString("fec_nac");
-        
-        // Acciones de boton
+        txtDNI.setText(extras.getString("dni"));        
+        this.dni = extras.getString("dni");
+
         
         //Cuando presiona el boton comenzar
         
@@ -72,39 +58,27 @@ public class principalActivity extends Activity {
 			}
 		});
         
-        // Acci—n al presionar el bot—n "Mis Datos".
-        
-        cmdMisDatos.setOnClickListener(new View.OnClickListener(){
-
-			public void onClick(View arg0) {
-				
-				
-				Intent vMisDatos = new Intent(principalActivity.this,misDatosActivity.class);
-				
-				vMisDatos.putExtra("dni",txtDNI.getText());
-				vMisDatos.putExtra("nombre",txtNombre.getText());
-				vMisDatos.putExtra("apellidos",txtApellidos.getText());
-				vMisDatos.putExtra("email",email);
-				vMisDatos.putExtra("telefono",telefono);
-				vMisDatos.putExtra("direccion",direccion);
-				vMisDatos.putExtra("poblacion",poblacion);
-				vMisDatos.putExtra("provincia",provincia);
-				vMisDatos.putExtra("cp",cp);
-				vMisDatos.putExtra("fec_nac",fec_nac);
-				
-				startActivity(vMisDatos);
+       
 				
 			}
-        
-        
-        });
-        
-        
-        cmdMisAperos.setOnClickListener(new View.OnClickListener(){
-
-			public void onClick(View arg0) {
-				
-				
+        	
+	//Creamos el menœ de configuracion
+	
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.config_menu, menu);
+        return true;
+    }
+    
+    // Acciones del menœ de configuraci—n
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.config_apero:
+                
 		        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(principalActivity.this);
 		        dialogBuilder.setMessage(getString(R.string.ToolsConfig));
 		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Tools));
@@ -114,7 +88,7 @@ public class principalActivity extends Activity {
 		            	
 						
 						Intent vMisAperos = new Intent(principalActivity.this,AperosIconListView.class);
-						vMisAperos.putExtra("dni",txtDNI.getText());
+						vMisAperos.putExtra("dni",dni);
 						startActivity(vMisAperos);
 		            	
 		            } 
@@ -140,7 +114,7 @@ public class principalActivity extends Activity {
 		            	
 		            	Intent vCrearApero = new Intent(principalActivity.this,AperoNuevo.class);
 		            	vCrearApero.putExtra("idNueva",idNueva);
-		            	vCrearApero.putExtra("dni",extras.getString("dni"));
+		            	vCrearApero.putExtra("dni",dni);
 		            	startActivity(vCrearApero);
 		            	
 		            	}catch(Exception e2){
@@ -151,21 +125,13 @@ public class principalActivity extends Activity {
 		            } 
 		        }); 
 		        dialogBuilder.create().show();
-
-			}
-        	
-        	
-        });
-        
-        
-        
-        
-        cmdMisProductos.setOnClickListener(new View.OnClickListener(){
-
-			public void onClick(View arg0) {
-				
-				
-				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(principalActivity.this);
+            	
+            	
+            	
+                return true;
+            case R.id.config_Producto:
+                
+            	dialogBuilder = new AlertDialog.Builder(principalActivity.this);
 		        dialogBuilder.setMessage(getString(R.string.ProductsConfig));
 		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Products));
 		        dialogBuilder.setPositiveButton(getString(R.string.showProducts),new DialogInterface.OnClickListener() { 
@@ -174,7 +140,7 @@ public class principalActivity extends Activity {
 		            	
 						
 						Intent vMisProductos = new Intent(principalActivity.this,ProductosIconListView.class);
-						vMisProductos.putExtra("dni",extras.getString("dni"));
+						vMisProductos.putExtra("dni",dni);
 						startActivity(vMisProductos);
 		            	
 		            } 
@@ -201,7 +167,7 @@ public class principalActivity extends Activity {
 		            	String idNueva = Integer.parseInt(producto.getIdprod()) + 1 + "";	
 		            	Intent vCrearProducto = new Intent(principalActivity.this,ProductoNuevo.class);
 		            	vCrearProducto.putExtra("idNueva",idNueva);
-		            	vCrearProducto.putExtra("dni",extras.getString("dni"));
+		            	vCrearProducto.putExtra("dni",dni);
 		            	startActivity(vCrearProducto);
 		            	
 		            	}catch(Exception e2){
@@ -214,19 +180,13 @@ public class principalActivity extends Activity {
 		        }); 
 		        dialogBuilder.create().show();
 
-			}
-        	
-        	
-        });
-				
-        
-        
-        cmdMisParcelas.setOnClickListener(new View.OnClickListener(){
-
-			public void onClick(View v) {
-				
-				
-				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(principalActivity.this);
+            	
+            	
+            	
+                return true;
+            case R.id.config_parcela:
+                
+            	dialogBuilder = new AlertDialog.Builder(principalActivity.this);
 		        dialogBuilder.setMessage(getString(R.string.LotsConfig));
 		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Lots));
 		        dialogBuilder.setPositiveButton(getString(R.string.showLots),new DialogInterface.OnClickListener() { 
@@ -235,7 +195,7 @@ public class principalActivity extends Activity {
 		            	
 						
 						Intent vMisParcelas = new Intent(principalActivity.this,ParcelasIconListView.class);
-						vMisParcelas.putExtra("dni",txtDNI.getText());
+						vMisParcelas.putExtra("dni",dni);
 						startActivity(vMisParcelas);
 		            	
 		            } 
@@ -246,25 +206,30 @@ public class principalActivity extends Activity {
 		                
 		            	
 		            	Intent vTodasLasParcelas = new Intent(principalActivity.this,TodasParcelasIconListView.class);
-		            	vTodasLasParcelas.putExtra("dni",txtDNI.getText());
+		            	vTodasLasParcelas.putExtra("dni",dni);
 		            	startActivity(vTodasLasParcelas);
 		            	
 		            } 
 		        }); 
 		        dialogBuilder.create().show();
-
-			}
+            	
+            	
+            	
+                return true;
+            case R.id.config_datos:
+                
 				
-			
-        	
-        	
-        	
-        });
-        
-        
+				Intent vMisDatos = new Intent(principalActivity.this,misDatosActivity.class);
 				
-			}
-        	
+				startActivity(vMisDatos);
+            	
+            	
+            	
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public void alertaMensaje(String cadena,String titulo) {
         
@@ -274,12 +239,7 @@ public class principalActivity extends Activity {
         dialogBuilder.create().show();
         }
     
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.config_menu, menu);
-        return true;
-    }
+
     
 
         
