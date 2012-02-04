@@ -81,7 +81,7 @@ public class principalActivity extends Activity {
                 
 		        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(principalActivity.this);
 		        dialogBuilder.setMessage(getString(R.string.ToolsConfig));
-		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Tools));
+		        dialogBuilder.setCancelable(true).setTitle(getString(R.string.Tools));
 		        dialogBuilder.setPositiveButton(getString(R.string.showTools),new DialogInterface.OnClickListener() { 
 		            public void onClick(DialogInterface dialog, int arg1) {
 		            	
@@ -133,7 +133,7 @@ public class principalActivity extends Activity {
                 
             	dialogBuilder = new AlertDialog.Builder(principalActivity.this);
 		        dialogBuilder.setMessage(getString(R.string.ProductsConfig));
-		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Products));
+		        dialogBuilder.setCancelable(true).setTitle(getString(R.string.Products));
 		        dialogBuilder.setPositiveButton(getString(R.string.showProducts),new DialogInterface.OnClickListener() { 
 		            public void onClick(DialogInterface dialog, int arg1) {
 		            	
@@ -188,7 +188,7 @@ public class principalActivity extends Activity {
                 
             	dialogBuilder = new AlertDialog.Builder(principalActivity.this);
 		        dialogBuilder.setMessage(getString(R.string.LotsConfig));
-		        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Lots));
+		        dialogBuilder.setCancelable(true).setTitle(getString(R.string.Lots));
 		        dialogBuilder.setPositiveButton(getString(R.string.showLots),new DialogInterface.OnClickListener() { 
 		            public void onClick(DialogInterface dialog, int arg1) {
 		            	

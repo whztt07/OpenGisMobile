@@ -27,7 +27,7 @@ public class misDatosActivity extends Activity {
         final Button cmdModificar = (Button) findViewById(R.id.cmdModificar);
         final Button cmdGuardar = (Button) findViewById(R.id.cmdGuardar);
         
-        Bundle extras = getIntent().getExtras();
+        final Bundle extras = getIntent().getExtras();
         
         
         txtDNI.setText(extras.getString("dni"));  
@@ -94,8 +94,9 @@ public class misDatosActivity extends Activity {
 	            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgModifyOK), Toast.LENGTH_SHORT);
 	            		toast.show();
 								
-	            		Intent vLogin = new Intent(misDatosActivity.this, loginActivity.class);
-	            		startActivity(vLogin);
+	            		Intent vPrincipal = new Intent(misDatosActivity.this, principalActivity.class);
+	            		vPrincipal.putExtra("dni",extras.getString("dni"));
+	            		startActivity(vPrincipal);
 	            		
 
 					}else{
