@@ -57,7 +57,7 @@ public class TodasParcelasIconListView extends ListActivity {
 	    
 	        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(TodasParcelasIconListView.this);
 	        dialogBuilder.setMessage(getString(R.string.msgAddLots));
-	        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Tools));
+	        dialogBuilder.setCancelable(true).setTitle(getString(R.string.Tools));
 	        dialogBuilder.setPositiveButton(getString(R.string.add),new DialogInterface.OnClickListener() { 
 	            public void onClick(DialogInterface dialog, int arg1) {
 

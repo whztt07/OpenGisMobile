@@ -57,7 +57,7 @@ public class ParcelasIconListView extends ListActivity {
 	    	
 	        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ParcelasIconListView.this);
 	        dialogBuilder.setMessage(getString(R.string.LotsConfig));
-	        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Lots));
+	        dialogBuilder.setCancelable(true).setTitle(getString(R.string.Lots));
 	        dialogBuilder.setPositiveButton(getString(R.string.editLot),new DialogInterface.OnClickListener() { 
 	            public void onClick(DialogInterface dialog, int arg1) {
 	            	
@@ -99,7 +99,7 @@ public class ParcelasIconListView extends ListActivity {
 	            	
 					AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(ParcelasIconListView.this);
 			        dialogBuilder.setMessage(getString(R.string.msgDeleteLot));
-			        dialogBuilder.setCancelable(false).setTitle(getString(R.string.Lots));
+			        dialogBuilder.setCancelable(true).setTitle(getString(R.string.Lots));
 			        dialogBuilder.setPositiveButton(getString(R.string.yes),new DialogInterface.OnClickListener() { 
 			            public void onClick(DialogInterface dialog, int arg1) {
 			            	
