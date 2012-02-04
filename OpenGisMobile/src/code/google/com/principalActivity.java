@@ -219,10 +219,40 @@ public class principalActivity extends Activity {
             case R.id.config_datos:
                 
 				
-				Intent vMisDatos = new Intent(principalActivity.this,misDatosActivity.class);
+            	String direccionWebService = "http://79.108.245.167/OpenGisMobile/MostrarDatosWebService.php?dni="+dni;
+
 				
+				
+				String data = AccesoWebService.recogerDatosWebService(direccionWebService);
+			
+				try{
+					
+			
+				// En este momento cogemos dichos datos en formato JSON y los pasamos a string, el cual almacenamos en un array.
+					
+				
+				 Object[] resultado = AccesoWebService.convertirDatosJSONUser(data);
+				
+				 UserDatos user = (UserDatos) resultado[0];
+
+				String nombre = user.getNombre();
+				String apellidos = user.getApellidos();
+				String email = user.getEmail();
+				String telefono = user.getTelefono();
+            	
+            	
+				Intent vMisDatos = new Intent(principalActivity.this,misDatosActivity.class);
+				vMisDatos.putExtra("dni",dni);
+				vMisDatos.putExtra("nombre",nombre);
+				vMisDatos.putExtra("apellidos",apellidos);
+				vMisDatos.putExtra("email",email);
+				vMisDatos.putExtra("telefono",telefono);
 				startActivity(vMisDatos);
             	
+				}catch(Exception e2){
+					
+					
+				}
             	
             	
                 return true;

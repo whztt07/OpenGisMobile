@@ -69,28 +69,9 @@ public class loginActivity extends Activity {
 					 UserDatos user = (UserDatos) resultado[0];
 
 					 String dni = user.getDNI();
-					 String nombre = user.getNombre();
-					 String apellidos = user.getApellidos();
-					 String email = user.getEmail();
-					 String telefono = user.getTelefono();
-					 String direccion = user.getPoblacion();
-					 String provincia = user.getProvincia();
-					 String poblacion = user.getPoblacion();
-					 String cp = user.getCP();
-					 String fec_nac = user.getFecNac();
-
 				
 					Intent vPrincipal = new Intent(loginActivity.this, principalActivity.class);
-					vPrincipal.putExtra("dni",dni);
-					vPrincipal.putExtra("nombre",nombre);
-					vPrincipal.putExtra("apellidos",apellidos);
-					vPrincipal.putExtra("email",email);
-					vPrincipal.putExtra("telefono",telefono);
-					vPrincipal.putExtra("direccion",direccion);
-					vPrincipal.putExtra("poblacion",poblacion);
-					vPrincipal.putExtra("provincia",provincia);
-					vPrincipal.putExtra("cp",cp);
-					vPrincipal.putExtra("fec_nac",fec_nac);			
+					vPrincipal.putExtra("dni",dni);	
 					startActivity(vPrincipal);
 					
 					
