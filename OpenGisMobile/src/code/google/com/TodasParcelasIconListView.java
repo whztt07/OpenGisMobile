@@ -38,7 +38,7 @@ public class TodasParcelasIconListView extends ListActivity {
 	        final EditText txtDNI = (EditText) findViewById(R.id.txtDNIBuscar);
 	        final Button cmdBuscar = (Button) findViewById(R.id.cmdBuscar);
 	        
-	        lblDni.setText("DNI:");
+	        lblDni.setText("Dni:");
 	        cmdBuscar.setText(getString(R.string.search));
 	        
 	        /*
@@ -199,7 +199,7 @@ public class TodasParcelasIconListView extends ListActivity {
 		    	///////////DE AQUI//////////////
 		    	m_locals = new ArrayList<Local>();
 		    		
-				String url = "http://79.108.245.167/OpenGisMobile/MisParcelasWebService.php?dni="+dniBuscado+"";
+				String url = "http://79.108.245.167/OpenGisMobile/MostrarParcelasWebService.php?dni="+dniBuscado+"";
 				
 				String data = AccesoWebService.recogerDatosWebService(url);
 				
