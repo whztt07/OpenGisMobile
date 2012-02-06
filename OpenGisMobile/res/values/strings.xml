@@ -91,6 +91,8 @@
     
     <string name="selectTool">Select a Tool:</string>
     <string name="selectWork">Select a Work:</string>
+    <string name="selectProduct">Select a Product:</string>
+    <string name="selectLot">Select a Lot:</string>
     
     <string name="search">Search</string>
     

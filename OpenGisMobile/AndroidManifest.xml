@@ -102,6 +102,8 @@
             android:name=".ProductoNuevo" >
             
         </activity>
+        <activity android:name=".SelectProducto"></activity>
+        <activity android:name=".SelectParcela"></activity>
         
     </application>
     

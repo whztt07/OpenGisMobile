@@ -2,11 +2,14 @@ package code.google.com;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,23 +19,26 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SelectApero extends ListActivity {
+public class SelectParcela extends ListActivity {
 	   private ArrayList<Local> m_locals = null;
 	    private IconListViewAdapter m_adapter;
-	    private String dni;
-	    private String selTarea;
+	    private String dni,selTarea, selApero,selPro;
 	    private ArrayList objetosCompletos;
 		
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.main2);
+	        
 	        TextView tit = (TextView) findViewById(R.id.tvTitulo);
-	        tit.setText(R.string.selectTool);
+	        tit.setText(R.string.selectLot);
 	        
 	        Bundle extra = getIntent().getExtras();
 			dni = extra.getString("dni");
 			selTarea = extra.getString("idTarea");
+			selApero = extra.getString("idApero");
+			selPro = extra.getString("idProducto");
+	        
 	        /*
 	         * Al crear la clase se inicializa el ListView que muestra los aperos
 	         */          
@@ -47,34 +53,20 @@ public class SelectApero extends ListActivity {
 	    
 	    @Override
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
-	        /*Local local = (Local) l.getItemAtPosition(position);        
-	       
-	        Toast.makeText(this, local.getLocalName(), 
-	          		Toast.LENGTH_LONG).show();     */
+	    	
 	    	if((Integer.parseInt(selTarea))==4||Integer.parseInt(selTarea)==5){
-		    	AperosDatos AperoSeleccionado = (AperosDatos) objetosCompletos.get(position);
-		    	Bundle extras = getIntent().getExtras();
-		    	
-		    	Intent selAp = new Intent(SelectApero.this,SelectProducto.class);
-		    	selAp.putExtra("idTarea",extras.getString("idTarea"));
-		    	selAp.putExtra("nombreTarea",extras.getString("nombreTarea"));
-		    	selAp.putExtra("dni", extras.getString("dni"));
-		    	selAp.putExtra("idApero", AperoSeleccionado.getIdApero());
-		    	selAp.putExtra("nombreApero", AperoSeleccionado.getNombreApero());
-		    	startActivity(selAp);
+	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
+	    		Toast info = Toast.makeText(getApplicationContext(),
+	    		"Tarea:"+selTarea+" Apero:"+selApero+" Producto:"+selPro+" Parcela:"+ParcelaSeleccionada.getIdparcela(), Toast.LENGTH_LONG);
+	    		info.show();
 	    	}else{
-		    	AperosDatos AperoSeleccionado = (AperosDatos) objetosCompletos.get(position);
-		    	Bundle extras = getIntent().getExtras();
-		    	
-		    	Intent selAp = new Intent(SelectApero.this,SelectParcela.class);
-		    	selAp.putExtra("idTarea",extras.getString("idTarea"));
-		    	selAp.putExtra("nombreTarea",extras.getString("nombreTarea"));
-		    	selAp.putExtra("dni", extras.getString("dni"));
-		    	selAp.putExtra("idApero", AperoSeleccionado.getIdApero());
-		    	selAp.putExtra("nombreApero", AperoSeleccionado.getNombreApero());
-		    	startActivity(selAp);
+	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
+	    		Toast info = Toast.makeText(getApplicationContext(),
+	    		"Tarea:"+selTarea+" Apero:"+selApero+" Parcela:"+ParcelaSeleccionada.getIdparcela(), Toast.LENGTH_LONG);
+	    		info.show();
 	    	}
 	    }
+	    
 	    
 	    /*
 	     * Inicializacion del mapa
@@ -87,39 +79,49 @@ public class SelectApero extends ListActivity {
 	    	///////////DE AQUI//////////////
 	    	m_locals = new ArrayList<Local>();
 	    		
-			String url = "http://79.108.245.167/OpenGisMobile/MisAperosWebService.php?dni="+dni+"";
+			String url = "http://79.108.245.167/OpenGisMobile/MisParcelasWebService.php?dni="+dni+"";
 			
 			String data = AccesoWebService.recogerDatosWebService(url);
 			
-			final Object[] listaAperos = AccesoWebService.convertirDatosJSONAperos(data);
+			final Object[] listaParcelas = AccesoWebService.convertirDatosJSONParcelas(data);
 			
 			objetosCompletos = new ArrayList();
 			
-			for(int i=0;i<listaAperos.length;i++){
+			for(int i=0;i<listaParcelas.length;i++){
 				
 				
-				AperosDatos apero = (AperosDatos) listaAperos[i];
+				ParcelasDatos parcela = (ParcelasDatos) listaParcelas[i];
 				
-				// En caso de que ese apero del usuario esté activo
-				//y sea para la tarea seleccionada, lo aÒadiremos
+				// En caso de que ese apero del usuario esté activo, lo añadiremos
 				
-				if(apero.getEstadoApero().equals("1")&&apero.getIdTarea().equals(selTarea)){
+				if(parcela.getActivo().equals("1")){
 
-					String aperoMostrar = apero.getNombreApero();
-					objetosCompletos.add(apero);
+					String productoMostrar = parcela.getAlias();
+					objetosCompletos.add(parcela);
 					
 					Local loc = new Local();
-					loc.setLocalName(apero.getNombreApero());
-					loc.setLocalMedida(apero.getTamanyoApero()+"cm");
+					loc.setLocalName(parcela.getAlias());
+					loc.setLocalMedida("ID de parcela: " + parcela.getIdparcela());
 					loc.setLocalImage(R.drawable.ic_launcher);
 					
 					m_locals.add(loc);
 				}
 				
 			}
+	    	
+	    	//////////A AQUI///////////////
+	    	
+	            /*m_locals = new ArrayList<Local>();
 
+	            Local o1 = new Local();
+	            o1.setLocalName("Apero2");
+	            o1.setLocalMedida("5,7m");
+	            o1.setLocalImage(R.drawable.ic_launcher);
+	           
+
+	            m_locals.add(o1);*/
        
-	            Log.i("Aperos a√±adidos ", ""+ m_locals.size());
+	            Log.i("Parcelas a√±adidos ", ""+ m_locals.size());
 	            
 	          } catch (Exception e) {
 	            Log.e("BACKGROUND_PROC", e.getMessage());
@@ -160,6 +162,7 @@ public class SelectApero extends ListActivity {
     	                        TextView tt = (TextView) v.findViewById(R.id.row_toptext);
     	                        TextView tta = (TextView) v.findViewById(R.id.row_bottomtext);
     	                        ImageView im = (ImageView) v.findViewById(R.id.icon);
+    
     	                        
     	                        if (im!= null) {
     	                        	im.setImageResource(o.getLocalImage());
@@ -174,8 +177,16 @@ public class SelectApero extends ListActivity {
     	                return v;
     	        }
     	}
-    	
+    
 
 
+    public void alertaMensaje(String cadena,String titulo) {
+        
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setMessage(cadena);
+        dialogBuilder.setCancelable(true).setTitle(titulo);
+        dialogBuilder.create().show();
+        }
+    
     
 }
