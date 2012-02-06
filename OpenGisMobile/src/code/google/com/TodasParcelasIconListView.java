@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,11 +31,15 @@ public class TodasParcelasIconListView extends ListActivity {
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.main);
+	        setContentView(R.layout.listabusqueda);
 	        
 	       
-	      
+	        final TextView lblDni= (TextView) findViewById(R.id.tvTituloBuscar);
+	        final EditText txtDNI = (EditText) findViewById(R.id.txtDNIBuscar);
+	        final Button cmdBuscar = (Button) findViewById(R.id.cmdBuscar);
 	        
+	        lblDni.setText("DNI:");
+	        cmdBuscar.setText(getString(R.string.search));
 	        
 	        /*
 	         * Al crear la clase se inicializa el ListView que muestra los aperos
@@ -43,7 +49,19 @@ public class TodasParcelasIconListView extends ListActivity {
 	        this.m_adapter = new IconListViewAdapter(this, R.layout.iconrow, m_locals);
 	        setListAdapter(this.m_adapter);
 	        
-	        inicializarLocales();
+	        cmdBuscar.setOnClickListener(new View.OnClickListener(){
+	        	
+
+				public void onClick(View arg0) {
+					
+					String dniBuscado = txtDNI.getText().toString();
+					
+					inicializarLocales(dniBuscado);
+					
+				}
+	        	
+	        	
+	        });
 
 	    }
 	    
@@ -167,69 +185,78 @@ public class TodasParcelasIconListView extends ListActivity {
 	     * Inicializacion del mapa
 	     */
 	    
-	    private void inicializarLocales(){
+	    private void inicializarLocales(String dniBuscado){
 	    	
-	    	try {
-	    	
-	    	///////////DE AQUI//////////////
-	    	m_locals = new ArrayList<Local>();
+	    	if(dniBuscado == " "){
 	    		
-			String url = "http://79.108.245.167/OpenGisMobile/MostrarParcelasWebService.php";
-			
-			String data = AccesoWebService.recogerDatosWebService(url);
-			
-			final Object[] listaParcelas = AccesoWebService.convertirDatosJSONParcelas(data);
-			
-			objetosCompletos = new ArrayList();
-			
-			for(int i=0;i<listaParcelas.length;i++){
+        		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgInsertDni), Toast.LENGTH_SHORT);
+        		toast.show(); 
+	    		
+	    	}else{
+	    	
+		    	try {
+		    	
+		    	///////////DE AQUI//////////////
+		    	m_locals = new ArrayList<Local>();
+		    		
+				String url = "http://79.108.245.167/OpenGisMobile/MisParcelasWebService.php?dni="+dniBuscado+"";
 				
+				String data = AccesoWebService.recogerDatosWebService(url);
 				
-				ParcelasDatos parcela = (ParcelasDatos) listaParcelas[i];
+				final Object[] listaParcelas = AccesoWebService.convertirDatosJSONParcelas(data);
 				
-				// En caso de que ese apero del usuario esté activo, lo añadiremos
+				objetosCompletos = new ArrayList();
 				
-				if(parcela.getActivo().equals("1")){
-
-					String productoMostrar = parcela.getAlias();
-					objetosCompletos.add(parcela);
+				for(int i=0;i<listaParcelas.length;i++){
 					
-					Local loc = new Local();
-					loc.setLocalName(parcela.getAlias());
-					loc.setLocalMedida("ID: " + parcela.getIdparcela() + " - DNI: " + parcela.getDNIPropietario());
-					loc.setLocalImage(R.drawable.ic_launcher);
 					
-					m_locals.add(loc);
+					ParcelasDatos parcela = (ParcelasDatos) listaParcelas[i];
+					
+					// En caso de que ese apero del usuario esté activo, lo añadiremos
+					
+					if(parcela.getActivo().equals("1")){
+	
+						String productoMostrar = parcela.getAlias();
+						objetosCompletos.add(parcela);
+						
+						Local loc = new Local();
+						loc.setLocalName(parcela.getAlias());
+						loc.setLocalMedida("ID: " + parcela.getIdparcela() + " - DNI: " + parcela.getDNIPropietario());
+						loc.setLocalImage(R.drawable.ic_launcher);
+						
+						m_locals.add(loc);
+					}
+					
 				}
-				
-			}
-	    	
-	    	//////////A AQUI///////////////
-	    	
-	            /*m_locals = new ArrayList<Local>();
-
-	            Local o1 = new Local();
-	            o1.setLocalName("Apero2");
-	            o1.setLocalMedida("5,7m");
-	            o1.setLocalImage(R.drawable.ic_launcher);
-	           
-
-	            m_locals.add(o1);*/
-       
-	            Log.i("Parcelas a√±adidos ", ""+ m_locals.size());
-	            
-	          } catch (Exception e) {
-	            Log.e("BACKGROUND_PROC", e.getMessage());
-	          }
-	          
-	    	
-	    	
-	          if(m_locals != null && m_locals.size() > 0){
-	              for(int i=0;i<m_locals.size();i++)
-	              m_adapter.add(m_locals.get(i));
-	          }
-
-	          m_adapter.notifyDataSetChanged();       	
+		    	
+		    	//////////A AQUI///////////////
+		    	
+		            /*m_locals = new ArrayList<Local>();
+	
+		            Local o1 = new Local();
+		            o1.setLocalName("Apero2");
+		            o1.setLocalMedida("5,7m");
+		            o1.setLocalImage(R.drawable.ic_launcher);
+		           
+	
+		            m_locals.add(o1);*/
+	       
+		            Log.i("Parcelas a√±adidos ", ""+ m_locals.size());
+		            
+		          } catch (Exception e) {
+		            Log.e("BACKGROUND_PROC", e.getMessage());
+		          }
+		          
+		    	
+		    	
+		          if(m_locals != null && m_locals.size() > 0){
+		              for(int i=0;i<m_locals.size();i++)
+		              m_adapter.add(m_locals.get(i));
+		          }
+	
+		          m_adapter.notifyDataSetChanged();
+		          
+	    	}
 	    	
 	    }  
     

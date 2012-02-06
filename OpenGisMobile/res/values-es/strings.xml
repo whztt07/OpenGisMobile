@@ -96,4 +96,9 @@
     
     <string name="selectTool">Selecciona un apero:</string>
     <string name="selectWork">Selecciona una tarea:</string>
+    
+       <string name="search">Buscar</string>
+       
+       
+     <string name="msgInsertDni">Inserte un DNI correcto para buscar parcelas</string>
 </resources>
