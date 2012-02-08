@@ -2,8 +2,10 @@ package code.google.com;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ public class SelectProducto extends ListActivity {
 	    private ArrayList objetosCompletos;
 	    private String selTarea;
 	    private String selApero,selnTarea;
+    	private String dosis = "";
 		
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,35 @@ public class SelectProducto extends ListActivity {
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
 	    	ProductosDatos ProductoSeleccionado = (ProductosDatos) objetosCompletos.get(position);
 	    	Bundle extras = getIntent().getExtras();
+	    	
+
+	    	
+	    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+	    	alert.setTitle("");
+	    	alert.setMessage("Message");
+	    	final EditText input = new EditText(this);
+	    	alert.setView(input);
+
+	    	alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+	    	public void onClick(DialogInterface dialog, int whichButton) {
+	    		
+	    		
+	    	  dosis = input.getText().toString();
+	    	  
+	    	  
+	    	  
+	    	  }
+	    	});
+
+	    	alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+	    	  public void onClick(DialogInterface dialog, int whichButton) {
+	    	    // Canceled.
+	    	  }
+	    	});
+
+	    	alert.show();
+	    	
 	    	
 	    	Intent selPro = new Intent(SelectProducto.this,SelectParcela.class);
 	    	selPro.putExtra("idTarea",extras.getString("idTarea"));
