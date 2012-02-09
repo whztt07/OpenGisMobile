@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -60,6 +61,9 @@ public class SelectParcela extends ListActivity {
 	    		Toast info = Toast.makeText(getApplicationContext(),
 	    		"Tarea:"+selTarea+" Apero:"+selApero+" Producto:"+selPro+" Parcela:"+ParcelaSeleccionada.getIdparcela()+" Dosis:"+selDosis, Toast.LENGTH_LONG);
 	    		info.show();
+	    		
+	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
+	    		startActivity(i);
 	    	}else{
 	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
 	    		Toast info = Toast.makeText(getApplicationContext(),
