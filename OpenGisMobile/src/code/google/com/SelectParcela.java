@@ -22,7 +22,7 @@ import android.widget.Toast;
 public class SelectParcela extends ListActivity {
 	   private ArrayList<Local> m_locals = null;
 	    private IconListViewAdapter m_adapter;
-	    private String dni,selTarea, selApero,selPro;
+	    private String dni,selTarea, selApero,selPro,selDosis;
 	    private ArrayList objetosCompletos;
 		
 	    @Override
@@ -38,6 +38,7 @@ public class SelectParcela extends ListActivity {
 			selTarea = extra.getString("idTarea");
 			selApero = extra.getString("idApero");
 			selPro = extra.getString("idProducto");
+			selDosis = extra.getString("dosisProducto");
 	        
 	        /*
 	         * Al crear la clase se inicializa el ListView que muestra los aperos
@@ -57,7 +58,7 @@ public class SelectParcela extends ListActivity {
 	    	if((Integer.parseInt(selTarea))==4||Integer.parseInt(selTarea)==5){
 	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
 	    		Toast info = Toast.makeText(getApplicationContext(),
-	    		"Tarea:"+selTarea+" Apero:"+selApero+" Producto:"+selPro+" Parcela:"+ParcelaSeleccionada.getIdparcela(), Toast.LENGTH_LONG);
+	    		"Tarea:"+selTarea+" Apero:"+selApero+" Producto:"+selPro+" Parcela:"+ParcelaSeleccionada.getIdparcela()+" Dosis:"+selDosis, Toast.LENGTH_LONG);
 	    		info.show();
 	    	}else{
 	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);

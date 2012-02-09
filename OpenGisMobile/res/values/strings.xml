@@ -97,4 +97,6 @@
     <string name="search">Search</string>
     
     <string name="msgInsertDni">Insert correct DNI to search lots</string>
+    
+    <string name="insertDose">Insert Dose</string>
 </resources>

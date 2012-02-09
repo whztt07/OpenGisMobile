@@ -99,6 +99,8 @@
     
        <string name="search">Buscar</string>
        
+       <string name="insertDose">Inserta la dosis</string>
+       
        
      <string name="msgInsertDni">Inserte un DNI correcto para buscar parcelas</string>
 </resources>

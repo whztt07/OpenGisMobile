@@ -28,6 +28,7 @@ public class SelectProducto extends ListActivity {
 	    private String selTarea;
 	    private String selApero,selnTarea;
     	private String dosis = "";
+    	private int posicionObjeto;
 		
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -58,24 +59,36 @@ public class SelectProducto extends ListActivity {
 	    
 	    @Override
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
-	    	ProductosDatos ProductoSeleccionado = (ProductosDatos) objetosCompletos.get(position);
-	    	Bundle extras = getIntent().getExtras();
 	    	
 
+	    	posicionObjeto = position;
 	    	
 	    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-	    	alert.setTitle("");
-	    	alert.setMessage("Message");
+	    	alert.setTitle(R.string.dosis);
+	    	alert.setMessage(R.string.insertDose);
 	    	final EditText input = new EditText(this);
 	    	alert.setView(input);
 
 	    	alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 	    	public void onClick(DialogInterface dialog, int whichButton) {
 	    		
+		    	ProductosDatos ProductoSeleccionado = (ProductosDatos) objetosCompletos.get(posicionObjeto);
+		    	Bundle extras = getIntent().getExtras();
 	    		
-	    	  dosis = input.getText().toString();
+		    	dosis = input.getText().toString();
 	    	  
+		    	
+		    	Intent selPro = new Intent(SelectProducto.this,SelectParcela.class);
+		    	selPro.putExtra("idTarea",extras.getString("idTarea"));
+		    	selPro.putExtra("nombreTarea",extras.getString("nombreTarea"));
+		    	selPro.putExtra("dni", extras.getString("dni"));
+		    	selPro.putExtra("idApero", extras.getString("idApero"));
+		    	selPro.putExtra("nombreApero", extras.getString("nombreApero"));
+		    	selPro.putExtra("idProducto", ProductoSeleccionado.getIdprod());
+		    	selPro.putExtra("nombreProducto", ProductoSeleccionado.getNombre());
+		    	selPro.putExtra("dosisProducto",dosis);
+		    	startActivity(selPro);
 	    	  
 	    	  
 	    	  }
@@ -89,16 +102,7 @@ public class SelectProducto extends ListActivity {
 
 	    	alert.show();
 	    	
-	    	
-	    	Intent selPro = new Intent(SelectProducto.this,SelectParcela.class);
-	    	selPro.putExtra("idTarea",extras.getString("idTarea"));
-	    	selPro.putExtra("nombreTarea",extras.getString("nombreTarea"));
-	    	selPro.putExtra("dni", extras.getString("dni"));
-	    	selPro.putExtra("idApero", extras.getString("idApero"));
-	    	selPro.putExtra("nombreApero", extras.getString("nombreApero"));
-	    	selPro.putExtra("idProducto", ProductoSeleccionado.getIdprod());
-	    	selPro.putExtra("nombreProducto", ProductoSeleccionado.getNombre());
-	    	startActivity(selPro);
+
 	    }
 	    
 	    /*
