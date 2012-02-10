@@ -52,8 +52,7 @@ public class SelectTrabajo extends ListActivity {
 	    @Override
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
 
-	    	//Toast t = Toast.makeText(getApplicationContext(), "Clickea!!!", Toast.LENGTH_SHORT);
-	    	//t.show();
+
 	    	TareasDatos tareaSeleccionada = (TareasDatos) objetosCompletos.get(position);
 	    	Bundle extras = getIntent().getExtras();
 	    	
@@ -63,6 +62,9 @@ public class SelectTrabajo extends ListActivity {
 	    	seltrab.putExtra("dni", extras.getString("dni"));
 	    	startActivity(seltrab);
 	    	
+	    	Toast t = Toast.makeText(getApplicationContext(),tareaSeleccionada.getIdtarea(), Toast.LENGTH_SHORT);
+	    	t.show();
+
 
 		}
 	    	

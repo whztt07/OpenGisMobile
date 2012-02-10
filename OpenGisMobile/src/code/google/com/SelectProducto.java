@@ -43,6 +43,7 @@ public class SelectProducto extends ListActivity {
 			selTarea = extra.getString("idTarea");
 			selnTarea = extra.getString("nombreTarea");
 			selApero = extra.getString("idApero");
+			
 	        
 	        /*
 	         * Al crear la clase se inicializa el ListView que muestra los aperos
@@ -129,12 +130,11 @@ public class SelectProducto extends ListActivity {
 				
 				ProductosDatos producto = (ProductosDatos) listaProductos[i];
 				
+				
 				// En caso de que ese apero del usuario esté activo, lo añadiremos
 				
-				if(producto.getActivo().equals("0")&&producto.getNomtarea().equals(selnTarea)){
-
-					String productoMostrar = producto.getNombre();
-					objetosCompletos.add(producto);
+				if(producto.getActivo().equals("0")&&producto.getNomtarea().trim().equals(selnTarea.trim())){
+				
 					
 					Local loc = new Local();
 					loc.setLocalName(producto.getNombre());

@@ -54,7 +54,6 @@ public class SelectApero extends ListActivity {
 	    	if((Integer.parseInt(selTarea))==4||Integer.parseInt(selTarea)==5){
 		    	AperosDatos AperoSeleccionado = (AperosDatos) objetosCompletos.get(position);
 		    	Bundle extras = getIntent().getExtras();
-		    	
 		    	Intent selAp = new Intent(SelectApero.this,SelectProducto.class);
 		    	selAp.putExtra("idTarea",extras.getString("idTarea"));
 		    	selAp.putExtra("nombreTarea",extras.getString("nombreTarea"));
