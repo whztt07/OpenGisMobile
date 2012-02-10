@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -69,6 +70,7 @@ public class SelectProducto extends ListActivity {
 	    	alert.setTitle(R.string.dosis);
 	    	alert.setMessage(R.string.insertDose);
 	    	final EditText input = new EditText(this);
+	    	input.setInputType(InputType.TYPE_CLASS_NUMBER);
 	    	alert.setView(input);
 
 	    	alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -135,6 +137,9 @@ public class SelectProducto extends ListActivity {
 				
 				if(producto.getActivo().equals("0")&&producto.getNomtarea().trim().equals(selnTarea.trim())){
 				
+
+					String productoMostrar = producto.getNombre();
+					objetosCompletos.add(producto);
 					
 					Local loc = new Local();
 					loc.setLocalName(producto.getNombre());
