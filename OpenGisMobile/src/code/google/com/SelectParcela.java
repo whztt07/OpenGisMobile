@@ -61,7 +61,7 @@ public class SelectParcela extends ListActivity {
 
 	    		
 	    		
-	    		String url2 = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:23030&RC="+
+	    		String url2 = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:4326&RC="+
 	    	    		 ParcelaSeleccionada.getProvincia()+ParcelaSeleccionada.getPoblacion()+"A"+ParcelaSeleccionada.getPoligono()+ParcelaSeleccionada.getNumero()+"";
 	    		
 	    		
@@ -74,18 +74,22 @@ public class SelectParcela extends ListActivity {
 	    		Toast info2 = Toast.makeText(getApplicationContext(),posX + " " + posY , Toast.LENGTH_LONG);
 	    		info2.show();
 	    		
+	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
+	    		i.putExtra("latitud",posX);
+	    		i.putExtra("longitud",posY);
+	    		startActivity(i);
+	    		
 	    		
 	    		}catch(Exception e2){
 	    			
 	    			
-		    		Toast info2 = Toast.makeText(getApplicationContext(),"ERROR", Toast.LENGTH_LONG);
+		    		Toast info2 = Toast.makeText(getApplicationContext(),"El Registro Catastral no es correcto. Contacte con el administrador de la base de datos", Toast.LENGTH_LONG);
 		    		info2.show();
 	    			
 	    			
 	    		}
 	    		
-	    		/*Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
-	    		startActivity(i);*/
+
 	    		
 	    	}else{
 	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
@@ -93,9 +97,32 @@ public class SelectParcela extends ListActivity {
 	    		"Tarea:"+selTarea+" Apero:"+selApero+" Parcela:"+ParcelaSeleccionada.getIdparcela(), Toast.LENGTH_LONG);
 	    		info.show();
 	    		
+	    		String url2 = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:4326&RC="+
+	    	    		 ParcelaSeleccionada.getProvincia()+ParcelaSeleccionada.getPoblacion()+"A"+ParcelaSeleccionada.getPoligono()+ParcelaSeleccionada.getNumero()+"";
 	    		
-	    		/*Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
-	    		startActivity(i);*/
+	    		
+	    		try{
+	    		
+	    		W3CSigPac latitudes = new W3CSigPac(url2);
+	    		String posX = latitudes.getAuxx();
+	    		String posY = latitudes.getAuxy();
+	    		
+	    		
+	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
+	    		i.putExtra("latitud",posY);
+	    		i.putExtra("longitud",posX);
+	    		startActivity(i);
+	    		
+	    		
+	    		}catch(Exception e2){
+	    			
+	    			
+		    		Toast info2 = Toast.makeText(getApplicationContext(),"El Registro Catastral no es correcto. Contacte con el administrador de la base de datos", Toast.LENGTH_LONG);
+		    		info2.show();
+	    			
+	    			
+	    		}
+	    		
 	    		
 	    	}
 	    }

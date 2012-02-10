@@ -12,6 +12,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class VisorDeMapa extends MapActivity {
 	
@@ -25,19 +26,34 @@ public class VisorDeMapa extends MapActivity {
 		return false;
 	}
 	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.mapa);
 	    
+	    Bundle extras = getIntent().getExtras();
+	    
+	    
+	    
 		mapview = (MapView) findViewById(R.id.mapview);
 		mapview.setBuiltInZoomControls(true);
 		mapController = mapview.getController();
-		mapController.setZoom(14); // Zoon 1 is world view
-		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
-				0, new GeoUpdateHandler());
+        
+		Double latitud = Double.valueOf(extras.getString("latitud")).doubleValue();
+		Double longitud = Double.valueOf(extras.getString("longitud")).doubleValue();
+
+		
+        GeoPoint point = new GeoPoint((int) (longitud.intValue() * 1E6),(int) (latitud.intValue() * 1E6) );
+        
+        mapController.animateTo(point);
+        mapController.setCenter(point);
+ 
+ 
 	}
+		
+		
+	
 	
 	
 	public class GeoUpdateHandler implements LocationListener {
