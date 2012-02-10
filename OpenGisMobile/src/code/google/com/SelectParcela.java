@@ -62,6 +62,8 @@ public class SelectParcela extends ListActivity {
 	    		"Tarea:"+selTarea+" Apero:"+selApero+" Producto:"+selPro+" Parcela:"+ParcelaSeleccionada.getIdparcela()+" Dosis:"+selDosis, Toast.LENGTH_LONG);
 	    		info.show();
 	    		
+	    		
+	    		
 	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
 	    		startActivity(i);
 	    	}else{
@@ -69,6 +71,11 @@ public class SelectParcela extends ListActivity {
 	    		Toast info = Toast.makeText(getApplicationContext(),
 	    		"Tarea:"+selTarea+" Apero:"+selApero+" Parcela:"+ParcelaSeleccionada.getIdparcela(), Toast.LENGTH_LONG);
 	    		info.show();
+	    		
+	    		
+	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
+	    		startActivity(i);
+	    		
 	    	}
 	    }
 	    
