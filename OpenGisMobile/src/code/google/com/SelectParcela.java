@@ -58,14 +58,35 @@ public class SelectParcela extends ListActivity {
 	    	
 	    	if((Integer.parseInt(selTarea))==4||Integer.parseInt(selTarea)==5){
 	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
-	    		Toast info = Toast.makeText(getApplicationContext(),
-	    		"Tarea:"+selTarea+" Apero:"+selApero+" Producto:"+selPro+" Parcela:"+ParcelaSeleccionada.getIdparcela()+" Dosis:"+selDosis, Toast.LENGTH_LONG);
-	    		info.show();
+
 	    		
 	    		
+	    		String url2 = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:23030&RC="+
+	    	    		 ParcelaSeleccionada.getProvincia()+ParcelaSeleccionada.getPoblacion()+"A"+ParcelaSeleccionada.getPoligono()+ParcelaSeleccionada.getNumero()+"";
 	    		
-	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
-	    		startActivity(i);
+	    		
+	    		try{
+	    		
+	    		W3CSigPac latitudes = new W3CSigPac(url2);
+	    		String posX = latitudes.getAuxx();
+	    		String posY = latitudes.getAuxy();
+	    		
+	    		Toast info2 = Toast.makeText(getApplicationContext(),posX + " " + posY , Toast.LENGTH_LONG);
+	    		info2.show();
+	    		
+	    		
+	    		}catch(Exception e2){
+	    			
+	    			
+		    		Toast info2 = Toast.makeText(getApplicationContext(),"ERROR", Toast.LENGTH_LONG);
+		    		info2.show();
+	    			
+	    			
+	    		}
+	    		
+	    		/*Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
+	    		startActivity(i);*/
+	    		
 	    	}else{
 	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
 	    		Toast info = Toast.makeText(getApplicationContext(),
@@ -73,8 +94,8 @@ public class SelectParcela extends ListActivity {
 	    		info.show();
 	    		
 	    		
-	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
-	    		startActivity(i);
+	    		/*Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
+	    		startActivity(i);*/
 	    		
 	    	}
 	    }
