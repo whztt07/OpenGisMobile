@@ -40,7 +40,6 @@ public class VisorDeMapa extends MapActivity {
 	    Bundle extras = getIntent().getExtras();
 	    
 	    
-	    
 		mapview = (MapView) findViewById(R.id.mapview);
 		mapview.setBuiltInZoomControls(true);
 		mapController = mapview.getController();
@@ -51,24 +50,16 @@ public class VisorDeMapa extends MapActivity {
 		Double longitud = Double.valueOf(extras.getString("longitud")).doubleValue() * 1E6;
 		
         GeoPoint point = new GeoPoint((int) (longitud.intValue()),(int) (latitud.intValue()) );
-        
-        // A–adimos el dibujo del tractor
-        
-        List<Overlay> mapOverlays = mapview.getOverlays();
-        Drawable drawable = this.getResources().getDrawable(R.drawable.apero);
-        ItemsOverlay itemizedoverlay = new ItemsOverlay(drawable, this);
-        OverlayItem overlayitem = new OverlayItem(point, "Posicion", "Parcela");
-        
-        itemizedoverlay.addOverlay(overlayitem);
-        mapOverlays.add(itemizedoverlay);
-        
+          
         mapController.animateTo(point);
         mapController.setCenter(point);
         mapController.setZoom(18);
+
+        // A–adimos el dibujo del tractor
         
-
-
- 
+        ItemsOverlay miPosicion = new ItemsOverlay(longitud,latitud);
+        mapview.getOverlays().add(miPosicion);
+        
  
 	}
 		

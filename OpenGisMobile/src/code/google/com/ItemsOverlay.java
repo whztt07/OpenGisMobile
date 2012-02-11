@@ -1,54 +1,57 @@
 package code.google.com;
 
-import java.util.ArrayList;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
-import com.google.android.maps.ItemizedOverlay;
-import com.google.android.maps.OverlayItem;
+import android.graphics.Point;
 
-public class ItemsOverlay extends ItemizedOverlay<OverlayItem> {
+import com.google.android.maps.GeoPoint;
+import com.google.android.maps.MapView;
+import com.google.android.maps.Overlay;
+
+
+public class ItemsOverlay extends Overlay {
 	
-	private ArrayList<OverlayItem> mOverlays = new ArrayList<OverlayItem>();
-	private Context mContext;
-
-	public ItemsOverlay(Drawable defaultMarker) {
-		super(boundCenterBottom(defaultMarker));
-		populate();
-	}
+	private Double latitud;
+	private Double longitud;
 	
-	public void addOverlay(OverlayItem overlay) {
-	    mOverlays.add(overlay);
-	    populate();
+	public ItemsOverlay(Double latitud,Double longitud){
+		
+		this.latitud = latitud;
+		this.longitud = longitud;
+		
 	}
 
-	@Override
-	protected OverlayItem createItem(int i) {
-		// TODO Auto-generated method stub
-		return mOverlays.get(i);
-	}
+    @Override
+    public boolean draw(Canvas canvas, MapView mapView, boolean shadow, long when) {
+        super.draw(canvas, mapView, shadow);
+        
 
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return mOverlays.size();
-	}
-	
-	public ItemsOverlay(Drawable defaultMarker, Context context) {
-		  super(defaultMarker);
-		  mContext = context;
-		}
-	
-	@Override
-	protected boolean onTap(int index) {
-	  OverlayItem item = mOverlays.get(index);
-	  AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
-	  dialog.setTitle(item.getTitle());
-	  dialog.setMessage(item.getSnippet());
-	  dialog.show();
-	  return true;
-	}
+        GeoPoint point = new GeoPoint((int)latitud.intValue(), (int)longitud.intValue());
+        
+        Point myScreenCoords = new Point() ;
+        mapView.getProjection().toPixels(point, myScreenCoords);
+        
+		Paint p = new Paint();
+		p.setColor(Color.BLUE);
 
+        Bitmap markerImage = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.apero);
+
+        // Draw it, centered around the given coordinates
+        canvas.drawBitmap(markerImage,myScreenCoords.x - markerImage.getWidth() / 2,
+            myScreenCoords.y - markerImage.getHeight(), p);
+			
+            return true;
+    }
+    
+    
+    
+    
+    
 }
+
+
