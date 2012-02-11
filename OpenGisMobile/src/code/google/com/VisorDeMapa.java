@@ -39,15 +39,18 @@ public class VisorDeMapa extends MapActivity {
 		mapview = (MapView) findViewById(R.id.mapview);
 		mapview.setBuiltInZoomControls(true);
 		mapController = mapview.getController();
+		mapview.setSatellite(true);
         
-		Double latitud = Double.valueOf(extras.getString("latitud")).doubleValue();
-		Double longitud = Double.valueOf(extras.getString("longitud")).doubleValue();
-
+		Double latitud = Double.valueOf(extras.getString("latitud")).doubleValue() * 1E6;
+		Double longitud = Double.valueOf(extras.getString("longitud")).doubleValue() * 1E6;
 		
-        GeoPoint point = new GeoPoint((int) (longitud.intValue() * 1E6),(int) (latitud.intValue() * 1E6) );
+        GeoPoint point = new GeoPoint((int) (longitud.intValue()),(int) (latitud.intValue()) );
         
         mapController.animateTo(point);
         mapController.setCenter(point);
+        mapController.setZoom(18);
+        
+
  
  
 	}
