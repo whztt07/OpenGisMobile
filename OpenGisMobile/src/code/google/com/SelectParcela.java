@@ -107,10 +107,12 @@ public class SelectParcela extends ListActivity {
 	    		String posX = latitudes.getAuxx();
 	    		String posY = latitudes.getAuxy();
 	    		
+	    		Toast info2 = Toast.makeText(getApplicationContext(),posX + " " + posY , Toast.LENGTH_LONG);
+	    		info2.show();
 	    		
 	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
-	    		i.putExtra("latitud",posY);
-	    		i.putExtra("longitud",posX);
+	    		i.putExtra("latitud",posX);
+	    		i.putExtra("longitud",posY);
 	    		startActivity(i);
 	    		
 	    		
@@ -122,6 +124,8 @@ public class SelectParcela extends ListActivity {
 	    			
 	    			
 	    		}
+	    		
+
 	    		
 	    		
 	    	}
