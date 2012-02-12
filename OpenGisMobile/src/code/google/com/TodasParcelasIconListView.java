@@ -86,20 +86,18 @@ public class TodasParcelasIconListView extends ListActivity {
 		            	Bundle extras = getIntent().getExtras();
 		            	String idParcela = parcelaSeleccionada.getIdparcela();
 		            	String dniUsuario = extras.getString("dni");
+
 		            	
 		            	String consulta = "http://79.108.245.167/OpenGisMobile/VerParcelasUsuariosWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
 		            	
 		            	Object[] parcelasUsuario = AccesoWebService.convertirDatosJSONParcelasUsuarios(AccesoWebService.recogerDatosWebService(consulta));
+
 		            	
-		            	ParcelasUsuariosDatos parcelaFinal = (ParcelasUsuariosDatos) parcelasUsuario[0];
-		            	
-		            	if(parcelaFinal.getIdparcela()==null){
+		            	if(parcelasUsuario==null){
 		            		
+		            		String url = "http://79.108.245.167/OpenGisMobile/NuevaParcelaEnListaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
 		            		
-			            	
-			            	String url = "http://79.108.245.167/OpenGisMobile/NuevaParcelaEnListaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
-			            	
-			            	boolean acceso = AccesoWebService.InsertarEnWebService(url);
+		            		boolean acceso = AccesoWebService.InsertarEnWebService(url);
 			            	
 			            	if(acceso){
 			            		
