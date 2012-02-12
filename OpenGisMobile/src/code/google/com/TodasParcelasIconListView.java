@@ -107,6 +107,10 @@ public class TodasParcelasIconListView extends ListActivity {
 			            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgAddLotOK), Toast.LENGTH_SHORT);
 			            		toast.show();
 			            		
+			            		Intent i = new Intent(TodasParcelasIconListView.this,ParcelasIconListView.class);
+			            		i.putExtra("dni",dniUsuario);
+			            		startActivity(i);
+			            		
 			            		
 			            	}else{
 			            		
