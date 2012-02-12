@@ -93,7 +93,31 @@ public class TodasParcelasIconListView extends ListActivity {
 		            	Object[] parcelasUsuario = AccesoWebService.convertirDatosJSONParcelasUsuarios(AccesoWebService.recogerDatosWebService(consulta));
 
 		            	
-		            	if(parcelasUsuario==null){
+		            	if(parcelasUsuario.length!=0){
+		            		
+		            		
+		            		String url = "http://79.108.245.167/OpenGisMobile/ActivarParcelaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
+			            	
+		            		
+			            	boolean acceso = AccesoWebService.InsertarEnWebService(url);
+			            	
+			            	if(acceso){
+			            		
+			            		
+			            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgAddLotOK), Toast.LENGTH_SHORT);
+			            		toast.show();
+			            		
+			            		
+			            	}else{
+			            		
+			            		
+			            		//No se ha podido realizar la inserci—n correctamente
+			            		
+			            		
+			            	}
+		            		
+		            		
+		            	}else{
 		            		
 		            		String url = "http://79.108.245.167/OpenGisMobile/NuevaParcelaEnListaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
 		            		
@@ -114,29 +138,8 @@ public class TodasParcelasIconListView extends ListActivity {
 			            		
 			            	}
 		            		
-		            		
-		            	}else{
-		            		
-		            		
 			            	
-			            	String url = "http://79.108.245.167/OpenGisMobile/ActivarParcelaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
 			            	
-			            	boolean acceso = AccesoWebService.InsertarEnWebService(url);
-			            	
-			            	if(acceso){
-			            		
-			            		
-			            		Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.msgAddLotOK), Toast.LENGTH_SHORT);
-			            		toast.show();
-			            		
-			            		
-			            	}else{
-			            		
-			            		
-			            		//No se ha podido realizar la inserci—n correctamente
-			            		
-			            		
-			            	}
 		            		
 		            		
 		            		
