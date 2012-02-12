@@ -70,20 +70,24 @@ public class SelectParcela extends ListActivity {
 	    		W3CSigPac latitudes = new W3CSigPac(url2);
 	    		String posX = latitudes.getAuxx();
 	    		String posY = latitudes.getAuxy();
-	    		
-	    		Toast info2 = Toast.makeText(getApplicationContext(),posX + " " + posY , Toast.LENGTH_LONG);
-	    		info2.show();
+
 	    		
 	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
 	    		i.putExtra("latitud",posX);
 	    		i.putExtra("longitud",posY);
+	    		i.putExtra("dni",dni);
+	    		i.putExtra("idTarea",selTarea);
+	    		i.putExtra("idApero",selApero);
+	    		i.putExtra("idProducto",selPro);
+	    		i.putExtra("dosis",selDosis);
+	    		i.putExtra("nomParcela",ParcelaSeleccionada.getAlias());
 	    		startActivity(i);
 	    		
 	    		
 	    		}catch(Exception e2){
 	    			
 	    			
-		    		Toast info2 = Toast.makeText(getApplicationContext(),"El Registro Catastral no es correcto. Contacte con el administrador de la base de datos", Toast.LENGTH_LONG);
+		    		Toast info2 = Toast.makeText(getApplicationContext(),getString(R.string.catastroError), Toast.LENGTH_LONG);
 		    		info2.show();
 	    			
 	    			
@@ -107,19 +111,26 @@ public class SelectParcela extends ListActivity {
 	    		String posX = latitudes.getAuxx();
 	    		String posY = latitudes.getAuxy();
 	    		
-	    		Toast info2 = Toast.makeText(getApplicationContext(),posX + " " + posY , Toast.LENGTH_LONG);
-	    		info2.show();
+	    		
+	    		selPro = "";
+	    		selDosis = "";
 	    		
 	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
 	    		i.putExtra("latitud",posX);
 	    		i.putExtra("longitud",posY);
+	    		i.putExtra("dni",dni);
+	    		i.putExtra("idTarea",selTarea);
+	    		i.putExtra("idApero",selApero);
+	    		i.putExtra("idProducto",selPro);
+	    		i.putExtra("dosis",selDosis);
+	    		i.putExtra("nomParcela",ParcelaSeleccionada.getAlias());
 	    		startActivity(i);
 	    		
 	    		
 	    		}catch(Exception e2){
 	    			
 	    			
-		    		Toast info2 = Toast.makeText(getApplicationContext(),"El Registro Catastral no es correcto. Contacte con el administrador de la base de datos", Toast.LENGTH_LONG);
+		    		Toast info2 = Toast.makeText(getApplicationContext(),getString(R.string.catastroError), Toast.LENGTH_LONG);
 		    		info2.show();
 	    			
 	    			

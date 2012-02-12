@@ -99,4 +99,8 @@
     <string name="msgInsertDni">Insert correct DNI to search lots</string>
     
     <string name="insertDose">Insert Dose</string>
+    
+    <string name="youAreIn">You are in:</string>
+    
+    <string name="catastroError">The Land Registry is not correctly. You should contact with database administrator</string>
 </resources>

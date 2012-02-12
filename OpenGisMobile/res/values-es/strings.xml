@@ -101,6 +101,10 @@
        
        <string name="insertDose">Inserta la dosis</string>
        
+       <string name="youAreIn">Usted está en:</string>
+       
        
      <string name="msgInsertDni">Inserte un DNI correcto para buscar parcelas</string>
+     
+     <string name="catastroError">El Registro Catastral no es correcto. Contacte con el administrador de la base de datos</string>
 </resources>

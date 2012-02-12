@@ -54,10 +54,13 @@ public class VisorDeMapa extends MapActivity {
         mapController.animateTo(point);
         mapController.setCenter(point);
         mapController.setZoom(18);
+        
+        
+        String mensaje = getString(R.string.youAreIn) + " " + extras.getString("nomParcela");
 
         // A–adimos el dibujo del tractor
         
-        ItemsOverlay miPosicion = new ItemsOverlay(longitud,latitud);
+        ItemsOverlay miPosicion = new ItemsOverlay(longitud,latitud,mensaje);
         mapview.getOverlays().add(miPosicion);
         
  
