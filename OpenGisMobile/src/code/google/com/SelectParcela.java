@@ -72,6 +72,7 @@ public class SelectParcela extends ListActivity {
 	    		
 	    		String url2 = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:4326&RC="+referenciaCatastral+"";
 	    		
+	    		String urlCatastro = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:23030&RC="+referenciaCatastral+"";
 	    		
 	    		try{
 	    		
@@ -79,10 +80,16 @@ public class SelectParcela extends ListActivity {
 	    		String posX = latitudes.getAuxx();
 	    		String posY = latitudes.getAuxy();
 	    		
+	    		W3CSigPac coordenadasSigPac = new W3CSigPac(urlCatastro);
+	    		String posXCatastro = coordenadasSigPac.getAuxx();
+	    		String posYCatastro = coordenadasSigPac.getAuxy();
+
 	    		
 	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
 	    		i.putExtra("latitud",posX);
 	    		i.putExtra("longitud",posY);
+	    		i.putExtra("posXCatastro",posXCatastro);
+	    		i.putExtra("posYCatastro",posYCatastro);
 	    		i.putExtra("dni",dni);
 	    		i.putExtra("idTarea",selTarea);
 	    		i.putExtra("idApero",selApero);
