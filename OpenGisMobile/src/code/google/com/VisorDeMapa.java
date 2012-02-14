@@ -1,5 +1,7 @@
 package code.google.com;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import com.google.android.maps.GeoPoint;
@@ -11,6 +13,8 @@ import com.google.android.maps.OverlayItem;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
@@ -39,6 +43,7 @@ public class VisorDeMapa extends MapActivity {
 	    
 	    Bundle extras = getIntent().getExtras();
 	    
+	    String referenciaCatastral = extras.getString("referenciaCatastral");
 	    
 		mapview = (MapView) findViewById(R.id.mapview);
 		mapview.setBuiltInZoomControls(true);
@@ -62,6 +67,34 @@ public class VisorDeMapa extends MapActivity {
         
         ItemsOverlay miPosicion = new ItemsOverlay(longitud,latitud,mensaje);
         mapview.getOverlays().add(miPosicion);
+        
+        // Recogemos la imagen de la parcela
+        
+        try{
+        
+	        int primeraX = latitud.intValue() - 10;
+			int segundaX = latitud.intValue() + 10;
+			
+			int primeraY = longitud.intValue() - 10;
+			int segundaY = longitud.intValue() + 10;
+			
+			//String urlImagen = "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?SERVICE=WMS&SRS=EPSG:4326&REQUEST=GETMAP&bbox="+primeraX+","+primeraY+","+segundaX+","+segundaY+"&width=100&height=100&format=jpeg&transparent=no&layers=parcela&layers=catastro&refcat="+referenciaCatastral+"";
+	       		
+			String urlImagen = "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?SERVICE=WMS&SRS=EPSG:23030&REQUEST=GETMAP&bbox=731226,4346070,731626,4346470&width=150&height=150&format=jpeg&transparent=yes&layers=parcela&layers=catastro&refcat=46237A04500090";
+	        
+			URL imageUrl = new URL(urlImagen);
+	        HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+	        conn.connect();
+	        Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
+	        
+	        ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,mensaje,loadedImage);
+	        mapview.getOverlays().add(imagenParcela);
+	        
+        }catch(Exception e2){
+        	
+        	
+        }
+        
         
  
 	}

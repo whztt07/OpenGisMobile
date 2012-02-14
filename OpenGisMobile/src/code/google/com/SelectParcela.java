@@ -1,5 +1,12 @@
 package code.google.com;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 import android.app.AlertDialog;
@@ -8,6 +15,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -59,10 +68,9 @@ public class SelectParcela extends ListActivity {
 	    	if((Integer.parseInt(selTarea))==4||Integer.parseInt(selTarea)==5){
 	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
 
+	    		String referenciaCatastral = ParcelaSeleccionada.getProvincia()+ParcelaSeleccionada.getPoblacion()+"A"+ParcelaSeleccionada.getPoligono()+ParcelaSeleccionada.getNumero();
 	    		
-	    		
-	    		String url2 = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:4326&RC="+
-	    	    		 ParcelaSeleccionada.getProvincia()+ParcelaSeleccionada.getPoblacion()+"A"+ParcelaSeleccionada.getPoligono()+ParcelaSeleccionada.getNumero()+"";
+	    		String url2 = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:4326&RC="+referenciaCatastral+"";
 	    		
 	    		
 	    		try{
@@ -70,7 +78,7 @@ public class SelectParcela extends ListActivity {
 	    		W3CSigPac latitudes = new W3CSigPac(url2);
 	    		String posX = latitudes.getAuxx();
 	    		String posY = latitudes.getAuxy();
-
+	    		
 	    		
 	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
 	    		i.putExtra("latitud",posX);
@@ -81,6 +89,7 @@ public class SelectParcela extends ListActivity {
 	    		i.putExtra("idProducto",selPro);
 	    		i.putExtra("dosis",selDosis);
 	    		i.putExtra("nomParcela",ParcelaSeleccionada.getAlias());
+	    		i.putExtra("referenciaCatastral",referenciaCatastral);
 	    		startActivity(i);
 	    		
 	    		
@@ -264,4 +273,6 @@ public class SelectParcela extends ListActivity {
         }
     
     
+        
 }
+    
