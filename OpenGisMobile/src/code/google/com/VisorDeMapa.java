@@ -53,7 +53,7 @@ public class VisorDeMapa extends MapActivity {
           
         mapController.animateTo(point);
         mapController.setCenter(point);
-        mapController.setZoom(18);
+        mapController.setZoom(19);
         
         
         String mensaje = getString(R.string.youAreIn) + " " + extras.getString("nomParcela");
