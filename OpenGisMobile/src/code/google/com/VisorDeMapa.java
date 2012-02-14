@@ -20,6 +20,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -76,15 +78,18 @@ public class VisorDeMapa extends MapActivity {
    			Double latitudCatastro = Double.valueOf(extras.getString("posXCatastro"));
    			Double longitudCatastro = Double.valueOf(extras.getString("posYCatastro"));
         
-	        int primeraX = latitudCatastro.intValue() - 200;
-			int segundaX = latitudCatastro.intValue() + 200;
+	        int primeraX = latitudCatastro.intValue() - 180;
+			int segundaX = latitudCatastro.intValue() + 180;
 			
-			int primeraY = longitudCatastro.intValue() - 200;
-			int segundaY = longitudCatastro.intValue() + 200;
+			int primeraY = longitudCatastro.intValue() - 180;
+			int segundaY = longitudCatastro.intValue() + 180;
 			
-			String anchoFoto = "" ;
+			WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+			Display display = wm.getDefaultDisplay();
+			Double ancho = display.getWidth() / 1.62;
+			Double alto = display.getHeight() / 1.0;
 			
-			String urlImagen = "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?SERVICE=WMS&SRS=EPSG:23030&REQUEST=GETMAP&bbox="+primeraX+","+primeraY+","+segundaX+","+segundaY+"&width=300&height=300&format=png&transparent=yes&layers=parcela&refcat="+referenciaCatastral+"";
+			String urlImagen = "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?SERVICE=WMS&SRS=EPSG:23030&REQUEST=GETMAP&bbox="+primeraX+","+primeraY+","+segundaX+","+segundaY+"&width="+ancho+"&height="+alto+"&format=png&transparent=yes&layers=parcela&refcat="+referenciaCatastral+"";
 	       		
 			
 			URL imageUrl = new URL(urlImagen);
