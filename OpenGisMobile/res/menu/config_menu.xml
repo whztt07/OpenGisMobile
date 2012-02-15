@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/config_apero" android:title="@string/Tools" android:icon="@drawable/apero"></item>
-    <item android:id="@+id/config_Producto" android:title="@string/Products" android:icon="@drawable/producto"></item>
-    <item android:id="@+id/config_parcela" android:title="@string/Lots" android:icon="@drawable/lots"></item>
-    <item android:id="@+id/config_datos" android:title="@string/MisDatos" android:icon="@drawable/usuario"></item>
+    <item android:id="@+id/config_apero" android:title="@string/newTool" android:icon="@drawable/apero"></item>
+    <item android:id="@+id/config_Producto" android:title="@string/newProduct" android:icon="@drawable/producto"></item>
+    <item android:id="@+id/config_parcela" android:title="@string/createLots" android:icon="@drawable/lots"></item>
     
 
 </menu>

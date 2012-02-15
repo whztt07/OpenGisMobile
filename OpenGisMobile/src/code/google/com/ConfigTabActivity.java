@@ -114,25 +114,9 @@ public class ConfigTabActivity extends TabActivity{
 		            
 
                 return true;
-           /* case R.id.config_Producto:
+           case R.id.config_Producto:
                 
-            	dialogBuilder = new AlertDialog.Builder(ConfigTabActivity.this);
-		        dialogBuilder.setMessage(getString(R.string.ProductsConfig));
-		        dialogBuilder.setCancelable(true).setTitle(getString(R.string.Products));
-		        dialogBuilder.setPositiveButton(getString(R.string.showProducts),new DialogInterface.OnClickListener() { 
-		            public void onClick(DialogInterface dialog, int arg1) {
-		            	
-		            	
-						
-						Intent vMisProductos = new Intent(principalActivity.this,ProductosIconListView.class);
-						vMisProductos.putExtra("dni",dni);
-						startActivity(vMisProductos);
-		            	
-		            } 
-		        }); 
-		        
-		        dialogBuilder.setNegativeButton(getString(R.string.createProducts),new DialogInterface.OnClickListener() { 
-		            public void onClick(DialogInterface dialog, int arg1) { 
+            
 		                
 		            	//Aqu’ la ventana del nuevo Producto
 		            	
@@ -150,7 +134,7 @@ public class ConfigTabActivity extends TabActivity{
 		            	ProductosDatos producto = (ProductosDatos) obj[0];
 		            	
 		            	String idNueva = Integer.parseInt(producto.getIdprod()) + 1 + "";	
-		            	Intent vCrearProducto = new Intent(principalActivity.this,ProductoNuevo.class);
+		            	Intent vCrearProducto = new Intent(ConfigTabActivity.this,ProductoNuevo.class);
 		            	vCrearProducto.putExtra("idNueva",idNueva);
 		            	vCrearProducto.putExtra("dni",dni);
 		            	startActivity(vCrearProducto);
@@ -161,90 +145,20 @@ public class ConfigTabActivity extends TabActivity{
 		            		
 		            	}
 		            	
-		            } 
-		        }); 
-		        dialogBuilder.create().show();
 
-            	
-            	
-            	
                 return true;
             case R.id.config_parcela:
                 
-            	dialogBuilder = new AlertDialog.Builder(principalActivity.this);
-		        dialogBuilder.setMessage(getString(R.string.LotsConfig));
-		        dialogBuilder.setCancelable(true).setTitle(getString(R.string.Lots));
-		        dialogBuilder.setPositiveButton(getString(R.string.showLots),new DialogInterface.OnClickListener() { 
-		            public void onClick(DialogInterface dialog, int arg1) {
 		            	
-		            	
-						
-						Intent vMisParcelas = new Intent(principalActivity.this,ParcelasIconListView.class);
-						vMisParcelas.putExtra("dni",dni);
-						startActivity(vMisParcelas);
-		            	
-		            } 
-		        }); 
-		        
-		        dialogBuilder.setNegativeButton(getString(R.string.createLots),new DialogInterface.OnClickListener() { 
-		            public void onClick(DialogInterface dialog, int arg1) { 
-		                
-		            	
-		            	Intent vTodasLasParcelas = new Intent(principalActivity.this,TodasParcelasIconListView.class);
+		            	Intent vTodasLasParcelas = new Intent(ConfigTabActivity.this,TodasParcelasIconListView.class);
 		            	vTodasLasParcelas.putExtra("dni",dni);
 		            	startActivity(vTodasLasParcelas);
 		            	
 		            } 
-		        }); 
-		        dialogBuilder.create().show();
-            	
-            	
+
             	
                 return true;
-            case R.id.config_datos:
-                
-				
-            	String direccionWebService = "http://79.108.245.167/OpenGisMobile/MostrarDatosWebService.php?dni="+dni;
+           
 
-				
-				
-				String data = AccesoWebService.recogerDatosWebService(direccionWebService);
-			
-				try{
-					
-			
-				// En este momento cogemos dichos datos en formato JSON y los pasamos a string, el cual almacenamos en un array.
-					
-				
-				 Object[] resultado = AccesoWebService.convertirDatosJSONUser(data);
-				
-				 UserDatos user = (UserDatos) resultado[0];
-
-				String nombre = user.getNombre();
-				String apellidos = user.getApellidos();
-				String email = user.getEmail();
-				String telefono = user.getTelefono();
-            	
-            	
-				Intent vMisDatos = new Intent(principalActivity.this,misDatosActivity.class);
-				vMisDatos.putExtra("dni",dni);
-				vMisDatos.putExtra("nombre",nombre);
-				vMisDatos.putExtra("apellidos",apellidos);
-				vMisDatos.putExtra("email",email);
-				vMisDatos.putExtra("telefono",telefono);
-				startActivity(vMisDatos);
-            	
-				}catch(Exception e2){
-					
-					
-				}
-            	
-            	
-                return true;*/
-            default:
-                return super.onOptionsItemSelected(item);
         }
     }
-	
-
-}
