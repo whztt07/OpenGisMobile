@@ -174,7 +174,7 @@ public class ProductosIconListView extends ListActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-        	Intent vPrincipal = new Intent(ProductosIconListView.this,principalActivity.class);
+        	Intent vPrincipal = new Intent(ProductosIconListView.this,ConfigTabActivity.class);
         	vPrincipal.putExtra("dni",dni);
         	startActivity(vPrincipal);
         	
