@@ -14,6 +14,11 @@ import android.widget.Toast;
 
 public class misDatosActivity extends Activity {
 	
+	private String nombre;
+	private String apellidos;
+	private String email;
+	private String telefono;
+	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.misdatos);
@@ -29,12 +34,39 @@ public class misDatosActivity extends Activity {
         
         final Bundle extras = getIntent().getExtras();
         
+        String direccionWebService = "http://79.108.245.167/OpenGisMobile/MostrarDatosWebService.php?dni="+extras.getString("dni");
+
+		
+		
+		String data = AccesoWebService.recogerDatosWebService(direccionWebService);
+	
+		try{
+			
+	
+		// En este momento cogemos dichos datos en formato JSON y los pasamos a string, el cual almacenamos en un array.
+			
+		
+		 Object[] resultado = AccesoWebService.convertirDatosJSONUser(data);
+		
+		 UserDatos user = (UserDatos) resultado[0];
+
+		this.nombre = user.getNombre();
+		this.apellidos = user.getApellidos();
+		this.email = user.getEmail();
+		this.telefono = user.getTelefono();
+    	
+    	
+		}catch(Exception e2){
+			
+			
+		}
+        
         
         txtDNI.setText(extras.getString("dni"));  
-        txtNombre.setText(extras.getString("nombre"));
-        txtApellidos.setText(extras.getString("apellidos"));
-        txtEmail.setText(extras.getString("email"));
-        txtTelefono.setText(extras.getString("telefono"));
+        txtNombre.setText(this.nombre);
+        txtApellidos.setText(this.apellidos);
+        txtEmail.setText(this.email);
+        txtTelefono.setText(this.telefono);
         
         
         
@@ -112,6 +144,17 @@ public class misDatosActivity extends Activity {
         });
         
 	}
+	
+    @Override
+    public void onBackPressed() {
+    
+    	
+    	Intent vLogin = new Intent(misDatosActivity.this,ConfigTabActivity.class);
+    	startActivity(vLogin);
+    	
+    	
+    return;
+    }
 	
 	
 	public void alertaMensaje(String mensaje,String titulo){

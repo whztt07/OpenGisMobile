@@ -174,6 +174,14 @@ public class loginActivity extends Activity {
         
     }
     
+    @Override
+    public void onBackPressed() {
+    
+    		// No hacemos nada
+    	
+    return;
+    }
+    
     
     public void alertaMensaje(String cadena,String titulo) {
       
