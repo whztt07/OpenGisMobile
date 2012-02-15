@@ -62,15 +62,6 @@ public class principalActivity extends Activity {
 				
 			}
         	
-	//Creamos el menœ de configuracion
-	
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.config_menu, menu);
-        return true;
-    }
-
     
     @Override
     public void onBackPressed() {
@@ -92,88 +83,6 @@ public class principalActivity extends Activity {
         }
     
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.config_apero:
-                
-		                
-		            	//Aqu’ la ventana del nuevo Apero
-		            	
-		            	try{
-		            		
-			            	
-		            	String url = "http://79.108.245.167/OpenGisMobile/MaxIdAperoWebService.php";
-		            	
-		            	String data = AccesoWebService.recogerDatosWebService(url);
-		            	
-		            	Object[] obj = AccesoWebService.convertirDatosJSONAperoMaximo(data);
-		            	
-		            	AperosDatos apero = (AperosDatos) obj[0];
-		            	
-		            	String idNueva = Integer.parseInt(apero.getIdApero()) + 1 + "";
-		            	
-		            	Intent vCrearApero = new Intent(principalActivity.this,AperoNuevo.class);
-		            	vCrearApero.putExtra("idNueva",idNueva);
-		            	vCrearApero.putExtra("dni",dni);
-		            	startActivity(vCrearApero);
-		            	
-		            	}catch(Exception e2){
-		            		
-		            		
-		            	}
-		            	
-		            
-
-                return true;
-           case R.id.config_Producto:
-                
-            
-		                
-		            	//Aqu’ la ventana del nuevo Producto
-		            	
-		            	//Buscamos la máxima id.
-		            	try{
-		            		
-		            	
-		            	String url = "http://79.108.245.167/OpenGisMobile/MaxIdProductoWebService.php";
-		            	
-		            	
-		            	String data = AccesoWebService.recogerDatosWebService(url);
-		            	
-		            	Object[] obj = AccesoWebService.convertirDatosJSONProductoMaximo(data);
-		            	
-		            	ProductosDatos producto = (ProductosDatos) obj[0];
-		            	
-		            	String idNueva = Integer.parseInt(producto.getIdprod()) + 1 + "";	
-		            	Intent vCrearProducto = new Intent(principalActivity.this,ProductoNuevo.class);
-		            	vCrearProducto.putExtra("idNueva",idNueva);
-		            	vCrearProducto.putExtra("dni",dni);
-		            	startActivity(vCrearProducto);
-		            	
-		            	}catch(Exception e2){
-		            		
-		            		
-		            		
-		            	}
-		            	
-
-                return true;
-            case R.id.config_parcela:
-                
-		            	
-		            	Intent vTodasLasParcelas = new Intent(principalActivity.this,TodasParcelasIconListView.class);
-		            	vTodasLasParcelas.putExtra("dni",dni);
-		            	startActivity(vTodasLasParcelas);
-		            	
-		            } 
-
-            	
-                return true;
-           
-
-        }
 
         
 	}
