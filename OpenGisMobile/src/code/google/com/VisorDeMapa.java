@@ -48,7 +48,8 @@ public class VisorDeMapa extends MapActivity {
 	    String referenciaCatastral = extras.getString("referenciaCatastral");
 	    
 		mapview = (MapView) findViewById(R.id.mapview);
-		mapview.setBuiltInZoomControls(true);
+		mapview.setBuiltInZoomControls(false);
+		mapview.setEnabled(false);
 		mapController = mapview.getController();
 		mapview.setSatellite(true);
 		
@@ -87,7 +88,7 @@ public class VisorDeMapa extends MapActivity {
 			WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 			Display display = wm.getDefaultDisplay();
 			Double ancho = display.getWidth() / 1.62;
-			Double alto = display.getHeight() / 1.0;
+			Double alto = display.getHeight() / 1.04;
 			
 			String urlImagen = "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?SERVICE=WMS&SRS=EPSG:23030&REQUEST=GETMAP&bbox="+primeraX+","+primeraY+","+segundaX+","+segundaY+"&width="+ancho+"&height="+alto+"&format=png&transparent=yes&layers=parcela&refcat="+referenciaCatastral+"";
 	       		

@@ -50,8 +50,8 @@ public class ImagenOverlay extends Overlay {
         Bitmap markerImage = this.imagen;
 
         // Draw it, centered around the given coordinates
-        canvas.drawBitmap(markerImage,myScreenCoords.x / 2,
-            myScreenCoords.y /2, p);
+        canvas.drawBitmap(markerImage,myScreenCoords.x - 388,
+            myScreenCoords.y - 348, p);
 			
             return true;
     }
