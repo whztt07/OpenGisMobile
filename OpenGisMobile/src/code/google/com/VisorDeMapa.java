@@ -54,7 +54,8 @@ public class VisorDeMapa extends MapActivity {
 				
 				
 				mapview.setEnabled(false);
-				
+				Toast tt = Toast.makeText(getApplicationContext(),"Mapa Bloqueado",Toast.LENGTH_LONG);
+				tt.show();
 			}
 	    	
 	    	
@@ -69,6 +70,8 @@ public class VisorDeMapa extends MapActivity {
 				
 				
 				mapview.setEnabled(true);
+				Toast tt = Toast.makeText(getApplicationContext(),"Mapa Desbloqueado",Toast.LENGTH_LONG);
+				tt.show();
 				
 			}
 	    	
