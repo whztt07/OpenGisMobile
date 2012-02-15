@@ -14,13 +14,16 @@
             android:id="@+id/botonBloquear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lock"/>
+            android:text="@string/lock"
+            android:drawableTop="@drawable/bloquear"
+            />
 
         <Button
             android:id="@+id/botonDesbloquear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/unlock"
+            android:drawableTop="@drawable/desbloquear"
              />
 
     </LinearLayout>

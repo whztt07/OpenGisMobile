@@ -122,8 +122,8 @@ public class VisorDeMapa extends MapActivity {
 	        int primeraX = latitudCatastro.intValue() - 296;
 			int segundaX = latitudCatastro.intValue() + 296;
 			
-			int primeraY = longitudCatastro.intValue() - 175;
-			int segundaY = longitudCatastro.intValue() + 186;
+			int primeraY = longitudCatastro.intValue() - 179;
+			int segundaY = longitudCatastro.intValue() + 197;
 			
 			int ancho = display.getWidth();
 			int alto = display.getHeight();
