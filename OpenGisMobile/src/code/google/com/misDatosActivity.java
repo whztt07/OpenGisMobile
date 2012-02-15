@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -169,6 +170,89 @@ public class misDatosActivity extends Activity {
 		
 		
 	}
+	
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.config_apero:
+                
+		                
+		            	//Aqu’ la ventana del nuevo Apero
+		            	
+		            	try{
+		            		
+			            	
+		            	String url = "http://79.108.245.167/OpenGisMobile/MaxIdAperoWebService.php";
+		            	
+		            	String data = AccesoWebService.recogerDatosWebService(url);
+		            	
+		            	Object[] obj = AccesoWebService.convertirDatosJSONAperoMaximo(data);
+		            	
+		            	AperosDatos apero = (AperosDatos) obj[0];
+		            	
+		            	String idNueva = Integer.parseInt(apero.getIdApero()) + 1 + "";
+		            	
+		            	Intent vCrearApero = new Intent(misDatosActivity.this,AperoNuevo.class);
+		            	vCrearApero.putExtra("idNueva",idNueva);
+		            	vCrearApero.putExtra("dni",dni);
+		            	startActivity(vCrearApero);
+		            	
+		            	}catch(Exception e2){
+		            		
+		            		
+		            	}
+		            	
+		            
+
+                return true;
+           case R.id.config_Producto:
+                
+            
+		                
+		            	//Aqu’ la ventana del nuevo Producto
+		            	
+		            	//Buscamos la máxima id.
+		            	try{
+		            		
+		            	
+		            	String url = "http://79.108.245.167/OpenGisMobile/MaxIdProductoWebService.php";
+		            	
+		            	
+		            	String data = AccesoWebService.recogerDatosWebService(url);
+		            	
+		            	Object[] obj = AccesoWebService.convertirDatosJSONProductoMaximo(data);
+		            	
+		            	ProductosDatos producto = (ProductosDatos) obj[0];
+		            	
+		            	String idNueva = Integer.parseInt(producto.getIdprod()) + 1 + "";	
+		            	Intent vCrearProducto = new Intent(misDatosActivity.this,ProductoNuevo.class);
+		            	vCrearProducto.putExtra("idNueva",idNueva);
+		            	vCrearProducto.putExtra("dni",dni);
+		            	startActivity(vCrearProducto);
+		            	
+		            	}catch(Exception e2){
+		            		
+		            		
+		            		
+		            	}
+		            	
+
+                return true;
+            case R.id.config_parcela:
+                
+		            	
+		            	Intent vTodasLasParcelas = new Intent(misDatosActivity.this,TodasParcelasIconListView.class);
+		            	vTodasLasParcelas.putExtra("dni",dni);
+		            	startActivity(vTodasLasParcelas);
+		            	
+		            } 
+
+            	
+                return true;
+           
+
+        }
 	
 
 }
