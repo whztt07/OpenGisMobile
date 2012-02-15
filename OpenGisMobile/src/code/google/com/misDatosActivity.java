@@ -18,6 +18,7 @@ public class misDatosActivity extends Activity {
 	private String apellidos;
 	private String email;
 	private String telefono;
+	private String dni;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class misDatosActivity extends Activity {
 		
 		 UserDatos user = (UserDatos) resultado[0];
 
+		this.dni = user.getDNI();
 		this.nombre = user.getNombre();
 		this.apellidos = user.getApellidos();
 		this.email = user.getEmail();
@@ -150,6 +152,7 @@ public class misDatosActivity extends Activity {
     
     	
     	Intent vLogin = new Intent(misDatosActivity.this,ConfigTabActivity.class);
+    	vLogin.putExtra("dni",this.dni);
     	startActivity(vLogin);
     	
     	

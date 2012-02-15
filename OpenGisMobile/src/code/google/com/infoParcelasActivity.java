@@ -81,6 +81,7 @@ public class infoParcelasActivity extends Activity {
 		            	
 		            	String url = "http://79.108.245.167/OpenGisMobile/BorrarParcelaWebService.php?dni="+dni+"&idparcela="+txtIdparcela.getText()+"";
 		            
+		            	url = url.replaceAll(" ","%20");
 		            	
 		            	boolean finalizado = AccesoWebService.InsertarEnWebService(url);
 		            	
@@ -132,6 +133,8 @@ public class infoParcelasActivity extends Activity {
 				
 				
 				String url = "http://79.108.245.167/OpenGisMobile/ModificarParcelaWebService.php?idparcela="+txtIdparcela.getText()+"&alias="+txtAliasparcela.getText()+"&provincia="+txtProvinciaparcela.getText()+"&poblacion="+txtPoblacionparcela.getText()+"&poligono="+txtPoligonoparcela.getText()+"&numero="+txtNumeroparcela.getText()+"";
+				
+				url = url.replaceAll(" ","%20");
 				
 				boolean finalizado = AccesoWebService.InsertarEnWebService(url);
 				
