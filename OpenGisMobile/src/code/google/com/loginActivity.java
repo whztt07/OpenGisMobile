@@ -24,6 +24,8 @@ public class loginActivity extends Activity {
         
         final EditText txtUser = (EditText) findViewById(R.id.txtUser);
         final EditText txtPass = (EditText) findViewById(R.id.txtPass);
+        txtUser.setText("00000000a");
+        txtPass.setText("a");
         
         final TextView txtRecoveryPass = (TextView) findViewById(R.id.txtRecoveryPass);
 
@@ -70,7 +72,11 @@ public class loginActivity extends Activity {
 
 					 String dni = user.getDNI();
 				
-					Intent vPrincipal = new Intent(loginActivity.this, principalActivity.class);
+					/*Intent vPrincipal = new Intent(loginActivity.this, principalActivity.class);
+					vPrincipal.putExtra("dni",dni);	
+					startActivity(vPrincipal);*/
+					 
+					Intent vPrincipal = new Intent(loginActivity.this, ConfigTabActivity.class);
 					vPrincipal.putExtra("dni",dni);	
 					startActivity(vPrincipal);
 					
