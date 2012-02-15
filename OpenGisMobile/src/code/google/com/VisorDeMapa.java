@@ -21,7 +21,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -42,6 +44,39 @@ public class VisorDeMapa extends MapActivity {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.mapa);
+	    
+	    Button botonBloquear = (Button) findViewById(R.id.botonBloquear);
+	    Button botonDesbloquear = (Button) findViewById(R.id.botonDesbloquear);
+	    
+	    botonBloquear.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View arg0) {
+				
+				
+				mapview.setEnabled(false);
+				
+			}
+	    	
+	    	
+	    	
+	    	
+	    	
+	    });
+	    
+	    botonDesbloquear.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View arg0) {
+				
+				
+				mapview.setEnabled(true);
+				
+			}
+	    	
+	    	
+	    	
+	    	
+	    	
+	    });
 	    
 	    Bundle extras = getIntent().getExtras();
 	    

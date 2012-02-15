@@ -83,7 +83,7 @@ public class SelectParcela extends ListActivity {
 	    		W3CSigPac coordenadasSigPac = new W3CSigPac(urlCatastro);
 	    		String posXCatastro = coordenadasSigPac.getAuxx();
 	    		String posYCatastro = coordenadasSigPac.getAuxy();
-
+	   
 	    		
 	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
 	    		i.putExtra("latitud",posX);

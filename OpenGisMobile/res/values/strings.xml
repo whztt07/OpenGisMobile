@@ -102,5 +102,9 @@
     
     <string name="youAreIn">You are in:</string>
     
+    <string name="lock">Lock Map</string>
+    
+    <string name="unlock">Unlock Map</string>
+    
     <string name="catastroError">The Land Registry is not correctly. You should contact with database administrator</string>
 </resources>
