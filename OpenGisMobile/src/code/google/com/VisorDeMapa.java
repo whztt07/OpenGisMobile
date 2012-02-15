@@ -49,7 +49,7 @@ public class VisorDeMapa extends MapActivity {
 	    
 		mapview = (MapView) findViewById(R.id.mapview);
 		mapview.setBuiltInZoomControls(false);
-		mapview.setEnabled(false);
+		mapview.setEnabled(true);
 		mapController = mapview.getController();
 		mapview.setSatellite(true);
 		
@@ -79,16 +79,20 @@ public class VisorDeMapa extends MapActivity {
    			Double latitudCatastro = Double.valueOf(extras.getString("posXCatastro"));
    			Double longitudCatastro = Double.valueOf(extras.getString("posYCatastro"));
         
-	        int primeraX = latitudCatastro.intValue() - 180;
-			int segundaX = latitudCatastro.intValue() + 180;
-			
-			int primeraY = longitudCatastro.intValue() - 180;
-			int segundaY = longitudCatastro.intValue() + 180;
+
 			
 			WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 			Display display = wm.getDefaultDisplay();
-			Double ancho = display.getWidth() / 1.62;
-			Double alto = display.getHeight() / 1.04;
+			
+	        int primeraX = latitudCatastro.intValue() - 296;
+			int segundaX = latitudCatastro.intValue() + 296;
+			
+			int primeraY = longitudCatastro.intValue() - 175;
+			int segundaY = longitudCatastro.intValue() + 186;
+			
+			int ancho = display.getWidth();
+			int alto = display.getHeight();
+			
 			
 			String urlImagen = "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?SERVICE=WMS&SRS=EPSG:23030&REQUEST=GETMAP&bbox="+primeraX+","+primeraY+","+segundaX+","+segundaY+"&width="+ancho+"&height="+alto+"&format=png&transparent=yes&layers=parcela&refcat="+referenciaCatastral+"";
 	       		
