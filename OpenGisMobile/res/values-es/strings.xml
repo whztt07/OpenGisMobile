@@ -110,5 +110,13 @@
      
      <string name="unlock">Desbloquear Mapa</string>
      
+     <string name="step1">Paso 1</string>
+    
+    <string name="step2">Paso 2</string>
+    
+    <string name="mostrarPerimetro">Mostrar Perímetro</string>
+    
+    <string name="mensajeAjustarZoom">Primero ajuste el Zoom. Después, presione Mostrar Perímetro</string>
+     
      <string name="catastroError">El Registro Catastral no es correcto. Contacte con el administrador de la base de datos</string>
 </resources>

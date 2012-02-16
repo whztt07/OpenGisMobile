@@ -106,5 +106,13 @@
     
     <string name="unlock">Unlock Map</string>
     
+    <string name="step1">Step 1</string>
+    
+    <string name="step2">Step 2</string>
+    
+    <string name="mostrarPerimetro">Show Perimeter</string>
+    
+    <string name="mensajeAjustarZoom">First adjust the zoom. Then click Show Perimeter</string>
+    
     <string name="catastroError">The Land Registry is not correctly. You should contact with database administrator</string>
 </resources>

@@ -12,6 +12,7 @@ import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -223,6 +224,7 @@ public class VisorDeMapa extends MapActivity {
         ItemsOverlay miPosicion = new ItemsOverlay(longitud,latitud,mensaje);
         mapview.getOverlays().add(miPosicion);
         
+        alertaMensaje(getString(R.string.mensajeAjustarZoom),getString(R.string.step1));
  
                
  
@@ -251,5 +253,14 @@ public class VisorDeMapa extends MapActivity {
 		}
 	}
 	
+	public void alertaMensaje(String mensaje,String titulo){
+		
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(VisorDeMapa.this);
+        dialogBuilder.setMessage(mensaje);
+        dialogBuilder.setCancelable(true).setTitle(titulo); 
+        dialogBuilder.create().show();
+		
+		
+	}
 
 }
