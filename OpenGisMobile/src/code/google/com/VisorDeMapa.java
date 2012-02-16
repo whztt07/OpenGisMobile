@@ -50,9 +50,11 @@ public class VisorDeMapa extends MapActivity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.mapa);
 	    
-	    Button botonBloquear = (Button) findViewById(R.id.botonBloquear);
-	    Button botonDesbloquear = (Button) findViewById(R.id.botonDesbloquear);
-	    Button botonAjustar = (Button) findViewById(R.id.botonAjustar);
+	    final Button botonBloquear = (Button) findViewById(R.id.botonBloquear);
+	    final Button botonDesbloquear = (Button) findViewById(R.id.botonDesbloquear);
+	    final Button botonAjustar = (Button) findViewById(R.id.botonAjustar);
+	    
+	    botonDesbloquear.setEnabled(false);
 	   
 	    
 	    botonBloquear.setOnClickListener(new View.OnClickListener(){
@@ -61,6 +63,8 @@ public class VisorDeMapa extends MapActivity {
 				
 				
 				mapview.setEnabled(false);
+				botonBloquear.setEnabled(false);
+				botonDesbloquear.setEnabled(true);
 				Toast tt = Toast.makeText(getApplicationContext(),"Mapa Bloqueado",Toast.LENGTH_LONG);
 				tt.show();
 			}
@@ -77,6 +81,8 @@ public class VisorDeMapa extends MapActivity {
 				
 				
 				mapview.setEnabled(true);
+				botonBloquear.setEnabled(true);
+				botonDesbloquear.setEnabled(false);
 				Toast tt = Toast.makeText(getApplicationContext(),"Mapa Desbloqueado",Toast.LENGTH_LONG);
 				tt.show();
 				
@@ -183,6 +189,9 @@ public class VisorDeMapa extends MapActivity {
 					
 					
 				}
+				
+				
+				alertaMensaje("Ajuste el perimetro a su parcela. Bloquee el mapa y presione Empezar",getString(R.string.step2));
 				
 				
 			}
