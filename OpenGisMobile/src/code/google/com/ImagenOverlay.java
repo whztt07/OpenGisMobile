@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
+import com.google.android.maps.Projection;
 
 
 public class ImagenOverlay extends Overlay {
@@ -37,19 +38,24 @@ public class ImagenOverlay extends Overlay {
     @Override
     public boolean draw(Canvas canvas, MapView mapView, boolean shadow, long when) {
         super.draw(canvas, mapView, shadow);
-        
-
-        GeoPoint point = new GeoPoint((int)latitud.intValue(), (int)longitud.intValue());
+       
         
         Point myScreenCoords = new Point() ;
-        mapView.getProjection().toPixels(point, myScreenCoords);
+        Projection proyeccion = mapView.getProjection();
+        GeoPoint point = new GeoPoint((int)latitud.intValue(), (int)longitud.intValue());
+        
+        Point centro = new Point();
+        proyeccion.toPixels(point, centro);
         
 		Paint p = new Paint();
 		p.setColor(Color.BLUE);
 
+        canvas.drawCircle(centro.x, centro.y, 5, p);
+        
         Bitmap markerImage = this.imagen;
+        
+        markerImage.getPixel(10,10); // PARA RECOGER EL PIXEL!
 
-        // Draw it, centered around the given coordinates
         canvas.drawBitmap(markerImage,0,0, p);
 			
             return true;

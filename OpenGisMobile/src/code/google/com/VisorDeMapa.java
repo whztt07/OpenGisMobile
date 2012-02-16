@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
@@ -174,5 +175,6 @@ public class VisorDeMapa extends MapActivity {
 		public void onStatusChanged(String provider, int status, Bundle extras) {
 		}
 	}
+	
 
 }
