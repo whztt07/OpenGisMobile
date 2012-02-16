@@ -17,13 +17,6 @@
             android:layout_height="match_parent"
             android:drawableTop="@drawable/bloquear"
             android:text="@string/lock" />
-
-        <Button
-            android:id="@+id/botonDesbloquear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/desbloquear"
-            android:text="@string/unlock" />
          <Button
             android:id="@+id/botonAjustar"
             android:layout_width="wrap_content"

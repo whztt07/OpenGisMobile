@@ -51,22 +51,31 @@ public class VisorDeMapa extends MapActivity {
 	    setContentView(R.layout.mapa);
 	    
 	    final Button botonBloquear = (Button) findViewById(R.id.botonBloquear);
-	    final Button botonDesbloquear = (Button) findViewById(R.id.botonDesbloquear);
 	    final Button botonAjustar = (Button) findViewById(R.id.botonAjustar);
 	    
-	    botonDesbloquear.setEnabled(false);
-	   
+	    botonBloquear.setText(getString(R.string.lock));
 	    
 	    botonBloquear.setOnClickListener(new View.OnClickListener(){
 
 			public void onClick(View arg0) {
 				
+				if(botonBloquear.getText().equals(getString(R.string.lock))){
 				
-				mapview.setEnabled(false);
-				botonBloquear.setEnabled(false);
-				botonDesbloquear.setEnabled(true);
-				Toast tt = Toast.makeText(getApplicationContext(),"Mapa Bloqueado",Toast.LENGTH_LONG);
-				tt.show();
+					mapview.setEnabled(false);
+					botonBloquear.setText(getString(R.string.unlock));
+					Toast tt = Toast.makeText(getApplicationContext(),"Mapa Bloqueado",Toast.LENGTH_LONG);
+					tt.show();
+					
+				}else{
+					
+					
+					mapview.setEnabled(true);
+					botonBloquear.setText(getString(R.string.lock));
+					Toast tt = Toast.makeText(getApplicationContext(),"Mapa Desbloqueado",Toast.LENGTH_LONG);
+					tt.show();
+					
+				}
+				
 			}
 	    	
 	    	
@@ -75,24 +84,9 @@ public class VisorDeMapa extends MapActivity {
 	    	
 	    });
 	    
-	    botonDesbloquear.setOnClickListener(new View.OnClickListener(){
+	   
+				
 
-			public void onClick(View arg0) {
-				
-				
-				mapview.setEnabled(true);
-				botonBloquear.setEnabled(true);
-				botonDesbloquear.setEnabled(false);
-				Toast tt = Toast.makeText(getApplicationContext(),"Mapa Desbloqueado",Toast.LENGTH_LONG);
-				tt.show();
-				
-			}
-	    	
-	    	
-	    	
-	    	
-	    	
-	    });
 	    
 	    
 	    botonAjustar.setOnClickListener(new View.OnClickListener(){
