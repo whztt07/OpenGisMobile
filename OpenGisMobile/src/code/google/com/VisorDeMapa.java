@@ -33,6 +33,9 @@ public class VisorDeMapa extends MapActivity {
 	private LocationManager locationManager;
 	private MapController mapController;
 	private MapView mapview;
+	private Double latitud;
+	private Double longitud;
+	private String referenciaCatastral;
 
 	@Override
 	protected boolean isRouteDisplayed() {
@@ -48,6 +51,8 @@ public class VisorDeMapa extends MapActivity {
 	    
 	    Button botonBloquear = (Button) findViewById(R.id.botonBloquear);
 	    Button botonDesbloquear = (Button) findViewById(R.id.botonDesbloquear);
+	    Button botonAjustar = (Button) findViewById(R.id.botonAjustar);
+	   
 	    
 	    botonBloquear.setOnClickListener(new View.OnClickListener(){
 
@@ -82,9 +87,117 @@ public class VisorDeMapa extends MapActivity {
 	    	
 	    });
 	    
+	    
+	    botonAjustar.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View arg0) {
+				
+				mapview.getOverlays().clear();
+				
+				int zoom = mapview.getZoomLevel();
+
+				if(zoom == 19){
+					
+					 try{
+				    	    
+						 	Bundle extras = getIntent().getExtras();
+						 
+				   			Double latitudCatastro = Double.valueOf(extras.getString("posXCatastro"));
+				   			Double longitudCatastro = Double.valueOf(extras.getString("posYCatastro"));
+				        
+							WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+							Display display = wm.getDefaultDisplay();
+							
+					        int primeraX = latitudCatastro.intValue() - 296;
+							int segundaX = latitudCatastro.intValue() + 296;
+							
+							int primeraY = longitudCatastro.intValue() - 179;
+							int segundaY = longitudCatastro.intValue() + 177;
+							
+							int ancho = display.getWidth();
+							int alto = display.getHeight();
+							
+							
+							String urlImagen = "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?SERVICE=WMS&SRS=EPSG:23030&REQUEST=GETMAP&bbox="+primeraX+","+primeraY+","+segundaX+","+segundaY+"&width="+ancho+"&height="+alto+"&format=png&transparent=yes&layers=parcela&refcat="+referenciaCatastral+"";
+					       		
+							
+							URL imageUrl = new URL(urlImagen);
+					        HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+					        conn.connect();
+					        Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
+					        
+					        ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",loadedImage);
+					        mapview.getOverlays().add(imagenParcela);
+					        
+				        }catch(Exception e2){
+				        	
+				        	
+				        }
+				        
+					
+					
+				}
+				
+				
+				
+				
+				if(zoom == 20){
+					
+					 try{
+				    	   
+						 	Bundle extras = getIntent().getExtras();
+						 
+				   			Double latitudCatastro = Double.valueOf(extras.getString("posXCatastro"));
+				   			Double longitudCatastro = Double.valueOf(extras.getString("posYCatastro"));
+				        
+							WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+							Display display = wm.getDefaultDisplay();
+							
+					        int primeraX = latitudCatastro.intValue() - 145;
+							int segundaX = latitudCatastro.intValue() + 145;
+							
+							int primeraY = longitudCatastro.intValue() - 79;
+							int segundaY = longitudCatastro.intValue() + 100;
+							
+							int ancho = display.getWidth();
+							int alto = display.getHeight();
+							
+							
+							String urlImagen = "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?SERVICE=WMS&SRS=EPSG:23030&REQUEST=GETMAP&bbox="+primeraX+","+primeraY+","+segundaX+","+segundaY+"&width="+ancho+"&height="+alto+"&format=png&transparent=yes&layers=parcela&refcat="+referenciaCatastral+"";
+					       		
+							
+							URL imageUrl = new URL(urlImagen);
+					        HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+					        conn.connect();
+					        Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
+					        
+					        ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",loadedImage);
+					        mapview.getOverlays().add(imagenParcela);
+					        
+				        }catch(Exception e2){
+				        	
+				        	
+				        }
+				        
+					
+					
+				}
+				
+				
+			}
+	    	
+	    	
+	    	
+	    	
+	    	
+	    });
+	    
+	    
+	    
+	    
 	    Bundle extras = getIntent().getExtras();
 	    
-	    String referenciaCatastral = extras.getString("referenciaCatastral");
+	    referenciaCatastral = extras.getString("referenciaCatastral");
 	    
 		mapview = (MapView) findViewById(R.id.mapview);
 		mapview.setBuiltInZoomControls(false);
@@ -93,8 +206,8 @@ public class VisorDeMapa extends MapActivity {
 		mapview.setSatellite(true);
 		
         
-		Double latitud = Double.valueOf(extras.getString("latitud")).doubleValue() * 1E6;
-		Double longitud = Double.valueOf(extras.getString("longitud")).doubleValue() * 1E6;
+		latitud = Double.valueOf(extras.getString("latitud")).doubleValue() * 1E6;
+		longitud = Double.valueOf(extras.getString("longitud")).doubleValue() * 1E6;
 		
         GeoPoint point = new GeoPoint((int) (longitud.intValue()),(int) (latitud.intValue()) );
           
@@ -110,46 +223,8 @@ public class VisorDeMapa extends MapActivity {
         ItemsOverlay miPosicion = new ItemsOverlay(longitud,latitud,mensaje);
         mapview.getOverlays().add(miPosicion);
         
-        // Recogemos la imagen de la parcela
-        
-       try{
-    	   
-           
-   			Double latitudCatastro = Double.valueOf(extras.getString("posXCatastro"));
-   			Double longitudCatastro = Double.valueOf(extras.getString("posYCatastro"));
-        
-
-			
-			WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-			Display display = wm.getDefaultDisplay();
-			
-	        int primeraX = latitudCatastro.intValue() - 296;
-			int segundaX = latitudCatastro.intValue() + 296;
-			
-			int primeraY = longitudCatastro.intValue() - 179;
-			int segundaY = longitudCatastro.intValue() + 177;
-			
-			int ancho = display.getWidth();
-			int alto = display.getHeight();
-			
-			
-			String urlImagen = "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx?SERVICE=WMS&SRS=EPSG:23030&REQUEST=GETMAP&bbox="+primeraX+","+primeraY+","+segundaX+","+segundaY+"&width="+ancho+"&height="+alto+"&format=png&transparent=yes&layers=parcela&refcat="+referenciaCatastral+"";
-	       		
-			
-			URL imageUrl = new URL(urlImagen);
-	        HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
-	        conn.connect();
-	        Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
-	        
-	        ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,mensaje,loadedImage);
-	        mapview.getOverlays().add(imagenParcela);
-	        
-        }catch(Exception e2){
-        	
-        	
-        }
-        
-        
+ 
+               
  
 	}
 		
