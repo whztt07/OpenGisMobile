@@ -4,6 +4,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
+import code.google.com.tratadoImagenes.RecorridoEspiral;
+
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -213,8 +215,10 @@ public class VisorDeMapa extends MapActivity {
 					        Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
 					        
 					        Bitmap mutableBitmap = loadedImage.copy(Bitmap.Config.ARGB_8888, true);
+					        
+					        RecorridoEspiral rc = new RecorridoEspiral(mutableBitmap);
 					       
-					        Bitmap nuevaImagen = recorridoEspiral(mutableBitmap);
+					        Bitmap nuevaImagen = rc.recorridoEspiral();
 					        
 					        ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",nuevaImagen);
 					        mapview.getOverlays().add(imagenParcela);
@@ -263,7 +267,12 @@ public class VisorDeMapa extends MapActivity {
 					        
 					        Bitmap mutableBitmap = loadedImage.copy(Bitmap.Config.ARGB_8888, true);
 						       
-					        Bitmap nuevaImagen = recorridoEspiral(mutableBitmap);
+					        RecorridoEspiral rc = new RecorridoEspiral(mutableBitmap);
+					        
+
+						       
+					        Bitmap nuevaImagen = rc.recorridoEspiral();
+						      
 					        
 					       ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",nuevaImagen);
 					       mapview.getOverlays().add(imagenParcela);
@@ -355,30 +364,6 @@ public class VisorDeMapa extends MapActivity {
 	}
 	
 	
-	public Bitmap recorridoEspiral(Bitmap imagenRecogida){
-		
-		Canvas canvas = new Canvas(imagenRecogida);
-		
-		Paint p = new Paint();
-		p.setColor(Color.BLUE);
-		
-		 for(int i=0;i<imagenRecogida.getWidth();i++){
-          	for(int j=0;j<imagenRecogida.getHeight();j++){
-          		
-          		if(imagenRecogida.getPixel(i,j) == Color.RED || imagenRecogida.getPixel(i,j) == Color.BLUE){
-          			canvas.drawPoint(i,j,p);
-          			
-          		}
-          		
-          	}
-          	
-         }
-		
-
-		 
-		return imagenRecogida;
-		
-	}
 	
 
 }
