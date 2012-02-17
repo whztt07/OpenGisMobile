@@ -25,6 +25,7 @@ public class ImagenOverlay extends Overlay {
 	private Context contexto;
 	private String mensaje;
 	private Bitmap imagen;
+
 	
 	public ImagenOverlay(Double latitud,Double longitud, String mensaje,Bitmap imagen){
 		
@@ -38,27 +39,18 @@ public class ImagenOverlay extends Overlay {
     @Override
     public boolean draw(Canvas canvas, MapView mapView, boolean shadow, long when) {
         super.draw(canvas, mapView, shadow);
-       
         
-        Point myScreenCoords = new Point() ;
-        Projection proyeccion = mapView.getProjection();
-        GeoPoint point = new GeoPoint((int)latitud.intValue(), (int)longitud.intValue());
         
-        Point centro = new Point();
-        proyeccion.toPixels(point, centro);
-        
-		Paint p = new Paint();
-		p.setColor(Color.BLUE);
+        	Paint p = new Paint();
+    		p.setColor(Color.BLUE);         
+    		
+            Bitmap markerImage = this.imagen;
+            canvas.drawBitmap(markerImage,0,0,p);
+            
+   		  
 
-        canvas.drawCircle(centro.x, centro.y, 5, p);
-        
-        Bitmap markerImage = this.imagen;
-        
-        markerImage.getPixel(10,10); // PARA RECOGER EL PIXEL!
-
-        canvas.drawBitmap(markerImage,0,0, p);
-			
-            return true;
+		return true;
+                
     }
     
     @Override
