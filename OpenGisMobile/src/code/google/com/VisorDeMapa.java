@@ -53,51 +53,16 @@ public class VisorDeMapa extends MapActivity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.mapa);
 	    
-	    final Button botonBloquear = (Button) findViewById(R.id.botonBloquear);
 	    final Button botonAjustar = (Button) findViewById(R.id.botonAjustar);
 	    final Button botonEmpezar = (Button) findViewById(R.id.botonEmpezarRecorrido);
-	    
-	    botonBloquear.setText(getString(R.string.lock));
+
 	    botonEmpezar.setEnabled(false);
-	    
-	    botonBloquear.setOnClickListener(new View.OnClickListener(){
-
-			public void onClick(View arg0) {
-				
-				if(botonBloquear.getText().equals(getString(R.string.lock))){
-				
-					mapview.setEnabled(false);
-					botonEmpezar.setEnabled(true);
-					botonBloquear.setText(getString(R.string.unlock));
-					Toast tt = Toast.makeText(getApplicationContext(),"Mapa Bloqueado",Toast.LENGTH_LONG);
-					tt.show();
-					
-				}else{
-					
-					
-					mapview.setEnabled(true);
-					botonBloquear.setText(getString(R.string.lock));
-					Toast tt = Toast.makeText(getApplicationContext(),"Mapa Desbloqueado",Toast.LENGTH_LONG);
-					tt.show();
-					
-				}
-				
-			}
-	    	
-	    	
-	    	
-	    	
-	    	
-	    });
-	    
-	   
-				
-
-	    
 	    
 	    botonAjustar.setOnClickListener(new View.OnClickListener(){
 
 			public void onClick(View arg0) {
+				
+				botonEmpezar.setEnabled(true);
 				
 				mapview.getOverlays().clear();
 				
@@ -192,7 +157,7 @@ public class VisorDeMapa extends MapActivity {
 				}
 				
 				
-				alertaMensaje("Ajuste el perimetro a su parcela. Bloquee el mapa y presione Empezar",getString(R.string.step2));
+				alertaMensaje(getString(R.string.ajustarParcela),getString(R.string.step2));
 				
 				
 			}
@@ -208,8 +173,9 @@ public class VisorDeMapa extends MapActivity {
 
 			public void onClick(View arg0) {
 				
-				botonBloquear.setEnabled(false);
 				botonAjustar.setEnabled(false);
+				botonEmpezar.setEnabled(false);
+				mapview.setEnabled(false);
 				
 				mapview.getOverlays().clear();
 				

@@ -114,5 +114,7 @@
     
     <string name="mensajeAjustarZoom">First adjust the zoom. Then click Show Perimeter</string>
     
+    <string name="ajustarParcela">Adjust the perimeter of your lot.Then press Start</string>
+    
     <string name="catastroError">The Land Registry is not correctly. You should contact with database administrator</string>
 </resources>
