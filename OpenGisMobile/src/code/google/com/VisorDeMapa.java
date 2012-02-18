@@ -233,8 +233,6 @@ public class VisorDeMapa extends MapActivity {
 				}
 				
 				
-				
-				
 				if(zoom == 20){
 					
 					 try{
@@ -246,6 +244,8 @@ public class VisorDeMapa extends MapActivity {
 				        
 							WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 							Display display = wm.getDefaultDisplay();
+							
+							
 							
 					        int primeraX = latitudCatastro.intValue() - 145;
 							int segundaX = latitudCatastro.intValue() + 145;

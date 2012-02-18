@@ -1,5 +1,7 @@
 package code.google.com.tratadoImagenes;
 
+import com.google.android.maps.Projection;
+
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -46,7 +48,18 @@ public class RecorridoEspiral {
 		
 		Bitmap imagenTratar = pintarPerimetro();
 		
-		Bitmap imagenTratada = scanner(485 + 5,258 + 10,imagenTratar);
+		/*Projection projection = mapView.getProjection();
+        GeoPoint geoPoint = new GeoPoint(latitud.intValue(), longitud.intValue());
+        
+        Point centro = new Point();
+        projection.toPixels(geoPoint, centro);*/
+		
+		Canvas canvas = new Canvas(imagenTratar);
+		
+		Paint p = new Paint();
+		p.setColor(Color.RED);
+		
+		Bitmap imagenTratada = scanner(676,290,imagenTratar);
 		
 		
 		return imagenTratada;
