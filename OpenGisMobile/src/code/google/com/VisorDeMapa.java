@@ -442,8 +442,6 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		
 		GeoPoint point = new GeoPoint((int) (location.getLatitude() * 1E6), (int) (location.getLongitude() * 1E6));
 		
-		mapController.animateTo(point);
-		
 		List<Overlay> mapOverlays = mapView.getOverlays();
 		MiPosicion linea = new MiPosicion(point,puntoViejo);
 		mapOverlays.add(linea);
