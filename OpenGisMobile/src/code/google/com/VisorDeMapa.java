@@ -16,11 +16,13 @@ import com.google.android.maps.OverlayItem;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -34,14 +36,15 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class VisorDeMapa extends MapActivity {
+public class VisorDeMapa extends MapActivity implements LocationListener{
 	
-	private LocationManager locationManager;
 	private MapController mapController;
 	private MapView mapview;
 	private Double latitud;
 	private Double longitud;
 	private String referenciaCatastral;
+	private Location puntoViejo;
+	private int veces =0;
 
 	@Override
 	protected boolean isRouteDisplayed() {
@@ -222,6 +225,8 @@ public class VisorDeMapa extends MapActivity {
 					        
 					        ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",nuevaImagen);
 					        mapview.getOverlays().add(imagenParcela);
+					       
+		  
 					        
 				        }catch(Exception e2){
 				        	
@@ -320,38 +325,51 @@ public class VisorDeMapa extends MapActivity {
         mapController.setZoom(19);
         
         mapview.getOverlays();
-        
-        
-
-        
+          
         alertaMensaje(getString(R.string.mensajeAjustarZoom),getString(R.string.step1));
  
-               
+	    LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+	    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,6000,10, this);
+	      
  
 	}
 		
+	
+	public void onLocationChanged(Location location) {
 		
-	
-	
-	
-	public class GeoUpdateHandler implements LocationListener {
-
-		public void onLocationChanged(Location location) {
-			int lat = (int) (location.getLatitude() * 1E6);
-			int lng = (int) (location.getLongitude() * 1E6);
-			GeoPoint point = new GeoPoint(lat, lng);
-			mapController.animateTo(point); //	mapController.setCenter(point);
+		if(veces==0){
+			
+			puntoViejo = location;
+			veces = 1;
+			
 		}
-
-		public void onProviderDisabled(String provider) {
-		}
-
-		public void onProviderEnabled(String provider) {
-		}
-
-		public void onStatusChanged(String provider, int status, Bundle extras) {
-		}
+		
+		updateLocation(location,puntoViejo);
+		this.puntoViejo = location;
+		
 	}
+	 
+
+
+	public void onProviderDisabled(String provider) {
+		
+	    Intent intent = new Intent( android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+	    startActivity(intent);
+	    
+	}
+	 
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		
+		
+	}
+	 
+	public void onProviderEnabled(String provider) {
+		
+		
+	}
+
+	
+	
 	
 	public void alertaMensaje(String mensaje,String titulo){
 		
@@ -359,6 +377,77 @@ public class VisorDeMapa extends MapActivity {
         dialogBuilder.setMessage(mensaje);
         dialogBuilder.setCancelable(true).setTitle(titulo); 
         dialogBuilder.create().show();
+		
+		
+	}
+	
+    // Declaramos la nueva clase interna para dibujar el OverLay de nuestra posici—n
+    
+    class MiPosicion extends Overlay { 
+    	
+		private GeoPoint point;
+		private Location pointAnterior;
+		private float puntoX;
+		private float puntoY;
+
+		/* El constructor recibe el punto donde se dibujar‡ el marker */
+		public MiPosicion(GeoPoint point,Location pointAnterior) {
+		  super();
+		  this.point = point;
+		  this.pointAnterior = pointAnterior;
+
+		}
+    	
+    	
+		
+		@Override
+		public boolean draw(Canvas canvas, MapView mapView, boolean shadow, long when) {
+		    super.draw(canvas, mapView, shadow);
+		    
+		   //se traduce el punto geo localizado a un punto en la pantalla
+		   Point scrnPoint = new Point();
+		   mapView.getProjection().toPixels(this.point, scrnPoint);
+		   
+		   GeoPoint puntoViejo = new GeoPoint((int) (pointAnterior.getLatitude() * 1E6), (int) (pointAnterior.getLongitude() * 1E6));
+		   
+		   	Point scrnPoint2 = new Point();
+		   	mapView.getProjection().toPixels(puntoViejo,scrnPoint2);
+		   
+
+				   Paint p = new Paint();
+				   p.setColor(Color.RED);
+				   p.setStrokeWidth(3);
+				   
+				   canvas.drawLine(scrnPoint.x,scrnPoint.y,scrnPoint2.x,scrnPoint2.y,p);
+				   
+		   		
+		   
+
+
+		   return true;
+		}
+		
+		
+		
+    }
+
+	
+    protected void updateLocation(Location location,Location puntoViejo){
+    	
+
+		
+		MapView mapView = (MapView) findViewById(R.id.mapview);
+		MapController mapController = mapView.getController();
+	
+		
+		GeoPoint point = new GeoPoint((int) (location.getLatitude() * 1E6), (int) (location.getLongitude() * 1E6));
+		
+		mapController.animateTo(point);
+		
+		List<Overlay> mapOverlays = mapView.getOverlays();
+		MiPosicion linea = new MiPosicion(point,puntoViejo);
+		mapOverlays.add(linea);
+		mapView.invalidate();
 		
 		
 	}
