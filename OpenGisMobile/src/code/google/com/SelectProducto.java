@@ -30,6 +30,7 @@ public class SelectProducto extends ListActivity {
 	    private String selApero,selnTarea;
     	private String dosis = "";
     	private int posicionObjeto;
+    	private boolean entrar = true;
 		
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -65,48 +66,56 @@ public class SelectProducto extends ListActivity {
 
 	    	posicionObjeto = position;
 	    	
-	    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
-
-	    	alert.setTitle(R.string.dosis);
-	    	alert.setMessage(R.string.insertDose);
-	    	final EditText input = new EditText(this);
-	    	input.setInputType(InputType.TYPE_CLASS_NUMBER);
-	    	alert.setView(input);
-
-	    	alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-	    	public void onClick(DialogInterface dialog, int whichButton) {
-	    		
-		    	ProductosDatos ProductoSeleccionado = (ProductosDatos) objetosCompletos.get(posicionObjeto);
-		    	Bundle extras = getIntent().getExtras();
-	    		
-		    	dosis = input.getText().toString();
-	    	  
-		    	
-		    	Intent selPro = new Intent(SelectProducto.this,SelectParcela.class);
-		    	selPro.putExtra("idTarea",extras.getString("idTarea"));
-		    	selPro.putExtra("nombreTarea",extras.getString("nombreTarea"));
-		    	selPro.putExtra("dni", extras.getString("dni"));
-		    	selPro.putExtra("idApero", extras.getString("idApero"));
-		    	selPro.putExtra("nombreApero", extras.getString("nombreApero"));
-		    	selPro.putExtra("idProducto", ProductoSeleccionado.getIdprod());
-		    	selPro.putExtra("nombreProducto", ProductoSeleccionado.getNombre());
-		    	selPro.putExtra("dosisProducto",dosis);
-		    	startActivity(selPro);
-	    	  
-	    	  
-	    	  }
-	    	});
-
-	    	alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-	    	  public void onClick(DialogInterface dialog, int whichButton) {
-	    	    // Canceled.
-	    	  }
-	    	});
-
-	    	alert.show();
 	    	
-
-	    }
+		    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
+	
+		    	alert.setTitle(R.string.dosis);
+		    	alert.setMessage(R.string.insertDose);
+		    	final EditText input = new EditText(this);
+		    	input.setInputType(InputType.TYPE_CLASS_NUMBER);
+		    	alert.setView(input);
+	
+		    	alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		    	public void onClick(DialogInterface dialog, int whichButton) {
+		    		
+			    	ProductosDatos ProductoSeleccionado = (ProductosDatos) objetosCompletos.get(posicionObjeto);
+			    	Bundle extras = getIntent().getExtras();
+		    		
+			    	dosis = input.getText().toString();
+			    	
+			    	if(dosis.equals("")){
+			    		
+			    		
+			    	}else{
+		    	  
+			    	
+				    	Intent selPro = new Intent(SelectProducto.this,SelectParcela.class);
+				    	selPro.putExtra("idTarea",extras.getString("idTarea"));
+				    	selPro.putExtra("nombreTarea",extras.getString("nombreTarea"));
+				    	selPro.putExtra("dni", extras.getString("dni"));
+				    	selPro.putExtra("idApero", extras.getString("idApero"));
+				    	selPro.putExtra("nombreApero", extras.getString("nombreApero"));
+				    	selPro.putExtra("idProducto", ProductoSeleccionado.getIdprod());
+				    	selPro.putExtra("nombreProducto", ProductoSeleccionado.getNombre());
+				    	selPro.putExtra("dosisProducto",dosis);
+				    	startActivity(selPro);
+				    	
+		    	  
+			    	}
+		    	  
+		    	  }
+		    	});
+	
+		    	alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		    	  public void onClick(DialogInterface dialog, int whichButton) {
+		    	    // Canceled.
+		    	  }
+		    	});
+	
+		    	alert.show();
+		    	
+	    	}
+	    
 	    
 	    /*
 	     * Inicializacion del mapa

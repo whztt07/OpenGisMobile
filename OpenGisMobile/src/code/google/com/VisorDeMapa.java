@@ -329,7 +329,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
         alertaMensaje(getString(R.string.mensajeAjustarZoom),getString(R.string.step1));
  
 	    LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-	    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,6000,10, this);
+	    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1, this);
 	      
  
 	}
