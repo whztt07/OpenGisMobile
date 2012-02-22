@@ -45,6 +45,10 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 	private String referenciaCatastral;
 	private Location puntoViejo;
 	private int veces =0;
+	
+	private int posicionXEmpezar;
+	private int posicionYEmpezar;
+	
 
 	@Override
 	protected boolean isRouteDisplayed() {
@@ -221,7 +225,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 					        
 					        RecorridoEspiral rc = new RecorridoEspiral(mutableBitmap);
 					       
-					        Bitmap nuevaImagen = rc.recorridoEspiral();
+					        Bitmap nuevaImagen = rc.recorridoEspiral(posicionXEmpezar,posicionYEmpezar);
 					        
 					        ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",nuevaImagen);
 					        mapview.getOverlays().add(imagenParcela);
@@ -276,7 +280,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 					        
 
 						       
-					        Bitmap nuevaImagen = rc.recorridoEspiral();
+					        Bitmap nuevaImagen = rc.recorridoEspiral(posicionXEmpezar,posicionYEmpezar);
 						      
 					        
 					       ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",nuevaImagen);
@@ -413,12 +417,11 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		   	Point scrnPoint2 = new Point();
 		   	mapView.getProjection().toPixels(puntoViejo,scrnPoint2);
 		   
-
-				   Paint p = new Paint();
-				   p.setColor(Color.RED);
-				   p.setStrokeWidth(3);
-				   
-				   canvas.drawLine(scrnPoint.x,scrnPoint.y,scrnPoint2.x,scrnPoint2.y,p);
+		   	Paint p = new Paint();
+		    p.setColor(Color.RED);
+		    p.setStrokeWidth(3);
+		    
+		    canvas.drawLine(scrnPoint.x,scrnPoint.y,scrnPoint2.x,scrnPoint2.y,p);
 				   
 		   		
 		   
@@ -438,9 +441,14 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		
 		MapView mapView = (MapView) findViewById(R.id.mapview);
 		MapController mapController = mapView.getController();
-	
 		
 		GeoPoint point = new GeoPoint((int) (location.getLatitude() * 1E6), (int) (location.getLongitude() * 1E6));
+		Point scrnPoint = new Point();
+		mapView.getProjection().toPixels(point, scrnPoint);
+		
+		   
+		this.posicionXEmpezar = scrnPoint.x;
+		this.posicionYEmpezar = scrnPoint.y;
 		
 		List<Overlay> mapOverlays = mapView.getOverlays();
 		MiPosicion linea = new MiPosicion(point,puntoViejo);

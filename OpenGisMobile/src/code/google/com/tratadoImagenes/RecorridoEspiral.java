@@ -44,7 +44,7 @@ public class RecorridoEspiral {
 	}
 	
 	
-	public Bitmap recorridoEspiral(){
+	public Bitmap recorridoEspiral(int posicionX,int posicionY){
 		
 		Bitmap imagenTratar = pintarPerimetro();
 		
@@ -59,7 +59,7 @@ public class RecorridoEspiral {
 		Paint p = new Paint();
 		p.setColor(Color.RED);
 		
-		Bitmap imagenTratada = scanner(676,290,imagenTratar);
+		Bitmap imagenTratada = scanner(posicionX,posicionY,imagenTratar);
 		
 		
 		return imagenTratada;
