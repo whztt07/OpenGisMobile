@@ -121,4 +121,9 @@
     <string name="ajustarParcela">Ajuste el perímetro de su parcela. Después, presione Empezar</string>
      
      <string name="catastroError">El Registro Catastral no es correcto. Contacte con el administrador de la base de datos</string>
+
+     <string name="change">Cambiar</string>
+    
+    <string name="confirmationData">Confirmación de Datos</string>
+
 </resources>

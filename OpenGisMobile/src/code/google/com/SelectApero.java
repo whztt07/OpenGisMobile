@@ -60,6 +60,7 @@ public class SelectApero extends ListActivity {
 		    	selAp.putExtra("dni", extras.getString("dni"));
 		    	selAp.putExtra("idApero", AperoSeleccionado.getIdApero());
 		    	selAp.putExtra("nombreApero", AperoSeleccionado.getNombreApero());
+		    	selAp.putExtra("tamApero", AperoSeleccionado.getTamanyoApero());
 		    	startActivity(selAp);
 	    	}else{
 		    	AperosDatos AperoSeleccionado = (AperosDatos) objetosCompletos.get(position);
@@ -70,6 +71,7 @@ public class SelectApero extends ListActivity {
 		    	selAp.putExtra("nombreTarea",extras.getString("nombreTarea"));
 		    	selAp.putExtra("dni", extras.getString("dni"));
 		    	selAp.putExtra("idApero", AperoSeleccionado.getIdApero());
+		    	selAp.putExtra("tamApero", AperoSeleccionado.getTamanyoApero());
 		    	selAp.putExtra("nombreApero", AperoSeleccionado.getNombreApero());
 		    	startActivity(selAp);
 	    	}

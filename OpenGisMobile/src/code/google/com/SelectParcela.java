@@ -34,6 +34,7 @@ public class SelectParcela extends ListActivity {
 	    private IconListViewAdapter m_adapter;
 	    private String dni,selTarea, selApero,selPro,selDosis;
 	    private ArrayList objetosCompletos;
+		private String nombreApero;
 		
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class SelectParcela extends ListActivity {
 			dni = extra.getString("dni");
 			selTarea = extra.getString("idTarea");
 			selApero = extra.getString("idApero");
+			nombreApero = extra.getString("nombreApero");
 			selPro = extra.getString("idProducto");
 			selDosis = extra.getString("dosisProducto");
 	        
@@ -64,97 +66,50 @@ public class SelectParcela extends ListActivity {
 	    
 	    @Override
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
-	    	
 	    	if((Integer.parseInt(selTarea))==4||Integer.parseInt(selTarea)==5){
-	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
-
-	    		String referenciaCatastral = ParcelaSeleccionada.getProvincia()+ParcelaSeleccionada.getPoblacion()+"A"+ParcelaSeleccionada.getPoligono()+ParcelaSeleccionada.getNumero();
 	    		
-	    		String url2 = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:4326&RC="+referenciaCatastral+"";
-	    		
-	    		String urlCatastro = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:23030&RC="+referenciaCatastral+"";
-	    		
-	    		try{
-	    		
-	    		W3CSigPac latitudes = new W3CSigPac(url2);
-	    		String posX = latitudes.getAuxx();
-	    		String posY = latitudes.getAuxy();
-	    		
-	    		W3CSigPac coordenadasSigPac = new W3CSigPac(urlCatastro);
-	    		String posXCatastro = coordenadasSigPac.getAuxx();
-	    		String posYCatastro = coordenadasSigPac.getAuxy();
-	   
-	    		
-	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
-	    		i.putExtra("latitud",posX);
-	    		i.putExtra("longitud",posY);
-	    		i.putExtra("posXCatastro",posXCatastro);
-	    		i.putExtra("posYCatastro",posYCatastro);
-	    		i.putExtra("dni",dni);
-	    		i.putExtra("idTarea",selTarea);
-	    		i.putExtra("idApero",selApero);
-	    		i.putExtra("idProducto",selPro);
-	    		i.putExtra("dosis",selDosis);
-	    		i.putExtra("nomParcela",ParcelaSeleccionada.getAlias());
-	    		i.putExtra("referenciaCatastral",referenciaCatastral);
-	    		startActivity(i);
-	    		
-	    		
-	    		}catch(Exception e2){
-	    			
-	    			
-		    		Toast info2 = Toast.makeText(getApplicationContext(),getString(R.string.catastroError), Toast.LENGTH_LONG);
-		    		info2.show();
-	    			
-	    			
-	    		}
-	    		
-
-	    		
+		    	Bundle extras = getIntent().getExtras();
+		    	Intent selAp = new Intent(SelectParcela.this,ConfirmaDatosStart.class);		    	
+		    	selAp.putExtra("idTarea",extras.getString("idTarea"));
+		    	selAp.putExtra("nombreTarea",extras.getString("nombreTarea"));
+		    	selAp.putExtra("dni", extras.getString("dni"));
+		    	selAp.putExtra("idApero", extras.getString("idApero"));
+		    	selAp.putExtra("tamApero", extras.getString("tamApero"));
+		    	selAp.putExtra("nombreApero", extras.getString("nombreApero"));
+		    	selAp.putExtra("idProducto", extras.getString("idProducto"));
+		    	selAp.putExtra("nombreProducto", extras.getString("nombreProducto"));
+		    	selAp.putExtra("dosisProducto", extras.getString("dosisProducto"));
+		    	
+		    	ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
+		    	selAp.putExtra("idParcela", ParcelaSeleccionada.getIdparcela());
+		    	selAp.putExtra("nombreParcela", ParcelaSeleccionada.getAlias());
+		    	selAp.putExtra("provParcela", ParcelaSeleccionada.getProvincia());
+		    	selAp.putExtra("poblParcela", ParcelaSeleccionada.getPoblacion());
+		    	selAp.putExtra("poliParcela", ParcelaSeleccionada.getPoligono());
+		    	selAp.putExtra("numParcela", ParcelaSeleccionada.getNumero());
+		    	startActivity(selAp);
+		    	
 	    	}else{
-	    		ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
-	    		Toast info = Toast.makeText(getApplicationContext(),
-	    		"Tarea:"+selTarea+" Apero:"+selApero+" Parcela:"+ParcelaSeleccionada.getIdparcela(), Toast.LENGTH_LONG);
-	    		info.show();
 	    		
-	    		String url2 = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?Provincia=&Municipio=&SRS=EPSG:4326&RC="+
-	    	    		 ParcelaSeleccionada.getProvincia()+ParcelaSeleccionada.getPoblacion()+"A"+ParcelaSeleccionada.getPoligono()+ParcelaSeleccionada.getNumero()+"";
-	    		
-	    		
-	    		try{
-	    		
-	    		W3CSigPac latitudes = new W3CSigPac(url2);
-	    		String posX = latitudes.getAuxx();
-	    		String posY = latitudes.getAuxy();
-	    		
-	    		
-	    		selPro = "";
-	    		selDosis = "";
-	    		
-	    		Intent i = new Intent(SelectParcela.this,VisorDeMapa.class);
-	    		i.putExtra("latitud",posX);
-	    		i.putExtra("longitud",posY);
-	    		i.putExtra("dni",dni);
-	    		i.putExtra("idTarea",selTarea);
-	    		i.putExtra("idApero",selApero);
-	    		i.putExtra("idProducto",selPro);
-	    		i.putExtra("dosis",selDosis);
-	    		i.putExtra("nomParcela",ParcelaSeleccionada.getAlias());
-	    		startActivity(i);
-	    		
-	    		
-	    		}catch(Exception e2){
-	    			
-	    			
-		    		Toast info2 = Toast.makeText(getApplicationContext(),getString(R.string.catastroError), Toast.LENGTH_LONG);
-		    		info2.show();
-	    			
-	    			
-	    		}
-	    		
+		    	ParcelasDatos parcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
+		    	Bundle extras = getIntent().getExtras();
 
-	    		
-	    		
+		    	Intent selAp = new Intent(SelectParcela.this,ConfirmaDatosStart.class);
+		    	selAp.putExtra("idTarea",extras.getString("idTarea"));
+		    	selAp.putExtra("nombreTarea",extras.getString("nombreTarea"));
+		    	selAp.putExtra("dni", extras.getString("dni"));
+		    	selAp.putExtra("idApero", selApero);
+		    	selAp.putExtra("tamApero", extras.getString("tamApero"));
+		    	selAp.putExtra("nombreApero", nombreApero );
+		    	
+		    	ParcelasDatos ParcelaSeleccionada = (ParcelasDatos) objetosCompletos.get(position);
+		    	selAp.putExtra("idParcela", ParcelaSeleccionada.getIdparcela());
+		    	selAp.putExtra("nombreParcela", ParcelaSeleccionada.getAlias());
+		    	selAp.putExtra("provParcela", ParcelaSeleccionada.getProvincia());
+		    	selAp.putExtra("poblParcela", ParcelaSeleccionada.getPoblacion());
+		    	selAp.putExtra("poliParcela", ParcelaSeleccionada.getPoligono());
+		    	selAp.putExtra("numParcela", ParcelaSeleccionada.getNumero());
+		    	startActivity(selAp);
 	    	}
 	    }
 	    

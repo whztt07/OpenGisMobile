@@ -110,6 +110,7 @@
         <activity android:name=".SelectProducto"></activity>
         <activity android:name=".SelectParcela"></activity>
         <activity android:name=".ConfigTabActivity"></activity>
+        <activity android:name=".ConfirmaDatosStart"></activity>
         
     </application>
     
