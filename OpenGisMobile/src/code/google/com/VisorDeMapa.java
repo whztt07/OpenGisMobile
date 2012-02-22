@@ -227,6 +227,10 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 					       
 					        Bitmap nuevaImagen = rc.recorridoEspiral(posicionXEmpezar,posicionYEmpezar);
 					        
+					        Toast tt = Toast.makeText(getApplicationContext(),posicionXEmpezar + "-" + posicionYEmpezar,Toast.LENGTH_LONG);
+					        tt.show();
+					        
+					        
 					        ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",nuevaImagen);
 					        mapview.getOverlays().add(imagenParcela);
 					       
@@ -281,6 +285,9 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 
 						       
 					        Bitmap nuevaImagen = rc.recorridoEspiral(posicionXEmpezar,posicionYEmpezar);
+					        
+					        Toast tt = Toast.makeText(getApplicationContext(),posicionXEmpezar + "-" + posicionYEmpezar,Toast.LENGTH_LONG);
+					        tt.show();
 						      
 					        
 					       ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",nuevaImagen);
