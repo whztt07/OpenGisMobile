@@ -48,16 +48,17 @@ public class RecorridoEspiral {
 		
 		Bitmap imagenTratar = pintarPerimetro();
 		
-		/*Projection projection = mapView.getProjection();
-        GeoPoint geoPoint = new GeoPoint(latitud.intValue(), longitud.intValue());
-        
-        Point centro = new Point();
-        projection.toPixels(geoPoint, centro);*/
 		
 		Canvas canvas = new Canvas(imagenTratar);
 		
 		Paint p = new Paint();
 		p.setColor(Color.RED);
+		
+		posicionY = posicionY - 50; // Le quitamos el alto del espacio de arriba
+		
+		System.out.println("Y: "+posicionY);
+		
+		System.out.println("X: "+posicionX);
 		
 		Bitmap imagenTratada = scanner(posicionX,posicionY,imagenTratar);
 		

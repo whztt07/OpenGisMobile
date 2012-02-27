@@ -225,6 +225,8 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 					        
 					        RecorridoEspiral rc = new RecorridoEspiral(mutableBitmap);
 					       
+					        //Bitmap nuevaImagen = rc.pintarPerimetro();
+					        
 					        Bitmap nuevaImagen = rc.recorridoEspiral(posicionXEmpezar,posicionYEmpezar);
 					        
 					        Toast tt = Toast.makeText(getApplicationContext(),posicionXEmpezar + "-" + posicionYEmpezar,Toast.LENGTH_LONG);
@@ -239,7 +241,11 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 				        }catch(Exception e2){
 				        	
 				        	System.out.println(e2);
+				        	System.out.println("EmpiezoX en: " + posicionXEmpezar);
+				        	System.out.println("EmpiezoY en: " + posicionYEmpezar);
+				        	
 				        }
+					 
 				        
 					
 					
@@ -333,7 +339,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
           
         mapController.animateTo(point);
         mapController.setCenter(point);
-        mapController.setZoom(19);
+        mapController.setZoom(20); // CAMBIAR A 19!!!!
         
         mapview.getOverlays();
           
@@ -406,9 +412,9 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		  super();
 		  this.point = point;
 		  this.pointAnterior = pointAnterior;
+		  System.out.println("El punto anterior es: "+pointAnterior);
 
 		}
-    	
     	
 		
 		@Override
@@ -453,19 +459,19 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		Point scrnPoint = new Point();
 		mapView.getProjection().toPixels(point, scrnPoint);
 		
-		   
 		this.posicionXEmpezar = scrnPoint.x;
 		this.posicionYEmpezar = scrnPoint.y;
 		
 		List<Overlay> mapOverlays = mapView.getOverlays();
 		MiPosicion linea = new MiPosicion(point,puntoViejo);
 		mapOverlays.add(linea);
+		
+
 		mapView.invalidate();
 		
-		
 	}
-	
-	
-	
+    
+    
+   
 
 }
