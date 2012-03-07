@@ -88,7 +88,7 @@ public class TodasParcelasIconListView extends ListActivity {
 		            	String dniUsuario = extras.getString("dni");
 
 		            	
-		            	String consulta = "http://79.108.245.167/OpenGisMobile/VerParcelasUsuariosWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
+		            	String consulta = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/VerParcelasUsuariosWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
 		            	
 		            	Object[] parcelasUsuario = AccesoWebService.convertirDatosJSONParcelasUsuarios(AccesoWebService.recogerDatosWebService(consulta));
 
@@ -96,7 +96,7 @@ public class TodasParcelasIconListView extends ListActivity {
 		            	if(parcelasUsuario.length!=0){
 		            		
 		            		
-		            		String url = "http://79.108.245.167/OpenGisMobile/ActivarParcelaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
+		            		String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/ActivarParcelaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
 			            	
 		            		
 			            	boolean acceso = AccesoWebService.InsertarEnWebService(url);
@@ -123,7 +123,7 @@ public class TodasParcelasIconListView extends ListActivity {
 		            		
 		            	}else{
 		            		
-		            		String url = "http://79.108.245.167/OpenGisMobile/NuevaParcelaEnListaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
+		            		String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/NuevaParcelaEnListaWebService.php?dni="+dniUsuario+"&idparcela="+idParcela+"";
 		            		
 		            		boolean acceso = AccesoWebService.InsertarEnWebService(url);
 			            	
@@ -204,7 +204,7 @@ public class TodasParcelasIconListView extends ListActivity {
 		    	///////////DE AQUI//////////////
 		    	m_locals = new ArrayList<Local>();
 		    		
-				String url = "http://79.108.245.167/OpenGisMobile/MostrarParcelasWebService.php?dni="+dniBuscado+"";
+				String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/MostrarParcelasWebService.php?dni="+dniBuscado+"";
 				
 				String data = AccesoWebService.recogerDatosWebService(url);
 				

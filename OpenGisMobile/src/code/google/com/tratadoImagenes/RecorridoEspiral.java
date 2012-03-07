@@ -60,8 +60,11 @@ public class RecorridoEspiral {
 		
 		System.out.println("X: "+posicionX);
 		
-		Bitmap imagenTratada = scanner(posicionX,posicionY,imagenTratar);
+		canvas.drawCircle(240,240,4,p);
 		
+		Bitmap imagenTratada = scanner(240,240,imagenTratar);
+		
+
 		
 		return imagenTratada;
 		
@@ -257,6 +260,7 @@ if(empezar==false){
 		
 		Paint p = new Paint();
 		p.setColor(Color.BLUE);
+		p.setStrokeWidth(2);
 
 		while (romper == false) {
 			

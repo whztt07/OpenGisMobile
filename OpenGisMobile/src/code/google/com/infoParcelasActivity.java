@@ -79,7 +79,7 @@ public class infoParcelasActivity extends Activity {
 		            	//Eliminamos la parcela de la tabla parcela_usuario
 		            	
 		            	
-		            	String url = "http://79.108.245.167/OpenGisMobile/BorrarParcelaWebService.php?dni="+dni+"&idparcela="+txtIdparcela.getText()+"";
+		            	String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/BorrarParcelaWebService.php?dni="+dni+"&idparcela="+txtIdparcela.getText()+"";
 		            
 		            	url = url.replaceAll(" ","%20");
 		            	
@@ -132,7 +132,7 @@ public class infoParcelasActivity extends Activity {
 			public void onClick(View v) {
 				
 				
-				String url = "http://79.108.245.167/OpenGisMobile/ModificarParcelaWebService.php?idparcela="+txtIdparcela.getText()+"&alias="+txtAliasparcela.getText()+"&provincia="+txtProvinciaparcela.getText()+"&poblacion="+txtPoblacionparcela.getText()+"&poligono="+txtPoligonoparcela.getText()+"&numero="+txtNumeroparcela.getText()+"";
+				String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/ModificarParcelaWebService.php?idparcela="+txtIdparcela.getText()+"&alias="+txtAliasparcela.getText()+"&provincia="+txtProvinciaparcela.getText()+"&poblacion="+txtPoblacionparcela.getText()+"&poligono="+txtPoligonoparcela.getText()+"&numero="+txtNumeroparcela.getText()+"";
 				
 				url = url.replaceAll(" ","%20");
 				

@@ -73,7 +73,7 @@ public class infoProductosActivity extends Activity {
 		            	
 						String idProducto = txtIDProducto.getText().toString();
 						
-						String direccionWebService = "http://79.108.245.167/OpenGisMobile/BorrarProductoWebService.php?idproducto="+idProducto+"";
+						String direccionWebService = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/BorrarProductoWebService.php?idproducto="+idProducto+"";
 						
 						boolean finalizado = AccesoWebService.InsertarEnWebService(direccionWebService);
 						
@@ -126,7 +126,7 @@ public class infoProductosActivity extends Activity {
 				String dosis = txtDosisProducto.getText().toString();
 				String descripcion = txtDescripcionProducto.getText().toString();
 				
-				String direccionWebService = "http://79.108.245.167/OpenGisMobile/ModificarProductoWebService.php?idproducto="+idProducto+"&nombre="+nombre+"&dosis="+dosis+"&descripcion="+descripcion+"";
+				String direccionWebService = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/ModificarProductoWebService.php?idproducto="+idProducto+"&nombre="+nombre+"&dosis="+dosis+"&descripcion="+descripcion+"";
 				
 				direccionWebService = direccionWebService.replace(" ","%20");
 				

@@ -74,7 +74,7 @@ public class ProductosIconListView extends ListActivity {
 	    	///////////DE AQUI//////////////
 	    	m_locals = new ArrayList<Local>();
 	    		
-			String url = "http://79.108.245.167/OpenGisMobile/MisProductosWebService.php?dni="+dni+"";
+			String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/MisProductosWebService.php?dni="+dni+"";
 			
 			String data = AccesoWebService.recogerDatosWebService(url);
 			

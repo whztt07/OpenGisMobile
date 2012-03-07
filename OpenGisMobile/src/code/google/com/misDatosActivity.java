@@ -36,7 +36,7 @@ public class misDatosActivity extends Activity {
         
         final Bundle extras = getIntent().getExtras();
         
-        String direccionWebService = "http://79.108.245.167/OpenGisMobile/MostrarDatosWebService.php?dni="+extras.getString("dni");
+        String direccionWebService = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/MostrarDatosWebService.php?dni="+extras.getString("dni");
 
 		
 		
@@ -114,7 +114,7 @@ public class misDatosActivity extends Activity {
 					//Llamamos al web service que guarda los datos
 					
 					
-					String direccionWebService = "http://79.108.245.167/OpenGisMobile/ModificarMisDatoswebService.php?nombre="+ txtNombre.getText() +"&apellidos="+txtApellidos.getText()+"&email="+txtEmail.getText()+"&telefono="+txtTelefono.getText()+"&dni="+txtDNI.getText()+"";
+					String direccionWebService = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/ModificarMisDatoswebService.php?nombre="+ txtNombre.getText() +"&apellidos="+txtApellidos.getText()+"&email="+txtEmail.getText()+"&telefono="+txtTelefono.getText()+"&dni="+txtDNI.getText()+"";
 					
 					direccionWebService = direccionWebService.replaceAll(" ","%20"); // Con esto solucionamos los espacios en blanco de la direccion de consulta
 					
@@ -183,7 +183,7 @@ public class misDatosActivity extends Activity {
 		            	try{
 		            		
 			            	
-		            	String url = "http://79.108.245.167/OpenGisMobile/MaxIdAperoWebService.php";
+		            	String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/MaxIdAperoWebService.php";
 		            	
 		            	String data = AccesoWebService.recogerDatosWebService(url);
 		            	
@@ -216,7 +216,7 @@ public class misDatosActivity extends Activity {
 		            	try{
 		            		
 		            	
-		            	String url = "http://79.108.245.167/OpenGisMobile/MaxIdProductoWebService.php";
+		            	String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/MaxIdProductoWebService.php";
 		            	
 		            	
 		            	String data = AccesoWebService.recogerDatosWebService(url);

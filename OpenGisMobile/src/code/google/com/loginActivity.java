@@ -49,7 +49,7 @@ public class loginActivity extends Activity {
 				
 				// Al hacer clic en enviar le pasamos la URL con los parametros necesarios (user y pass) para realizar el web service
 				
-				String direccionWebService = "http://79.108.245.167/OpenGisMobile/LoginwebService.php?dni="+txtUser.getText()+"&pass="+txtPass.getText()+"";
+				String direccionWebService = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/LoginwebService.php?dni="+txtUser.getText()+"&pass="+txtPass.getText()+"";
 
 				
 				// Gracias al metodo recogerDatosWebService recogemos en un string los datos del servicio web realizado en formato JSON
@@ -118,7 +118,7 @@ public class loginActivity extends Activity {
 				}else{
 					
 					
-					String direccionWebService = "http://79.108.245.167/OpenGisMobile/RecuperarPassWebService.php?dni="+txtUser.getText()+"";
+					String direccionWebService = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/RecuperarPassWebService.php?dni="+txtUser.getText()+"";
 
 					
 					// Gracias al metodo recogerDatosWebService recogemos en un string los datos del servicio web realizado en formato JSON

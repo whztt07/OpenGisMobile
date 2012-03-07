@@ -71,7 +71,7 @@ public class infoAperosActivity extends Activity {
 		            	
 		            	//En caso afirmativo borramos el Apero con ese ID.
 		            	
-		            	String direccionWebService = "http://79.108.245.167/OpenGisMobile/BorrarAperoWebService.php?idapero="+txtID.getText();
+		            	String direccionWebService = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/BorrarAperoWebService.php?idapero="+txtID.getText();
 		            	
 		            	
 		            	boolean estado = AccesoWebService.InsertarEnWebService(direccionWebService);
@@ -121,7 +121,7 @@ public class infoAperosActivity extends Activity {
 			public void onClick(View v) {
 				
 				
-				String direccionWebService = "http://79.108.245.167/OpenGisMobile/ModificarAperoWebService.php?nombre="+ txtNombreApero.getText() +"&tamanyo="+txtTamanyo.getText()+"&descripcion="+txtDescripcion.getText()+"&idapero="+txtID.getText()+"";
+				String direccionWebService = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/ModificarAperoWebService.php?nombre="+ txtNombreApero.getText() +"&tamanyo="+txtTamanyo.getText()+"&descripcion="+txtDescripcion.getText()+"&idapero="+txtID.getText()+"";
 				
 				direccionWebService = direccionWebService.replaceAll(" ","%20"); // Con esto solucionamos los espacios en blanco de la direccion de consulta
 				

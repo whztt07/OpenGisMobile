@@ -37,7 +37,7 @@ public class W3CSigPac {
        URL url = new URL(u);
 
         HttpsURLConnection conexion = (HttpsURLConnection) url.openConnection();
-        conexion.setDoOutput(true);
+        //conexion.setDoOutput(true); // Con esto as’ funciona en Android 4.0 y dem‡s
         conexion.setDoInput(true);
         conexion.setRequestMethod("GET");
         

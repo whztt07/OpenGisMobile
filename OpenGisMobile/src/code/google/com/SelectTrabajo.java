@@ -84,7 +84,7 @@ public class SelectTrabajo extends ListActivity {
 
 	    	m_locals = new ArrayList<Local>();
 	    		
-			String url = "http://79.108.245.167/OpenGisMobile/MostrarTareasWebService.php";
+			String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/MostrarTareasWebService.php";
 			
 			String data = AccesoWebService.recogerDatosWebService(url);
 			

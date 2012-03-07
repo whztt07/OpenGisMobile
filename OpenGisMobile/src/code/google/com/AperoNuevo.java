@@ -46,7 +46,7 @@ public class AperoNuevo extends Activity {
 				
 				tarea = tarea.substring(0,1);
 
-				String url = "http://79.108.245.167/OpenGisMobile/CrearAperoWebService.php?id="+txtId.getText()+"&nom="+txtNombre.getText()+"&tam="+txtTamanyo.getText()+"&tarea="+tarea+"&desc="+txtDescripcion.getText()+"&dni="+extras.getString("dni")+"";
+				String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/CrearAperoWebService.php?id="+txtId.getText()+"&nom="+txtNombre.getText()+"&tam="+txtTamanyo.getText()+"&tarea="+tarea+"&desc="+txtDescripcion.getText()+"&dni="+extras.getString("dni")+"";
 
 				url = url.replaceAll(" ","%20");
 				

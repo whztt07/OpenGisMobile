@@ -108,7 +108,7 @@ public class ParcelasIconListView extends ListActivity {
 			            	//Eliminamos la parcela de la tabla parcela_usuario
 			            	
 			            	
-			            	String url = "http://79.108.245.167/OpenGisMobile/BorrarParcelaWebService.php?dni="+dni+"&idparcela="+parcelaSeleccionada.getIdparcela()+"";
+			            	String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/BorrarParcelaWebService.php?dni="+dni+"&idparcela="+parcelaSeleccionada.getIdparcela()+"";
 			            
 			            	
 			            	boolean finalizado = AccesoWebService.InsertarEnWebService(url);
@@ -167,7 +167,7 @@ public class ParcelasIconListView extends ListActivity {
 	    	///////////DE AQUI//////////////
 	    	m_locals = new ArrayList<Local>();
 	    		
-			String url = "http://79.108.245.167/OpenGisMobile/MisParcelasWebService.php?dni="+dni+"";
+			String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/MisParcelasWebService.php?dni="+dni+"";
 			
 			String data = AccesoWebService.recogerDatosWebService(url);
 			

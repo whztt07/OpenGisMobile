@@ -64,8 +64,10 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 	    
 	    final Button botonAjustar = (Button) findViewById(R.id.botonAjustar);
 	    final Button botonEmpezar = (Button) findViewById(R.id.botonEmpezarRecorrido);
+	    final Button botonFinalizar = (Button) findViewById(R.id.botonFinalizarTarea);
 
 	    botonEmpezar.setEnabled(false);
+	    botonFinalizar.setVisibility(View.INVISIBLE); // Ponemos el bot—n en invisible
 	    
 	    botonAjustar.setOnClickListener(new View.OnClickListener(){
 
@@ -135,8 +137,8 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 							WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 							Display display = wm.getDefaultDisplay();
 							
-					        int primeraX = latitudCatastro.intValue() - 145;
-							int segundaX = latitudCatastro.intValue() + 145;
+					        int primeraX = latitudCatastro.intValue() - 147;
+							int segundaX = latitudCatastro.intValue() + 147;
 							
 							int primeraY = longitudCatastro.intValue() - 79;
 							int segundaY = longitudCatastro.intValue() + 100;
@@ -184,6 +186,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 				
 				botonAjustar.setEnabled(false);
 				botonEmpezar.setEnabled(false);
+				botonFinalizar.setVisibility(View.VISIBLE);
 				mapview.setEnabled(false);
 				
 				mapview.getOverlays().clear();
@@ -224,8 +227,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 					        Bitmap mutableBitmap = loadedImage.copy(Bitmap.Config.ARGB_8888, true);
 					        
 					        RecorridoEspiral rc = new RecorridoEspiral(mutableBitmap);
-					       
-					        //Bitmap nuevaImagen = rc.pintarPerimetro();
+				
 					        
 					        Bitmap nuevaImagen = rc.recorridoEspiral(posicionXEmpezar,posicionYEmpezar);
 					        
@@ -266,8 +268,8 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 							
 							
 							
-					        int primeraX = latitudCatastro.intValue() - 145;
-							int segundaX = latitudCatastro.intValue() + 145;
+					        int primeraX = latitudCatastro.intValue() - 148;
+							int segundaX = latitudCatastro.intValue() + 148;
 							
 							int primeraY = longitudCatastro.intValue() - 79;
 							int segundaY = longitudCatastro.intValue() + 100;
@@ -432,12 +434,11 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		   
 		   	Paint p = new Paint();
 		    p.setColor(Color.RED);
-		    p.setStrokeWidth(3);
+		    p.setStrokeWidth(11);
 		    
 		    canvas.drawLine(scrnPoint.x,scrnPoint.y,scrnPoint2.x,scrnPoint2.y,p);
 				   
-		   		
-		   
+		   	
 
 
 		   return true;

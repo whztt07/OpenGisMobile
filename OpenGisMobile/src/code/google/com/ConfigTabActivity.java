@@ -101,7 +101,7 @@ public class ConfigTabActivity extends TabActivity{
 		            	try{
 		            		
 			            	
-		            	String url = "http://79.108.245.167/OpenGisMobile/MaxIdAperoWebService.php";
+		            	String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/MaxIdAperoWebService.php";
 		            	
 		            	String data = AccesoWebService.recogerDatosWebService(url);
 		            	
@@ -134,7 +134,7 @@ public class ConfigTabActivity extends TabActivity{
 		            	try{
 		            		
 		            	
-		            	String url = "http://79.108.245.167/OpenGisMobile/MaxIdProductoWebService.php";
+		            	String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/MaxIdProductoWebService.php";
 		            	
 		            	
 		            	String data = AccesoWebService.recogerDatosWebService(url);

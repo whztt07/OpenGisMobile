@@ -44,7 +44,7 @@ public class ProductoNuevo extends Activity {
 			public void onClick(View v) {
 				
 				
-				String url = "http://79.108.245.167/OpenGisMobile/CrearProductoWebService.php?id="+txtId.getText()+"&nom="+txtNombre.getText()+"&dosis="+txtDosis.getText()+"&tarea="+cbTareas.getSelectedItem()+"&desc="+txtDescripcion.getText()+"&dni="+extras.getString("dni")+"";
+				String url = "http://"+getString(R.string.direccionServidor)+"/OpenGisMobile/CrearProductoWebService.php?id="+txtId.getText()+"&nom="+txtNombre.getText()+"&dosis="+txtDosis.getText()+"&tarea="+cbTareas.getSelectedItem()+"&desc="+txtDescripcion.getText()+"&dni="+extras.getString("dni")+"";
 
 				url = url.replaceAll(" ","%20");
 				
