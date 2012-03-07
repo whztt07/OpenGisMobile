@@ -2,6 +2,7 @@ package code.google.com;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 
 import code.google.com.tratadoImagenes.RecorridoEspiral;
@@ -68,6 +69,40 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 
 	    botonEmpezar.setEnabled(false);
 	    botonFinalizar.setVisibility(View.INVISIBLE); // Ponemos el bot—n en invisible
+	    
+	    
+	    botonFinalizar.setOnClickListener(new View.OnClickListener(){
+
+			public void onClick(View arg0) {
+				
+				
+				// Acci—n que se realizar‡ al presionar finalizar tarea 
+				
+				Bundle extras = getIntent().getExtras();
+				
+				
+				String dni = extras.getString("dni");
+	    		String idTarea = extras.getString("idTarea");
+	    		String idApero = extras.getString("idApero");
+	    		String idProducto = extras.getString("idProducto");
+	    		String dosis = extras.getString("dosis");
+	    		String parcela = extras.getString("nomParcela");
+	    		String finalizada = "1";
+	    		Date fecha = new Date();
+	    		
+	    		Toast.makeText(getApplicationContext(),dni + " " + idTarea + " " + idApero + " " +idProducto+ " " +dosis+ " " +parcela+ " " +fecha,Toast.LENGTH_LONG).show();
+	    		
+	    		
+				
+				
+			}
+	    	
+	    	
+	    	
+	    	
+	    });
+	    
+	    
 	    
 	    botonAjustar.setOnClickListener(new View.OnClickListener(){
 
@@ -341,7 +376,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
           
         mapController.animateTo(point);
         mapController.setCenter(point);
-        mapController.setZoom(20); // CAMBIAR A 19!!!!
+        mapController.setZoom(19); // CAMBIAR A 19!!!!
         
         mapview.getOverlays();
           

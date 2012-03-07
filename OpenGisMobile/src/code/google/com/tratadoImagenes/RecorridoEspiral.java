@@ -60,9 +60,9 @@ public class RecorridoEspiral {
 		
 		System.out.println("X: "+posicionX);
 		
-		canvas.drawCircle(240,240,4,p);
+		//canvas.drawCircle(496,290,4,p);
 		
-		Bitmap imagenTratada = scanner(240,240,imagenTratar);
+		Bitmap imagenTratada = scanner(488,284,imagenTratar);
 		
 
 		
@@ -131,37 +131,31 @@ if(izquierda <=10 && abajo <=10 && arriba <=10 && media <=10 || izquierda <=10 &
 	
 
 }else{
+	
+	
 if(empezar==false){
 	if(derecha<izquierda && derecha<abajo && derecha<arriba && condicion ==false ){ //comprueba x donde empieza segun cual esta mas cerca
 		
 		condicion = true;
-		for(int pinto = 0;pinto <=10;pinto++){
-			canvas.drawPoint(x-pinto,y,p);
-		}
+		
 		derechaAbajo(x+derecha-10,y,img);
 	}
 	if(izquierda<derecha && izquierda<abajo && izquierda<arriba && condicion ==false){//comprueba x donde empieza segun cual esta mas cerca
 		System.out.println("empieza izquierdaArriba");
 		condicion = true;
-		for(int pinto = 0;pinto <=10;pinto++){
-			canvas.drawPoint(x+pinto,y,p);
-		}
+		
 		izquierdaArriba(x-izquierda+10,y,img);
 		}
 	if(arriba<derecha && arriba<abajo && arriba<izquierda && condicion ==false){//comprueba x donde empieza segun cual esta mas cerca
 		System.out.println("empieza arribaDerecha");
 		condicion = true;
-		for(int pinto = 0;pinto <=10;pinto++){
-			canvas.drawPoint(x,y-pinto,p);
-		}
+		
 		arribaDerecha(x,y-arriba+10,img);
 		}
 	if(abajo<arriba && abajo<derecha && abajo<izquierda && condicion ==false){//comprueba x donde empieza segun cual esta mas cerca
 		System.out.println("empieza abajoIzquierda");
 		condicion = true;
-		for(int pinto = 0;pinto <=10;pinto++){
-			canvas.drawPoint(x,y+pinto,p);
-		}
+		
 		abajoIzquierda(x,y+abajo-10,img);		
 		}
 }else{
