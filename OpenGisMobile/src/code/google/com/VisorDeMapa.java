@@ -22,6 +22,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
@@ -266,11 +267,11 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 					        
 					        Bitmap nuevaImagen = rc.recorridoEspiral(posicionXEmpezar,posicionYEmpezar);
 					        
-					        Toast tt = Toast.makeText(getApplicationContext(),posicionXEmpezar + "-" + posicionYEmpezar,Toast.LENGTH_LONG);
-					        tt.show();
+					        Bitmap imagenRedimensionada = getResizedBitmap(nuevaImagen,1550,2500);
+
+					        mapController.setZoom(20);
 					        
-					        
-					        ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",nuevaImagen);
+					        ImagenOverlay imagenParcela = new ImagenOverlay(longitud,latitud,"",imagenRedimensionada);
 					        mapview.getOverlays().add(imagenParcela);
 					       
 		  
@@ -506,6 +507,44 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		mapView.invalidate();
 		
 	}
+    
+    
+    /**
+     * 
+     * Metodo para redimensionar la im‡gen
+     * 
+     * 
+     * @param bm Le pasamos el Bitmp
+     * @param newHeight nuevo alto
+     * @param newWidth nuevo ancho
+     * @return Devolvemos la im‡gen
+     */
+    
+    public Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
+
+    	int width = bm.getWidth();
+
+    	int height = bm.getHeight();
+
+    	float scaleWidth = ((float) newWidth) / width;
+
+    	float scaleHeight = ((float) newHeight) / height;
+
+    	// create a matrix for the manipulation
+
+    	Matrix matrix = new Matrix();
+
+    	// resize the bit map
+
+    	matrix.postScale(scaleWidth, scaleHeight);
+
+    	// recreate the new Bitmap
+
+    	Bitmap resizedBitmap = Bitmap.createBitmap(bm,310,170, width - 310, height - 170, matrix, false);
+
+    	return resizedBitmap;
+
+    	}
     
     
    
