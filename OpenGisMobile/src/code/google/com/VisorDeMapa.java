@@ -2,6 +2,7 @@ package code.google.com;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +51,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 	
 	private int posicionXEmpezar;
 	private int posicionYEmpezar;
+	private double distanciaRecorrida = 0;
 	
 
 	@Override
@@ -399,6 +401,8 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 			
 		}
 		
+	
+		
 		updateLocation(location,puntoViejo);
 		this.puntoViejo = location;
 		
@@ -450,7 +454,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		  super();
 		  this.point = point;
 		  this.pointAnterior = pointAnterior;
-		  System.out.println("El punto anterior es: "+pointAnterior);
+		  
 
 		}
     	
@@ -506,6 +510,23 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 
 		mapView.invalidate();
 		
+		double lat2 = location.getLatitude();
+		double lng2 = location.getLongitude();
+		
+		double lat1 = puntoViejo.getLatitude();
+		double lng1 = puntoViejo.getLongitude();
+		
+		double km = calcularDistancia(lat1,lng1,lat2,lng2);
+		
+		this.distanciaRecorrida  +=km;
+		
+		DecimalFormat df = new DecimalFormat("0.000"); 
+		
+		String distanciaKM = df.format(this.distanciaRecorrida) + " Km";
+		
+		
+		System.out.println(this.distanciaRecorrida);
+		
 	}
     
     
@@ -540,12 +561,39 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 
     	// recreate the new Bitmap
 
-    	Bitmap resizedBitmap = Bitmap.createBitmap(bm,310,170, width - 310, height - 170, matrix, false);
+    	Bitmap resizedBitmap = Bitmap.createBitmap(bm,310,175, width - 310, height - 175, matrix, false);
 
     	return resizedBitmap;
 
     	}
     
+    /**
+     * MŽtodo para calcular la distancia entre dos puntos
+     * 
+     * @param lat1
+     * @param lng1
+     * @param lat2
+     * @param lng2
+     * @return Nos devuelve una distancia entre dos puntos en KM
+     */
+    
+    public double calcularDistancia(double lat1, double lng1,double lat2,double lng2)
+    {
+    	double pi80 = Math.PI / 180;
+    	lat1 *= pi80;
+    	lng1 *= pi80;
+    	lat2 *= pi80;
+    	lng2 *= pi80;
+     
+    	double r = 6372.797; // mean radius of Earth in km
+    	double dlat = lat2 - lat1;
+    	double dlng = lng2 - lng1;
+    	double a = Math.sin(dlat / 2) * Math.sin(dlat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dlng / 2) * Math.sin(dlng / 2);
+    	double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    	double km = r * c;
+     
+    	return km;
+    }
     
    
 
