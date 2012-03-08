@@ -37,6 +37,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class VisorDeMapa extends MapActivity implements LocationListener{
@@ -525,7 +526,10 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		String distanciaKM = df.format(this.distanciaRecorrida) + " Km";
 		
 		
-		System.out.println(this.distanciaRecorrida);
+		TextView textoDistancia = (TextView) findViewById(R.id.textoDistancia);
+		
+		textoDistancia.setText(distanciaKM);
+
 		
 	}
     
