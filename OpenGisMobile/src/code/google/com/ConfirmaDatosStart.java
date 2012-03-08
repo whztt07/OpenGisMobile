@@ -124,7 +124,7 @@ public class ConfirmaDatosStart extends Activity {
 		    		i.putExtra("idApero",selApero);
 		    		i.putExtra("idProducto",selPro);
 		    		i.putExtra("dosis",selDosis);
-		    		i.putExtra("nomParcela", nombreParcela);
+		    		i.putExtra("selparcela", selParcela);
 		    		i.putExtra("referenciaCatastral",referenciaCatastral);
 		    		startActivity(i);
 		    		
@@ -168,7 +168,7 @@ public class ConfirmaDatosStart extends Activity {
 		    		i.putExtra("idApero",selApero);
 		    		i.putExtra("idProducto",selPro);
 		    		i.putExtra("dosis",selDosis);
-		    		i.putExtra("nomParcela",nombreParcela);
+		    		i.putExtra("selparcela",selParcela);
 		    		startActivity(i);
 		    		
 		    		

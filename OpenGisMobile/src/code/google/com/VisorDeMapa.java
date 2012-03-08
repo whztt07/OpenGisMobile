@@ -91,12 +91,43 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 	    		String idApero = extras.getString("idApero");
 	    		String idProducto = extras.getString("idProducto");
 	    		String dosis = extras.getString("dosis");
-	    		String parcela = extras.getString("nomParcela");
+	    		String parcela = extras.getString("selparcela");
 	    		String finalizada = "1";
 	    		Date fecha = new Date();
+	    		int anyo = fecha.getYear() + 1900;
+	    		int mes = fecha.getMonth() + 1;
+	    		int dia = fecha.getDate();
+	    		String fechaFinal = anyo + "-" + mes + "-" + dia;
 	    		
-	    		Toast.makeText(getApplicationContext(),dni + " " + idTarea + " " + idApero + " " +idProducto+ " " +dosis+ " " +parcela+ " " +fecha,Toast.LENGTH_LONG).show();
+	    	
 	    		
+	    		
+	    		String url = "http://84.126.170.226/OpenGisMobile/FinalizarTareaWebService.php?idtarea="+idTarea+"&dni_usuario="+dni+"&idparcela="+parcela+"&idprod="+idProducto+"&dosis="+dosis+"&idapero="+idApero+"&fecha_ini="+fechaFinal+"&fecha_final="+fechaFinal+"&finalizada="+finalizada+"";
+	    		
+	    		
+	    		boolean finalizado = AccesoWebService.InsertarEnWebService(url);
+	    		
+	    		
+	    		if(finalizado){
+	    			
+		    		
+		    		Intent vPrincipal = new Intent(VisorDeMapa.this,ConfigTabActivity.class);
+		    		vPrincipal.putExtra("dni",dni);
+		    		startActivity(vPrincipal);
+	    			
+		    		Toast.makeText(getApplicationContext(),"La tarea ha finalizado de forma correcta",Toast.LENGTH_LONG).show();
+		    		
+		    		
+	    		}else{
+	    			
+	    			
+	    			Toast.makeText(getApplicationContext(),getString(R.string.msgError),Toast.LENGTH_LONG).show();
+		    		
+		    		
+	    			
+	    			
+	    		}
+
 	    		
 				
 				
@@ -524,14 +555,14 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		
 		DecimalFormat df = new DecimalFormat("0.000"); 
 		
-		String distanciaKM = getString(R.string.distanciaRecorrida) + " "+df.format(this.distanciaRecorrida) + " Km ";
+		String distanciaKM = "   " + getString(R.string.distanciaRecorrida) + " "+df.format(this.distanciaRecorrida) + " Km ";
 		
 		
 		double velocidad = km / 3600;
 		
 		String veloKmHora = velocidad + "    ";
 		
-		veloKmHora =  Html.fromHtml("<b>"+getString(R.string.velocidad)+"</b>") +" "+ veloKmHora.substring(0,4) + " Km/h";
+		veloKmHora =  "              "+getString(R.string.velocidad) +" "+ veloKmHora.substring(0,4) + " Km/h";
 		
 		
 		TextView textoDistancia = (TextView) findViewById(R.id.textoDistancia);
@@ -539,6 +570,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		
 		textoVelocidad.setText(veloKmHora);
 		textoDistancia.setText(distanciaKM);
+
 
 		
 	}
