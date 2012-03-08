@@ -129,5 +129,9 @@
     <string name="confirmationData">Confirmación de Datos</string>
     
     <string name="finish">Finalizar Tarea</string>
+    
+    <string name="distanciaRecorrida">     Distancia Recorrida:   </string>
+    
+    <string name="velocidad">        Velocidad:  </string>
 
 </resources>

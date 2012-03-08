@@ -125,5 +125,10 @@
     <string name="confirmationData">Confirmation Data</string>
     
     <string name="finish">Finish Task</string>
+    
+        
+    <string name="distanciaRecorrida">     Distance Traveled:   </string>
+    
+    <string name="velocidad">        Velocity:  </string>
 
 </resources>

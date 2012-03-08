@@ -32,6 +32,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
@@ -522,16 +523,15 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		this.distanciaRecorrida  +=km;
 		
 		DecimalFormat df = new DecimalFormat("0.000"); 
-		DecimalFormat df2 = new DecimalFormat("0.00");
 		
-		String distanciaKM = "Distancia Recorrida: "+df.format(this.distanciaRecorrida) + " Km ";
+		String distanciaKM = getString(R.string.distanciaRecorrida) + " "+df.format(this.distanciaRecorrida) + " Km ";
 		
 		
 		double velocidad = km / 3600;
 		
 		String veloKmHora = velocidad + "    ";
 		
-		veloKmHora = "     Velocidad: " + veloKmHora.substring(0,4) + " Km/h";
+		veloKmHora =  Html.fromHtml("<b>"+getString(R.string.velocidad)+"</b>") +" "+ veloKmHora.substring(0,4) + " Km/h";
 		
 		
 		TextView textoDistancia = (TextView) findViewById(R.id.textoDistancia);
