@@ -507,7 +507,7 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		   
 		   	Paint p = new Paint();
 		    p.setColor(Color.RED);
-		    p.setStrokeWidth(11);
+		    p.setStrokeWidth(18);
 		    
 		    canvas.drawLine(scrnPoint.x,scrnPoint.y,scrnPoint2.x,scrnPoint2.y,p);
 				   
