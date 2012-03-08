@@ -522,12 +522,22 @@ public class VisorDeMapa extends MapActivity implements LocationListener{
 		this.distanciaRecorrida  +=km;
 		
 		DecimalFormat df = new DecimalFormat("0.000"); 
+		DecimalFormat df2 = new DecimalFormat("0.00");
 		
-		String distanciaKM = df.format(this.distanciaRecorrida) + " Km";
+		String distanciaKM = "Distancia Recorrida: "+df.format(this.distanciaRecorrida) + " Km ";
+		
+		
+		double velocidad = km / 3600;
+		
+		String veloKmHora = velocidad + "    ";
+		
+		veloKmHora = "     Velocidad: " + veloKmHora.substring(0,4) + " Km/h";
 		
 		
 		TextView textoDistancia = (TextView) findViewById(R.id.textoDistancia);
+		TextView textoVelocidad = (TextView) findViewById(R.id.textoVelocidad);
 		
+		textoVelocidad.setText(veloKmHora);
 		textoDistancia.setText(distanciaKM);
 
 		
